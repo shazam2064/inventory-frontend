@@ -3,16 +3,37 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { GroupComponent } from './components/group/group.component';
+import { UnitComponent } from './components/unit/unit.component';
+import { LocationComponent } from './components/location/location.component';
+import { MovementTypeComponent } from './components/movement-type/movement-type.component';
+import {HttpClientModule} from '@angular/common/http';
+import {InventoryService} from './services/inventory.service';
+import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-warehouse.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent,
+    WarehouseComponent,
+    GroupComponent,
+    UnitComponent,
+    LocationComponent,
+    MovementTypeComponent,
+    AddWarehouseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InventoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
