@@ -1,3 +1,33 @@
-<div class="text-center alert-info">
-  <p>group works!</p>
+<div class="container">
+  <h3 class="display-4 text-muted">Groups</h3>
+  <div class="row">
+    <div class="container">
+      <button class="btn-btn-primary btn-outline-primary" >
+        Add a group.
+      </button>
+      <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let group of groupList">
+            <td>
+              {{group.id}}
+            </td>
+            <td>
+              {{group.name}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+

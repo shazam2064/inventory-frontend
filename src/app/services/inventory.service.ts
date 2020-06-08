@@ -13,4 +13,16 @@ export class InventoryService {
   getWarehouses() {
     return this.http.get('/server/inventory/v1/warehouses');
   }
+
+  getGroups() {
+    return this.http.get('/server/inventory/v1/groups');
+  }
+
+  getUnits() {
+    return this.http.get('/server/inventory/v1/units');
+  }
+
+  getLocations() {
+    return this.http.get('/server/inventory/v1/locations');
+  }
 }

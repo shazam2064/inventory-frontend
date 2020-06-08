@@ -1,3 +1,42 @@
-<div class="text-center alert-info">
-  <p>location works!</p>
+<div class="container">
+  <h3 class="display-4 text-muted">Locations</h3>
+  <div class="row">
+    <div class="container">
+      <button class="btn-btn-primary btn-outline-primary" >
+        Add a location.
+      </button>
+      <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Aisle</th>
+            <th>Rack</th>
+            <th>Shelf</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let location of locationList">
+            <td>
+              {{location.id}}
+            </td>
+            <td>
+              {{location.aisle}}
+            </td>
+            <td>
+              {{location.rack}}
+            </td>
+            <td>
+              {{location.shelf}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
