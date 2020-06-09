@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {InventoryService} from '../../services/inventory.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-movement-type',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovementTypeComponent implements OnInit {
 
-  constructor() { }
+  public movementTypeList;
+
+  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getMovementTypeList();
+  }
+
+  getMovementTypeList() {
+    this.inventoryService.getMovementTypes().subscribe(
+      data => {
+        this.movementTypeList = data;
+      },
+      err => console.error(err),
+      () => console.log('movement types loaded')
+    );
   }
 
 }

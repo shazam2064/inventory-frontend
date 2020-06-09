@@ -25,4 +25,8 @@ export class InventoryService {
   getLocations() {
     return this.http.get('/server/inventory/v1/locations');
   }
+
+  getMovementTypes() {
+    return this.http.get('/server/inventory/v1/movement-types');
+  }
 }
