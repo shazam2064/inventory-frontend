@@ -1,0 +1,15 @@
+<h3 class="display-4 text-muted mb-4">Add a new Location</h3>
+<button class="btn btn-primary mb-5" routerLink="/group">Return to list</button>
+<div class="col-sm-9 pl-5">
+  <form [formGroup]="newLocation" (ngSubmit)="submitLocation()">
+    <div class="form-group">
+      <label for="aisle">Location Aisle</label>
+      <input class="form-control" type="text" id="aisle" formControlName="aisle">
+      <label for="rack">Location Rack</label>
+      <input class="form-control" type="text" id="rack" formControlName="rack">
+      <label for="shelf">Location Shelf</label>
+      <input class="form-control" type="text" id="shelf" formControlName="shelf">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Location</button>
+  </form>
+</div>

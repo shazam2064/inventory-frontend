@@ -14,6 +14,10 @@ import { MovementTypeComponent } from './components/movement-type/movement-type.
 import {HttpClientModule} from '@angular/common/http';
 import {InventoryService} from './services/inventory.service';
 import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-warehouse.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { AddGroupComponent } from './components/group/add-group/add-group.component';
+import { AddUnitComponent } from './components/unit/add-unit/add-unit.component';
+import { AddLocationComponent } from './components/location/add-location/add-location.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,17 @@ import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-
     UnitComponent,
     LocationComponent,
     MovementTypeComponent,
-    AddWarehouseComponent
+    AddWarehouseComponent,
+    AddGroupComponent,
+    AddUnitComponent,
+    AddLocationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [InventoryService],
   bootstrap: [AppComponent]
 })

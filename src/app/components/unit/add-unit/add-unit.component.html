@@ -1,0 +1,11 @@
+<h3 class="display-4 text-muted mb-4">Add a new Unit</h3>
+<button class="btn btn-primary mb-5" routerLink="/group">Return to list</button>
+<div class="col-sm-9 pl-5">
+  <form [formGroup]="newUnit" (ngSubmit)="submitUnit()">
+    <div class="form-group">
+      <label for="name">Unit Name</label>
+      <input class="form-control" type="text" id="name" formControlName="name">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Unit</button>
+  </form>
+</div>
