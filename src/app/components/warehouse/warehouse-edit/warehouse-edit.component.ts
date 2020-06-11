@@ -38,6 +38,16 @@ export class WarehouseEditComponent implements OnInit {
     );
   }
 
+  deleteWarehouse(id: string) {
+    this.inventoryService.deleteWarehouse(id).subscribe(
+      data => {
+        this.warehouseDetails = data;
+      },
+      err => console.error(err),
+      () => console.log('warehouse loaded'),
+    );
+  }
+
 
   updateWarehouse() {
     if (this.updatedWarehouse.valid) {
