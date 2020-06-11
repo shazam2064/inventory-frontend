@@ -14,8 +14,7 @@ export class AddWarehouseComponent implements OnInit {
   newWarehouse: FormGroup;
   validMessage: string = '';
 
-  constructor(private inventoryService: InventoryService, private router: Router) {
-  }
+  constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
     this.newWarehouse = new FormGroup({
@@ -25,7 +24,7 @@ export class AddWarehouseComponent implements OnInit {
 
   submitWarehouse() {
     if (this.newWarehouse.valid) {
-      this.validMessage = 'Your warehouse has been created. Thank you!';
+      console.log('Your warehouse has been created. Thank you!');
       this.router.navigate(['warehouse']);
       this.inventoryService.createWarehouse(this.newWarehouse.value).subscribe(
         data => {
@@ -38,7 +37,7 @@ export class AddWarehouseComponent implements OnInit {
         }
       );
     } else {
-      this.validMessage = 'Please fill out the form before submitting >:( ';
+      console.log('Please fill out the form before submitting >:( ');
     }
   }
 

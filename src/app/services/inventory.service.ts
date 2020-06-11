@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -8,7 +8,8 @@ const httpOptions = {
 @Injectable()
 export class InventoryService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   // Get all lists of warehouse, group, units, location, and movement types
 
@@ -54,7 +55,7 @@ export class InventoryService {
     return this.http.get('/server/inventory/v1/movement-types/' + id);
   }
 
-   // Create Stuff
+  // Create Stuff
 
   createWarehouse(warehouse) {
     let body = JSON.stringify(warehouse);
@@ -79,6 +80,55 @@ export class InventoryService {
   createMovementType(movementType) {
     let body = JSON.stringify(movementType);
     return this.http.post('/server/inventory/v1/movement-types', body, httpOptions);
+  }
+
+  // update stuff
+
+  updateWarehouse(id: string, warehouse) {
+    let body = JSON.stringify(warehouse);
+    return this.http.put('/server/inventory/v1/warehouses/' + id, body, httpOptions);
+  }
+
+  updateGroup(group) {
+    let body = JSON.stringify(group);
+    return this.http.put('/server/inventory/v1/groups', body, httpOptions);
+  }
+
+  updateUnit(unit) {
+    let body = JSON.stringify(unit);
+    return this.http.put('/server/inventory/v1/units', body, httpOptions);
+  }
+
+  updateLocation(location) {
+    let body = JSON.stringify(location);
+    return this.http.put('/server/inventory/v1/locations', body, httpOptions);
+  }
+
+  updateMovementType(movementType) {
+    let body = JSON.stringify(movementType);
+    return this.http.put('/server/inventory/v1/movement-types', body, httpOptions);
+  }
+
+  // delete stuff
+
+  deleteWarehouse(id: string) {
+    return this.http.delete('/server/inventory/v1/warehouses/' + id);
+  }
+
+  deleteGroup(id: string) {
+    return this.http.delete('/server/inventory/v1/groups/' + id);
+  }
+
+  deleteUnit(id: string) {
+    return this.http.delete('/server/inventory/v1/units/' + id);
+  }
+
+  deleteLocation(id: string) {
+    return this.http.delete('/server/inventory/v1/locations/' + id);
+  }
+
+  deleteMovementType(id: string) {
+    return this.http.delete('/server/inventory/v1/movement-types/' + id);
   }
 
 }

@@ -26,7 +26,7 @@ export class AddUnitComponent implements OnInit {
 
   submitUnit() {
     if (this.newUnit.valid) {
-      this.validMessage = "Your unit has been created. Thank you!";
+      console.log("Your unit has been created. Thank you!");
       this.router.navigate(['unit']);
       this.inventoryService.createUnit(this.newUnit.value).subscribe(
         data => {
@@ -39,7 +39,7 @@ export class AddUnitComponent implements OnInit {
         }
       )
     } else {
-      this.validMessage = "Please fill out the form before submitting >:( ";
+      console.log("Please fill out the form before submitting >:( ");
     }
   }
 

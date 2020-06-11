@@ -1,0 +1,11 @@
+<h3 class="display-4 text-muted mb-4">Add a new Movement Type</h3>
+<button class="btn btn-secondary mb-5" routerLink="/movement-type">Return to list</button>
+<div class="col-sm-9 pl-5">
+  <form [formGroup]="newMovementType" (ngSubmit)="submitMovementType()">
+    <div class="form-group">
+      <label for="name">Movement Type Name</label>
+      <input class="form-control" type="text" id="name" formControlName="name">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Movement Type</button>
+  </form>
+</div>

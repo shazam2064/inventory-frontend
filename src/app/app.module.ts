@@ -18,6 +18,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
 import { AddUnitComponent } from './components/unit/add-unit/add-unit.component';
 import { AddLocationComponent } from './components/location/add-location/add-location.component';
+import { AddMovementTypeComponent } from './components/movement-type/add-movement-type/add-movement-type.component';
+import { WarehouseEditComponent } from './components/warehouse/warehouse-edit/warehouse-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AddLocationComponent } from './components/location/add-location/add-loc
     AddWarehouseComponent,
     AddGroupComponent,
     AddUnitComponent,
-    AddLocationComponent
+    AddLocationComponent,
+    AddMovementTypeComponent,
+    WarehouseEditComponent
   ],
     imports: [
         BrowserModule,

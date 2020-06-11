@@ -28,7 +28,7 @@ export class AddLocationComponent implements OnInit {
 
   submitLocation() {
     if (this.newLocation.valid) {
-      this.validMessage = "Your location has been created. Thank you!";
+      console.log("Your location has been created. Thank you!");
       this.router.navigate(['location']);
       this.inventoryService.createLocation(this.newLocation.value).subscribe(
         data => {
@@ -41,7 +41,7 @@ export class AddLocationComponent implements OnInit {
         }
       )
     } else {
-      this.validMessage = "Please fill out the form before submitting >:( ";
+      console.log("Please fill out the form before submitting >:( ");
     }
   }
 

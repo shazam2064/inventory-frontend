@@ -1,34 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import {throwError} from 'rxjs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
-import {throwError} from 'rxjs';
 
 @Component({
-  selector: 'app-add-group',
-  templateUrl: './add-group.component.html',
-  styleUrls: ['./add-group.component.css']
+  selector: 'app-add-movement-type',
+  templateUrl: './add-movement-type.component.html',
+  styleUrls: ['./add-movement-type.component.css']
 })
-export class AddGroupComponent implements OnInit {
+export class AddMovementTypeComponent implements OnInit {
 
-  newGroup: FormGroup;
+  newMovementType: FormGroup;
   validMessage: string = '';
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
-    this.newGroup = new FormGroup({
+
+    this.newMovementType = new FormGroup({
       name: new FormControl('', Validators.required)
     });
+
   }
 
-  submitGroup() {
-    if (this.newGroup.valid) {
-      console.log("Your group has been created. Thank you!");
-      this.router.navigate(['group']);
-      this.inventoryService.createGroup(this.newGroup.value).subscribe(
+  submitMovementType() {
+    if (this.newMovementType.valid) {
+      console.log("Your Movement Type has been created. Thank you!");
+      this.router.navigate(['movement-type']);
+      this.inventoryService.createMovementType(this.newMovementType.value).subscribe(
         data => {
-          this.newGroup.reset();
+          this.newMovementType.reset();
           return true;
 
         },
