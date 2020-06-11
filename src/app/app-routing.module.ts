@@ -12,6 +12,7 @@ import {AddUnitComponent} from './components/unit/add-unit/add-unit.component';
 import {AddLocationComponent} from './components/location/add-location/add-location.component';
 import {AddMovementTypeComponent} from './components/movement-type/add-movement-type/add-movement-type.component';
 import {WarehouseEditComponent} from './components/warehouse/warehouse-edit/warehouse-edit.component';
+import {GroupEditComponent} from './components/group/group-edit/group-edit.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'add-unit', component: AddUnitComponent},
   {path: 'group', component: GroupComponent},
   {path: 'add-group', component: AddGroupComponent},
+  {path: 'edit-group/:id', component: GroupEditComponent},
   {path: 'movement-type', component: MovementTypeComponent},
   {path: 'add-movement-type', component: AddMovementTypeComponent},
 ];

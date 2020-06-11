@@ -14,7 +14,7 @@ export class WarehouseEditComponent implements OnInit {
   public warehouseDetails;
   updatedWarehouse: FormGroup;
 
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute ) {
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {

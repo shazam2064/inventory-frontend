@@ -89,24 +89,24 @@ export class InventoryService {
     return this.http.put('/server/inventory/v1/warehouses/' + id, body, httpOptions);
   }
 
-  updateGroup(group) {
+  updateGroup(id: string, group) {
     let body = JSON.stringify(group);
-    return this.http.put('/server/inventory/v1/groups', body, httpOptions);
+    return this.http.put('/server/inventory/v1/groups/' + id, body, httpOptions);
   }
 
-  updateUnit(unit) {
+  updateUnit(id: string, unit) {
     let body = JSON.stringify(unit);
-    return this.http.put('/server/inventory/v1/units', body, httpOptions);
+    return this.http.put('/server/inventory/v1/units/' + id, body, httpOptions);
   }
 
-  updateLocation(location) {
+  updateLocation(id: string, location) {
     let body = JSON.stringify(location);
-    return this.http.put('/server/inventory/v1/locations', body, httpOptions);
+    return this.http.put('/server/inventory/v1/locations/' + id, body, httpOptions);
   }
 
-  updateMovementType(movementType) {
+  updateMovementType(id: string, movementType) {
     let body = JSON.stringify(movementType);
-    return this.http.put('/server/inventory/v1/movement-types', body, httpOptions);
+    return this.http.put('/server/inventory/v1/movement-types/' + id, body, httpOptions);
   }
 
   // delete stuff
