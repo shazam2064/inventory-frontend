@@ -14,8 +14,7 @@ export class WarehouseEditComponent implements OnInit {
   public warehouseDetails;
   updatedWarehouse: FormGroup;
 
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {
-  }
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
 
@@ -52,8 +51,8 @@ export class WarehouseEditComponent implements OnInit {
   updateWarehouse() {
     if (this.updatedWarehouse.valid) {
       console.log('Your warehouse has been updated. Thank you!');
-      this.router.navigate(['warehouse']);
-      this.inventoryService.updateWarehouse(this.updatedWarehouse.value, this.updatedWarehouse).subscribe(
+      // this.router.navigate(['warehouse']);
+      this.inventoryService.updateWarehouse(this.updatedWarehouse.value).subscribe(
         data => {
           this.updatedWarehouse.reset();
           return true;

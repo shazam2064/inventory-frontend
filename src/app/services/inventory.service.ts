@@ -7,6 +7,7 @@ const httpOptions = {
 
 @Injectable()
 export class InventoryService {
+  idUpdate: string;
 
   constructor(private http: HttpClient) {
   }
@@ -84,9 +85,9 @@ export class InventoryService {
 
   // update stuff
 
-  updateWarehouse(id: string, warehouse) {
+  updateWarehouse(warehouse) {
     let body = JSON.stringify(warehouse);
-    return this.http.put('/server/inventory/v1/warehouses/' + id, body, httpOptions);
+    return this.http.put('/server/inventory/v1/warehouses/' + this.idUpdate, body, httpOptions);
   }
 
   updateGroup(id: string, group) {

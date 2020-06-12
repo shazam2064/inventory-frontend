@@ -13,6 +13,9 @@ import {AddLocationComponent} from './components/location/add-location/add-locat
 import {AddMovementTypeComponent} from './components/movement-type/add-movement-type/add-movement-type.component';
 import {WarehouseEditComponent} from './components/warehouse/warehouse-edit/warehouse-edit.component';
 import {GroupEditComponent} from './components/group/group-edit/group-edit.component';
+import {UnitEditComponent} from './components/unit/unit-edit/unit-edit.component';
+import {LocationEditComponent} from './components/location/location-edit/location-edit.component';
+import {MovementTypeEditComponent} from './components/movement-type/movement-type-edit/movement-type-edit.component';
 
 
 const routes: Routes = [
@@ -22,13 +25,17 @@ const routes: Routes = [
   {path: 'edit-warehouse/:id', component: WarehouseEditComponent},
   {path: 'location', component: LocationComponent},
   {path: 'add-location', component: AddLocationComponent},
+  {path: 'edit-location/:id', component: LocationEditComponent},
   {path: 'unit', component: UnitComponent},
   {path: 'add-unit', component: AddUnitComponent},
+  {path: 'edit-unit/:id', component: UnitEditComponent},
   {path: 'group', component: GroupComponent},
   {path: 'add-group', component: AddGroupComponent},
   {path: 'edit-group/:id', component: GroupEditComponent},
   {path: 'movement-type', component: MovementTypeComponent},
   {path: 'add-movement-type', component: AddMovementTypeComponent},
+  {path: 'edit-movement-type/:id', component: MovementTypeEditComponent},
+
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@
       <br>
       <button
         routerLink="/add-movement-type"
-        class="btn-btn-primary btn-outline-primary" >
+        class="btn-btn-primary btn-outline-primary">
         Add a movement type.
       </button>
       <div class="container mt-lg-5">
@@ -23,6 +23,11 @@
             </td>
             <td>
               {{movementType.name}}
+            </td>
+            <td>
+              <a routerLink="/edit-movement-type/{{movementType.id}}" class="btn btn-success">
+                Edit
+              </a>
             </td>
           </tr>
           </tbody>

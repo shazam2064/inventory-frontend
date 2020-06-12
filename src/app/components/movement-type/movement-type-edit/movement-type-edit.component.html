@@ -1,0 +1,19 @@
+<h3 class="display-4 text-muted mb-4">Edit a Movement Type</h3>
+<button class="btn btn-secondary mb-5" routerLink="/movement-type">Return to list</button>
+<div class="col-sm-9 pl-5">
+  <form [formGroup]="updatedMovementType" (ngSubmit)="updateMovementType()">
+    <div class="form-group">
+      <label for="name">Movement Type Name</label>
+      <input [(ngModel)]="movementTypeDetails.name" class="form-control" type="text" id="name" formControlName="name">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-success" type="submit">Update Movement type</button>
+      <button
+        class="btn btn-danger"
+        (click)="deleteMovementType(movementTypeDetails.id)"
+        type="submit"
+      >Delete Movement-Type
+      </button>
+    </div>
+  </form>
+</div>

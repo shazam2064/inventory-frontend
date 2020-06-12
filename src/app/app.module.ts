@@ -21,6 +21,9 @@ import { AddLocationComponent } from './components/location/add-location/add-loc
 import { AddMovementTypeComponent } from './components/movement-type/add-movement-type/add-movement-type.component';
 import { WarehouseEditComponent } from './components/warehouse/warehouse-edit/warehouse-edit.component';
 import { GroupEditComponent } from './components/group/group-edit/group-edit.component';
+import { UnitEditComponent } from './components/unit/unit-edit/unit-edit.component';
+import { LocationEditComponent } from './components/location/location-edit/location-edit.component';
+import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { GroupEditComponent } from './components/group/group-edit/group-edit.com
     AddLocationComponent,
     AddMovementTypeComponent,
     WarehouseEditComponent,
-    GroupEditComponent
+    GroupEditComponent,
+    UnitEditComponent,
+    LocationEditComponent,
+    MovementTypeEditComponent
   ],
     imports: [
         BrowserModule,
