@@ -26,7 +26,6 @@ export class AddWarehouseComponent implements OnInit {
   submitWarehouse() {
     if (this.newWarehouse.valid) {
       console.log('Your warehouse has been created. Thank you!');
-      this.router.navigate(['warehouse']);
       this.inventoryService.createWarehouse(this.newWarehouse.value).subscribe(
         data => {
           this.newWarehouse.reset();
@@ -37,6 +36,7 @@ export class AddWarehouseComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['warehouse']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

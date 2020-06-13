@@ -48,11 +48,10 @@ export class LocationEditComponent implements OnInit {
   }
 
 
-  updateLocation() {
+  updateLocation(id:string) {
     if (this.updatedLocation.valid) {
       console.log('Your location has been updated. Thank you!');
-      this.router.navigate(['location']);
-      this.inventoryService.updateLocation(this.updatedLocation.value, this.updatedLocation).subscribe(
+      this.inventoryService.updateLocation(id, this.updatedLocation.value).subscribe(
         data => {
           this.updatedLocation.reset();
           return true;
@@ -61,6 +60,7 @@ export class LocationEditComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['location']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

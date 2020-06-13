@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class GroupComponent implements OnInit {
 
-  public groupList
+  public groupList;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 

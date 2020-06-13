@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {InventoryService} from '../../../services/inventory.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {throwError} from 'rxjs';
 import {WarehouseService} from '../../../services/warehouse.service';
@@ -33,6 +32,7 @@ export class WarehouseEditComponent implements OnInit {
       err => console.error(err),
       () => console.log('warehouse loaded'),
     );
+    this.router.navigate(['warehouse']);
   }
 
   getWarehouse(id: string) {
@@ -49,7 +49,6 @@ export class WarehouseEditComponent implements OnInit {
   updateWarehouse(id:string) {
     if (this.updatedWarehouse.valid) {
       console.log('Your warehouse has been updated. Thank you!');
-      // this.router.navigate(['warehouse']);
       this.inventoryService.updateWarehouse(id, this.updatedWarehouse.value).subscribe(
         data => {
           this.updatedWarehouse.reset();
@@ -59,6 +58,7 @@ export class WarehouseEditComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['warehouse']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

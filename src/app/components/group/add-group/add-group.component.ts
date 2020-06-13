@@ -25,7 +25,6 @@ export class AddGroupComponent implements OnInit {
   submitGroup() {
     if (this.newGroup.valid) {
       console.log("Your group has been created. Thank you!");
-      this.router.navigate(['group']);
       this.inventoryService.createGroup(this.newGroup.value).subscribe(
         data => {
           this.newGroup.reset();
@@ -35,7 +34,8 @@ export class AddGroupComponent implements OnInit {
         error => {
           return throwError(error);
         }
-      )
+      );
+      this.router.navigate(['group']);
     } else {
       console.log("Please fill out the form before submitting >:( ");
     }

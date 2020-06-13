@@ -25,6 +25,9 @@ export class WarehouseService {
 
   updateWarehouse(id: string, warehouse) {
     let body = JSON.stringify(warehouse);
+    console.log("id: " + id);
+    console.log("body: " + body);
+    console.log("httpOptions: " + httpOptions);
     return this.http.put('/server/inventory/v1/warehouses/' + id, body, httpOptions);
   }
 

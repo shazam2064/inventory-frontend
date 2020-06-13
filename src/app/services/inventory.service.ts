@@ -97,6 +97,9 @@ export class InventoryService {
 
   updateGroup(id: string, group) {
     let body = JSON.stringify(group);
+    console.log("id: " + id);
+    console.log("body: " + body);
+    console.log("httpOptions: " + httpOptions);
     return this.http.put('/server/inventory/v1/groups/' + id, body, httpOptions);
   }
 
@@ -117,9 +120,9 @@ export class InventoryService {
 
   // delete stuff
 
-  deleteWarehouse(id: string) {
-    return this.http.delete('/server/inventory/v1/warehouses/' + id);
-  }
+  // deleteWarehouse(id: string) {
+  //   return this.http.delete('/server/inventory/v1/warehouses/' + id);
+  // }
 
   deleteGroup(id: string) {
     return this.http.delete('/server/inventory/v1/groups/' + id);

@@ -1,7 +1,7 @@
 <h3 class="display-4 text-muted mb-4">Edit a Group</h3>
 <button class="btn btn-secondary mb-5" routerLink="/group">Return to list</button>
 <div class="col-sm-9 pl-5">
-  <form [formGroup]="updatedGroup" (ngSubmit)="updateGroup()">
+  <form [formGroup]="updatedGroup" (ngSubmit)="updateGroup(groupDetails.id)">
     <div class="form-group">
       <label for="name">Group Name</label>
       <input [(ngModel)]="groupDetails.name" class="form-control" type="text" id="name" formControlName="name">

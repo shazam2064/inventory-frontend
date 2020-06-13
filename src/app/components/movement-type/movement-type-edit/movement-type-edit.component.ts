@@ -45,11 +45,10 @@ export class MovementTypeEditComponent implements OnInit {
   }
 
 
-  updateMovementType() {
+  updateMovementType(id: string) {
     if (this.updatedMovementType.valid) {
       console.log('Your movement type has been updated. Thank you!');
-      this.router.navigate(['movement-type']);
-      this.inventoryService.updateMovementType(this.updatedMovementType.value, this.updatedMovementType).subscribe(
+      this.inventoryService.updateMovementType(id, this.updatedMovementType.value).subscribe(
         data => {
           this.updatedMovementType.reset();
           return true;
@@ -58,6 +57,7 @@ export class MovementTypeEditComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['movement-type']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

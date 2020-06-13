@@ -45,11 +45,10 @@ export class UnitEditComponent implements OnInit {
   }
 
 
-  updateUnit() {
+  updateUnit(id:string) {
     if (this.updatedUnit.valid) {
       console.log('Your unit has been updated. Thank you!');
-      this.router.navigate(['unit']);
-      this.inventoryService.updateUnit(this.updatedUnit.value, this.updatedUnit).subscribe(
+      this.inventoryService.updateUnit(id, this.updatedUnit.value).subscribe(
         data => {
           this.updatedUnit.reset();
           return true;
@@ -58,6 +57,7 @@ export class UnitEditComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['unit']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

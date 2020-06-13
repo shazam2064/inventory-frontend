@@ -14,7 +14,7 @@ import { MovementTypeComponent } from './components/movement-type/movement-type.
 import {HttpClientModule} from '@angular/common/http';
 import {InventoryService} from './services/inventory.service';
 import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-warehouse.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
 import { AddUnitComponent } from './components/unit/add-unit/add-unit.component';
 import { AddLocationComponent } from './components/location/add-location/add-location.component';
@@ -52,7 +52,8 @@ import {WarehouseService} from './services/warehouse.service';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
   providers: [
     InventoryService,

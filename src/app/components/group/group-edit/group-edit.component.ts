@@ -14,8 +14,7 @@ export class GroupEditComponent implements OnInit {
   public groupDetails;
   updatedGroup: FormGroup;
 
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {
-  }
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getGroup(this.route.snapshot.params.id);
@@ -45,11 +44,10 @@ export class GroupEditComponent implements OnInit {
   }
 
 
-  updateGroup() {
+  updateGroup(id:string) {
     if (this.updatedGroup.valid) {
       console.log('Your group has been updated. Thank you!');
-      this.router.navigate(['group']);
-      this.inventoryService.updateGroup(this.updatedGroup.value, this.updatedGroup).subscribe(
+      this.inventoryService.updateGroup(id, this.updatedGroup.value).subscribe(
         data => {
           this.updatedGroup.reset();
           return true;
@@ -58,6 +56,7 @@ export class GroupEditComponent implements OnInit {
           return throwError(error);
         }
       );
+      this.router.navigate(['group']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
     }

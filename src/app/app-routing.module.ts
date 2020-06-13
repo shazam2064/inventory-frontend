@@ -16,10 +16,12 @@ import {GroupEditComponent} from './components/group/group-edit/group-edit.compo
 import {UnitEditComponent} from './components/unit/unit-edit/unit-edit.component';
 import {LocationEditComponent} from './components/location/location-edit/location-edit.component';
 import {MovementTypeEditComponent} from './components/movement-type/movement-type-edit/movement-type-edit.component';
+import {LoginComponent} from './components/login/login.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'warehouse', component: WarehouseComponent},
   {path: 'add-warehouse', component: AddWarehouseComponent},
   {path: 'edit-warehouse/:id', component: WarehouseEditComponent},
@@ -34,8 +36,7 @@ const routes: Routes = [
   {path: 'edit-group/:id', component: GroupEditComponent},
   {path: 'movement-type', component: MovementTypeComponent},
   {path: 'add-movement-type', component: AddMovementTypeComponent},
-  {path: 'edit-movement-type/:id', component: MovementTypeEditComponent},
-
+  {path: 'edit-movement-type/:id', component: MovementTypeEditComponent}
 ];
 
 @NgModule({

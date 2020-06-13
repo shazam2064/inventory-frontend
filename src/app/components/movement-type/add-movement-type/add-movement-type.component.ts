@@ -27,7 +27,6 @@ export class AddMovementTypeComponent implements OnInit {
   submitMovementType() {
     if (this.newMovementType.valid) {
       console.log("Your Movement Type has been created. Thank you!");
-      this.router.navigate(['movement-type']);
       this.inventoryService.createMovementType(this.newMovementType.value).subscribe(
         data => {
           this.newMovementType.reset();
@@ -37,7 +36,8 @@ export class AddMovementTypeComponent implements OnInit {
         error => {
           return throwError(error);
         }
-      )
+      );
+      this.router.navigate(['movement-type']);
     } else {
       console.log("Please fill out the form before submitting >:( ");
     }

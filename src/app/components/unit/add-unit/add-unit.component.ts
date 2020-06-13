@@ -27,7 +27,6 @@ export class AddUnitComponent implements OnInit {
   submitUnit() {
     if (this.newUnit.valid) {
       console.log("Your unit has been created. Thank you!");
-      this.router.navigate(['unit']);
       this.inventoryService.createUnit(this.newUnit.value).subscribe(
         data => {
           this.newUnit.reset();
@@ -37,7 +36,8 @@ export class AddUnitComponent implements OnInit {
         error => {
           return throwError(error);
         }
-      )
+      );
+      this.router.navigate(['unit']);
     } else {
       console.log("Please fill out the form before submitting >:( ");
     }
