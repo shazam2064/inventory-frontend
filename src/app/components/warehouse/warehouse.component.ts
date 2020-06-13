@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {InventoryService} from '../../services/inventory.service';
 import {ActivatedRoute} from '@angular/router';
+import {WarehouseService} from '../../services/warehouse.service';
 
 @Component({
   selector: 'app-warehouse',
@@ -11,15 +11,16 @@ export class WarehouseComponent implements OnInit {
 
   public warehouseList;
 
-  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
+  constructor(private warehouseService: WarehouseService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getWarehouseList();
   }
 
 
+
   getWarehouseList() {
-    this.inventoryService.getWarehouses().subscribe(
+    this.warehouseService.getWarehouses().subscribe(
       data => {
         this.warehouseList = data;
       },

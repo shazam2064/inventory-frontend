@@ -24,6 +24,7 @@ import { GroupEditComponent } from './components/group/group-edit/group-edit.com
 import { UnitEditComponent } from './components/unit/unit-edit/unit-edit.component';
 import { LocationEditComponent } from './components/location/location-edit/location-edit.component';
 import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
+import {WarehouseService} from './services/warehouse.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,10 @@ import { MovementTypeEditComponent } from './components/movement-type/movement-t
         HttpClientModule,
         ReactiveFormsModule
     ],
-  providers: [InventoryService],
+  providers: [
+    InventoryService,
+    WarehouseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

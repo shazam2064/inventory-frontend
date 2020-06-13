@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {throwError} from 'rxjs';
 import {Router} from '@angular/router';
+import {WarehouseService} from '../../../services/warehouse.service';
 
 @Component({
   selector: 'app-add-warehouse',
@@ -14,7 +15,7 @@ export class AddWarehouseComponent implements OnInit {
   newWarehouse: FormGroup;
   validMessage: string = '';
 
-  constructor(private inventoryService: InventoryService, private router: Router) {}
+  constructor(private inventoryService: WarehouseService, private router: Router) {}
 
   ngOnInit() {
     this.newWarehouse = new FormGroup({

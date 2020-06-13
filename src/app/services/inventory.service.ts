@@ -7,16 +7,15 @@ const httpOptions = {
 
 @Injectable()
 export class InventoryService {
-  idUpdate: string;
 
   constructor(private http: HttpClient) {
   }
 
   // Get all lists of warehouse, group, units, location, and movement types
 
-  getWarehouses() {
-    return this.http.get('/server/inventory/v1/warehouses');
-  }
+  // getWarehouses() {
+  //   return this.http.get('/server/inventory/v1/warehouses');
+  // }
 
   getGroups() {
     return this.http.get('/server/inventory/v1/groups');
@@ -36,9 +35,9 @@ export class InventoryService {
 
   // get stuff by id
 
-  getWarehouse(id: string) {
-    return this.http.get('/server/inventory/v1/warehouses/' + id);
-  }
+  // getWarehouse(id: string) {
+  //   return this.http.get('/server/inventory/v1/warehouses/' + id);
+  // }
 
   getGroup(id: string) {
     return this.http.get('/server/inventory/v1/groups/' + id);
@@ -58,10 +57,10 @@ export class InventoryService {
 
   // Create Stuff
 
-  createWarehouse(warehouse) {
-    let body = JSON.stringify(warehouse);
-    return this.http.post('/server/inventory/v1/warehouses', body, httpOptions);
-  }
+  // createWarehouse(warehouse) {
+  //   let body = JSON.stringify(warehouse);
+  //   return this.http.post('/server/inventory/v1/warehouses', body, httpOptions);
+  // }
 
   createGroup(group) {
     let body = JSON.stringify(group);
@@ -85,10 +84,16 @@ export class InventoryService {
 
   // update stuff
 
-  updateWarehouse(warehouse) {
+  updateWarehouse(id: string, warehouse) {
     let body = JSON.stringify(warehouse);
-    return this.http.put('/server/inventory/v1/warehouses/' + this.idUpdate, body, httpOptions);
+    return this.http.put('/server/inventory/v1/warehouses/' + id, body, httpOptions);
   }
+  //
+  // updateWarehouse(warehouse) {
+  //   let body = JSON.stringify(warehouse);
+  //   return this.http.put('/server/inventory/v1/warehouses/5ee3ab52a60e3514525036fa', body, httpOptions);
+  // }
+
 
   updateGroup(id: string, group) {
     let body = JSON.stringify(group);
