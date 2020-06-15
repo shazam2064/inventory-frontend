@@ -10,6 +10,32 @@
         Add a item.
       </button>
       <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of itemList">
+            <td>
+              {{item.id}}
+            </td>
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+              {{item.description}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <h3>Details of the Item</h3>
+      <div class="container mt-lg-5">
         <table class="table table-bordered table-hover table-sm">
           <thead class="thead-light">
           <tr>
@@ -65,18 +91,13 @@
               {{item.reorderPoint}}
             </td>
             <td>
-              {{item.entryDate}}
+              {{item.entryDate | date:'fullDate'}}
             </td>
             <td>
-              {{item.departureDate}}
+              {{item.departureDate | date:'fullDate'}}
             </td>
             <td>
               {{item.ultimateValue}}
-            </td>
-            <td>
-              <a routerLink="/edit-item/{{item.id}}" class="btn btn-success">
-                Edit
-              </a>
             </td>
           </tr>
           </tbody>

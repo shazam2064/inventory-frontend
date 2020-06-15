@@ -14,7 +14,8 @@ export class ItemComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getItemList();
+    // this.getItem(this.route.snapshot.params.id);
+    this.getItemList()
   }
 
   getItemList() {
@@ -24,6 +25,16 @@ export class ItemComponent implements OnInit {
       },
       err => console.error(err),
       () => console.log('items loaded')
+    );
+  }
+
+  getItem(id:string) {
+    this.inventoryService.getItem(id).subscribe(
+      data => {
+        this.itemList = data;
+      },
+      err => console.error(err),
+      () => console.log('item loaded')
     );
   }
 

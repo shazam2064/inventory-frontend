@@ -17,13 +17,11 @@ export class AddLocationComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
-
     this.newLocation = new FormGroup({
       aisle: new FormControl('', Validators.required),
       rack: new FormControl('', Validators.required),
       shelf: new FormControl('', Validators.required)
     });
-
   }
 
   submitLocation() {
