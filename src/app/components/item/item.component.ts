@@ -3,27 +3,28 @@ import {InventoryService} from '../../services/inventory.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.css']
 })
-export class LocationComponent implements OnInit {
+export class ItemComponent implements OnInit {
 
-  public locationList;
+  public itemList;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getLocationList();
+    this.getItemList();
   }
 
-  getLocationList() {
-    this.inventoryService.getLocations().subscribe(
+  getItemList() {
+    this.inventoryService.getItems().subscribe(
       data => {
-        this.locationList = data;
+        this.itemList = data;
       },
       err => console.error(err),
-      () => console.log('locations loaded')
+      () => console.log('items loaded')
     );
   }
+
 }

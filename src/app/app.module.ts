@@ -25,6 +25,11 @@ import { UnitEditComponent } from './components/unit/unit-edit/unit-edit.compone
 import { LocationEditComponent } from './components/location/location-edit/location-edit.component';
 import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
 import {WarehouseService} from './services/warehouse.service';
+import {LoginService} from './services/login.service';
+import { ItemComponent } from './components/item/item.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
+import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
+import { AddItemComponent } from './components/item/add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,11 @@ import {WarehouseService} from './services/warehouse.service';
     GroupEditComponent,
     UnitEditComponent,
     LocationEditComponent,
-    MovementTypeEditComponent
+    MovementTypeEditComponent,
+    ItemComponent,
+    ItemDetailsComponent,
+    ItemEditComponent,
+    AddItemComponent
   ],
     imports: [
         BrowserModule,

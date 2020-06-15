@@ -17,8 +17,6 @@ export class WarehouseComponent implements OnInit {
     this.getWarehouseList();
   }
 
-
-
   getWarehouseList() {
     this.warehouseService.getWarehouses().subscribe(
       data => {

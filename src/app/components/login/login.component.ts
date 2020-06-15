@@ -6,27 +6,32 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: [ LoginService ]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  public user : User;
+  isAuthenticatedLogin: boolean;
+  passwordInput: any;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  passwordInputField(event) {
+    this.passwordInput = event.target.value;
   }
 
-  onKey(event) {
-    const inputValue = event.target.value;
-
+  constructor(private router: Router, private loginService: LoginService) {
+    this.isAuthenticatedLogin = false;
   }
 
-  // validateLogin() {
-  //   if(this.user.password == this.inputValue) {
-  //     this.router.navigate(['']);
-  //     } else {
-  //     console.log('enter user name and password');
-  //   }
-  // }
+
+  login() {
+    if (this.passwordInput == '2020') {
+      this.router.navigate(['']);
+      this.isAuthenticatedLogin = true;
+    } else {
+      console.log('enter user name and password');
+    }
+  }
+
+
+
 
 }

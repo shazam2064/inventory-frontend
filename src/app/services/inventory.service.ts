@@ -33,6 +33,10 @@ export class InventoryService {
     return this.http.get('/server/inventory/v1/movement-types');
   }
 
+  getItems() {
+    return this.http.get('/server/inventory/v1/items');
+  }
+
   // get stuff by id
 
   // getWarehouse(id: string) {
@@ -53,6 +57,10 @@ export class InventoryService {
 
   getMovementType(id: string) {
     return this.http.get('/server/inventory/v1/movement-types/' + id);
+  }
+
+  getItem(id: string) {
+    return this.http.get('/server/inventory/v1/items/' + id);
   }
 
   // Create Stuff
@@ -80,6 +88,11 @@ export class InventoryService {
   createMovementType(movementType) {
     let body = JSON.stringify(movementType);
     return this.http.post('/server/inventory/v1/movement-types', body, httpOptions);
+  }
+
+  createItem(item) {
+    let body = JSON.stringify(item);
+    return this.http.post('/server/inventory/v1/items', body, httpOptions);
   }
 
   // update stuff
@@ -118,6 +131,11 @@ export class InventoryService {
     return this.http.put('/server/inventory/v1/movement-types/' + id, body, httpOptions);
   }
 
+  updateItem(id: string, item) {
+    let body = JSON.stringify(item);
+    return this.http.put('/server/inventory/v1/items/' + id, body, httpOptions);
+  }
+
   // delete stuff
 
   // deleteWarehouse(id: string) {
@@ -138,6 +156,10 @@ export class InventoryService {
 
   deleteMovementType(id: string) {
     return this.http.delete('/server/inventory/v1/movement-types/' + id);
+  }
+
+  deleteItem(id: string) {
+    return this.http.delete('/server/inventory/v1/items/' + id);
   }
 
 }

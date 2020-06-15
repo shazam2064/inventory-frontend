@@ -1,0 +1,91 @@
+<div class="container">
+  <h3 class="display-4 text-muted">Items</h3>
+  <div class="row">
+    <div class="container">
+      <br>
+      <button
+        class="btn btn-primary"
+        routerLink="/add-item"
+      >
+        Add a item.
+      </button>
+      <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover table-sm">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Unit</th>
+            <th>Group</th>
+            <th>Location</th>
+            <th>Warehouse</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Reorder Point</th>
+            <th>Entry Date</th>
+            <th>Departure Date</th>
+            <th>Ultimate Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of itemList">
+            <td>
+              {{item.id}}
+            </td>
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+              {{item.description}}
+            </td>
+            <td>
+              {{item.brand}}
+            </td>
+            <td>
+              {{item.unit}}
+            </td>
+            <td>
+              {{item.group}}
+            </td>
+            <td>
+              {{item.location}}
+            </td>
+            <td>
+              {{item.warehouse}}
+            </td>
+            <td>
+              {{item.min}}
+            </td>
+            <td>
+              {{item.max}}
+            </td>
+            <td>
+              {{item.reorderPoint}}
+            </td>
+            <td>
+              {{item.entryDate}}
+            </td>
+            <td>
+              {{item.departureDate}}
+            </td>
+            <td>
+              {{item.ultimateValue}}
+            </td>
+            <td>
+              <a routerLink="/edit-item/{{item.id}}" class="btn btn-success">
+                Edit
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
