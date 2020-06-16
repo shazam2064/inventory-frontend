@@ -21,7 +21,7 @@
           <tbody>
           <tr *ngFor="let item of itemList">
             <td>
-              {{item.id}}
+              <a [routerLink]="['/item-details', item.id]">{{item.id}}</a>
             </td>
             <td>
               {{item.name}}
@@ -56,48 +56,48 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of itemList">
+          <tr>
             <td>
-              {{item.id}}
+              {{itemAutomatically.id}}
             </td>
             <td>
-              {{item.name}}
+              {{itemAutomatically.name}}
             </td>
             <td>
-              {{item.description}}
+              {{itemAutomatically.description}}
             </td>
             <td>
-              {{item.brand}}
+              {{itemAutomatically.brand}}
             </td>
             <td>
-              {{item.unit}}
+              {{itemAutomatically.unit}}
             </td>
             <td>
-              {{item.group}}
+              {{itemAutomatically.group}}
             </td>
             <td>
-              {{item.location}}
+              {{itemAutomatically.location}}
             </td>
             <td>
-              {{item.warehouse}}
+              {{itemAutomatically.warehouse}}
             </td>
             <td>
-              {{item.min}}
+              {{itemAutomatically.min}}
             </td>
             <td>
-              {{item.max}}
+              {{itemAutomatically.max}}
             </td>
             <td>
-              {{item.reorderPoint}}
+              {{itemAutomatically.reorderPoint}}
             </td>
             <td>
-              {{item.entryDate | date:'fullDate'}}
+              {{itemAutomatically.entryDate | date:'fullDate'}}
             </td>
             <td>
-              {{item.departureDate | date:'fullDate'}}
+              {{itemAutomatically.departureDate | date:'fullDate'}}
             </td>
             <td>
-              {{item.ultimateValue}}
+              {{itemAutomatically.ultimateValue}}
             </td>
           </tr>
           </tbody>

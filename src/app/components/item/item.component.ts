@@ -10,12 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 export class ItemComponent implements OnInit {
 
   public itemList;
+  public itemAutomatically;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     // this.getItem(this.route.snapshot.params.id);
-    this.getItemList()
+    this.getItemList();
+    this.getItemAutomatically();
   }
 
   getItemList() {
@@ -35,6 +37,16 @@ export class ItemComponent implements OnInit {
       },
       err => console.error(err),
       () => console.log('item loaded')
+    );
+  }
+
+  getItemAutomatically() {
+    this.inventoryService.getItemAuto().subscribe(
+      data => {
+        this.itemAutomatically = data;
+      },
+      err => console.error(err),
+      () => console.log('Auto item loaded')
     );
   }
 

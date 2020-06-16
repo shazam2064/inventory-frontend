@@ -1,1 +1,112 @@
-<p>item-details works!</p>
+<div class="container">
+  <h3 class="display-4 text-muted">Items</h3>
+  <div class="row">
+    <div class="container">
+      <br>
+      <button
+        class="btn btn-primary"
+        routerLink="/add-item"
+      >
+        Add a item.
+      </button>
+      <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of itemList">
+            <td>
+              <a [routerLink]="['/item-details', item.id]" (click)="reload()" >{{item.id}}</a>
+            </td>
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+              {{item.description}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <h3>Details of the Item</h3>
+      <div class="container mt-lg-5">
+        <table class="table table-bordered table-hover table-sm">
+          <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Unit</th>
+            <th>Group</th>
+            <th>Location</th>
+            <th>Warehouse</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Reorder Point</th>
+            <th>Entry Date</th>
+            <th>Departure Date</th>
+            <th>Ultimate Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              {{itemDetails.id}}
+            </td>
+            <td>
+              {{itemDetails.name}}
+            </td>
+            <td>
+              {{itemDetails.description}}
+            </td>
+            <td>
+              {{itemDetails.brand}}
+            </td>
+            <td>
+              {{itemDetails.unit}}
+            </td>
+            <td>
+              {{itemDetails.group}}
+            </td>
+            <td>
+              {{itemDetails.location}}
+            </td>
+            <td>
+              {{itemDetails.warehouse}}
+            </td>
+            <td>
+              {{itemDetails.min}}
+            </td>
+            <td>
+              {{itemDetails.max}}
+            </td>
+            <td>
+              {{itemDetails.reorderPoint}}
+            </td>
+            <td>
+              {{itemDetails.entryDate | date:'fullDate'}}
+            </td>
+            <td>
+              {{itemDetails.departureDate | date:'fullDate'}}
+            </td>
+            <td>
+              {{itemDetails.ultimateValue}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

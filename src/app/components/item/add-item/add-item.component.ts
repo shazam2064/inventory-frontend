@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
 import {throwError} from 'rxjs';
+import {WarehouseService} from '../../../services/warehouse.service';
 
 @Component({
   selector: 'app-add-item',
@@ -12,16 +13,76 @@ import {throwError} from 'rxjs';
 export class AddItemComponent implements OnInit {
 
   newItem: FormGroup;
+  public warehouseList;
+  public unitList;
+  public groupList;
+  public locationList;
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
+    this.getWarehouseList();
+    this.getUnitList();
+    this.getGroupList();
+    this.getLocationList();
     this.newItem = new FormGroup({
-      aisle: new FormControl('', Validators.required),
-      rack: new FormControl('', Validators.required),
-      shelf: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      brand: new FormControl('', Validators.required),
+      unit: new FormControl('', Validators.required),
+      group: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required),
+      warehouse: new FormControl('', Validators.required),
+      min: new FormControl('', Validators.required),
+      max: new FormControl('', Validators.required),
+      reorderPoint: new FormControl('', Validators.required),
+      entryDate: new FormControl('', Validators.required),
+      departureDate: new FormControl('', Validators.required),
+      ultimateValue: new FormControl('', Validators.required)
     });
   }
+
+  getWarehouseList() {
+    this.inventoryService.getWarehouses().subscribe(
+      data => {
+        this.warehouseList = data;
+      },
+      err => console.error(err),
+      () => console.log('warehouses loaded')
+    );
+  }
+
+  getUnitList() {
+    this.inventoryService.getUnits().subscribe(
+      data => {
+        this.unitList = data;
+      },
+      err => console.error(err),
+      () => console.log('units loaded')
+    );
+  }
+
+  getGroupList() {
+    this.inventoryService.getGroups().subscribe(
+      data => {
+        this.groupList = data;
+      },
+      err => console.error(err),
+      () => console.log('groups loaded')
+    );
+  }
+
+
+  getLocationList() {
+    this.inventoryService.getLocations().subscribe(
+      data => {
+        this.locationList = data;
+      },
+      err => console.error(err),
+      () => console.log('locations loaded')
+    );
+  }
+
 
   submitItem() {
     if (this.newItem.valid) {

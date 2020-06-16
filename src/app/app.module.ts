@@ -62,7 +62,7 @@ import { AddItemComponent } from './components/item/add-item/add-item.component'
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
     ],
   providers: [
     InventoryService,

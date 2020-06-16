@@ -13,9 +13,9 @@ export class InventoryService {
 
   // Get all lists of warehouse, group, units, location, and movement types
 
-  // getWarehouses() {
-  //   return this.http.get('/server/inventory/v1/warehouses');
-  // }
+  getWarehouses() {
+    return this.http.get('/server/inventory/v1/warehouses');
+  }
 
   getGroups() {
     return this.http.get('/server/inventory/v1/groups');
@@ -160,6 +160,12 @@ export class InventoryService {
 
   deleteItem(id: string) {
     return this.http.delete('/server/inventory/v1/items/' + id);
+  }
+
+  // Get item automatically
+
+  getItemAuto() {
+    return this.http.get('/server/inventory/v1/items/I001');
   }
 
 }

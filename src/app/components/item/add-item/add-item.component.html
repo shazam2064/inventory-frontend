@@ -1,1 +1,63 @@
-<p>add-item works!</p>
+<h3 class="display-4 text-muted mb-4">Add a new Item</h3>
+<button class="btn btn-secondary mb-5" routerLink="/item">Return to list</button>
+<div class="col-sm-9 pl-5">
+  <form [formGroup]="newItem" (ngSubmit)="submitItem()">
+    <div class="form-group">
+      <label for="name"> Name</label>
+      <input class="form-control" type="text" id="name" formControlName="name">
+      <label for="description"> Description</label>
+      <textarea class="form-control" id="description" formControlName="description"></textarea>
+      <label for="brand"> Brand</label>
+      <input class="form-control" type="text" id="brand" formControlName="brand">
+      <div>
+        <label>Units</label>
+        <select class="form-control" formControlName="unit" >
+          <option *ngFor="let m of unitList"
+                  [value]="m">
+             {{m.name}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>Groups</label>
+        <select class="form-control" formControlName="group" >
+          <option *ngFor="let m of groupList"
+                  [value]="m">
+             {{m.name}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>Locations</label>
+        <select class="form-control" formControlName="location" >
+          <option *ngFor="let m of locationList"
+                  [value]="m">
+            {{m.aisle}}  {{m.rack}} {{m.shelf}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>Warehouses</label>
+        <select class="form-control" formControlName="warehouse" >
+          <option *ngFor="let m of warehouseList"
+                  [value]="m">
+            {{m.name}}
+          </option>
+        </select>
+      </div>
+      <label for="min"> Min</label>
+      <input class="form-control" type="text" id="min" formControlName="min">
+      <label for="max"> Max</label>
+      <input class="form-control" type="text" id="max" formControlName="max">
+      <label for="reorderPoint"> Reorder Point</label>
+      <input class="form-control" type="text" id="reorderPoint" formControlName="reorderPoint">
+      <label for="entryDate"> Entry Date</label>
+      <input class="form-control" type="text" id="entryDate" formControlName="entryDate">
+      <label for="departureDate"> Departure Date</label>
+      <input class="form-control" type="text" id="departureDate" formControlName="departureDate">
+      <label for="ultimateValue"> Ultimate Value</label>
+      <input class="form-control" type="text" id="ultimateValue" formControlName="ultimateValue">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Item</button>
+  </form>
+</div>
