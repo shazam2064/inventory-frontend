@@ -14,8 +14,7 @@ export class LocationEditComponent implements OnInit {
   public locationDetails;
   updatedLocation: FormGroup;
 
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {
-  }
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getLocation(this.route.snapshot.params.id);

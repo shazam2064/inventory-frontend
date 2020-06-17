@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
 import {throwError} from 'rxjs';
-import {WarehouseService} from '../../../services/warehouse.service';
 
 @Component({
   selector: 'app-add-item',
@@ -36,8 +35,8 @@ export class AddItemComponent implements OnInit {
       min: new FormControl('', Validators.required),
       max: new FormControl('', Validators.required),
       reorderPoint: new FormControl('', Validators.required),
-      entryDate: new FormControl('', Validators.required),
-      departureDate: new FormControl('', Validators.required),
+      // entryDate: new FormControl('', Validators.required),
+      // departureDate: new FormControl('', Validators.required),
       ultimateValue: new FormControl('', Validators.required)
     });
   }
@@ -45,7 +44,7 @@ export class AddItemComponent implements OnInit {
   getWarehouseList() {
     this.inventoryService.getWarehouses().subscribe(
       data => {
-        this.warehouseList = data;
+        this.warehouseList.stringify = data;
       },
       err => console.error(err),
       () => console.log('warehouses loaded')

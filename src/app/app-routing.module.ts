@@ -20,6 +20,7 @@ import {LoginComponent} from './components/login/login.component';
 import {ItemComponent} from './components/item/item.component';
 import {ItemDetailsComponent} from './components/item/item-details/item-details.component';
 import {AddItemComponent} from './components/item/add-item/add-item.component';
+import {ItemEditComponent} from './components/item/item-edit/item-edit.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path: 'edit-movement-type/:id', component: MovementTypeEditComponent},
   {path: 'item', component: ItemComponent},
   {path: 'item-details/:id', component: ItemDetailsComponent},
+  {path: 'item-edit/:id', component: ItemEditComponent},
   {path: 'add-item', component: AddItemComponent}
 ];
 
