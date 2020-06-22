@@ -10,40 +10,44 @@
       <label for="brand"> Brand</label>
       <input class="form-control" type="text" id="brand" formControlName="brand">
       <div>
-        <label>Units</label>
-        <select class="form-control" formControlName="unit" >
-          <option *ngFor="let m of unitList"
-                  [value]="m">
-             {{m.name}}
-          </option>
-        </select>
+        <label>Warehouses
+          <select class="form-control" formControlName="warehouse">
+            <option *ngFor="let m of warehouseList"
+                    [value]="m">
+              {{m.name}}
+            </option>
+          </select>
+        </label>
       </div>
       <div>
-        <label>Groups</label>
-        <select class="form-control" formControlName="group" >
-          <option *ngFor="let m of groupList"
-                  [value]="m">
-             {{m.name}}
-          </option>
-        </select>
+        <label>Groups
+          <select class="form-control" formControlName="group">
+            <option *ngFor="let m of groupList"
+                    [value]="m">
+              {{m.name}}
+            </option>
+          </select>
+        </label>
       </div>
       <div>
-        <label>Locations</label>
-        <select class="form-control" formControlName="location" >
-          <option *ngFor="let m of locationList"
-                  [value]="m">
-            {{m.aisle}}  {{m.rack}} {{m.shelf}}
-          </option>
-        </select>
+        <label>Units
+          <select class="form-control" formControlName="unit">
+            <option *ngFor="let m of unitList"
+                    [value]="m">
+              {{m.name}}
+            </option>
+          </select>
+        </label>
       </div>
       <div>
-        <label>Warehouses</label>
-        <select class="form-control" formControlName="warehouse" >
-          <option *ngFor="let m of warehouseList"
-                  [value]="m">
-            {{m.name}}
-          </option>
-        </select>
+        <label>Locations
+          <select class="form-control" formControlName="location">
+            <option *ngFor="let m of locationList"
+                    [value]="m">
+              {{m.aisle}}  {{m.rack}} {{m.shelf}}
+            </option>
+          </select>
+        </label>
       </div>
       <label for="min"> Min</label>
       <input class="form-control" type="text" id="min" formControlName="min">
@@ -51,10 +55,10 @@
       <input class="form-control" type="text" id="max" formControlName="max">
       <label for="reorderPoint"> Reorder Point</label>
       <input class="form-control" type="text" id="reorderPoint" formControlName="reorderPoint">
-<!--      <label for="entryDate"> Entry Date</label>-->
-<!--      <input class="form-control" type="text" id="entryDate" formControlName="entryDate">-->
-<!--      <label for="departureDate"> Departure Date</label>-->
-<!--      <input class="form-control" type="text" id="departureDate" formControlName="departureDate">-->
+      <!--      <label for="entryDate"> Entry Date</label>-->
+      <!--      <input class="form-control" type="text" id="entryDate" formControlName="entryDate">-->
+      <!--      <label for="departureDate"> Departure Date</label>-->
+      <!--      <input class="form-control" type="text" id="departureDate" formControlName="departureDate">-->
       <label for="ultimateValue"> Ultimate Value</label>
       <input class="form-control" type="text" id="ultimateValue" formControlName="ultimateValue">
     </div>

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
 import {throwError} from 'rxjs';
+import {Item} from "../../../models/item.model";
 
 @Component({
   selector: 'app-add-item',
@@ -44,7 +45,9 @@ export class AddItemComponent implements OnInit {
   getWarehouseList() {
     this.inventoryService.getWarehouses().subscribe(
       data => {
-        this.warehouseList.stringify = data;
+        this.warehouseList = data;
+        String(data);
+        console.log('warehouse: ' , data);
       },
       err => console.error(err),
       () => console.log('warehouses loaded')
@@ -55,6 +58,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getUnits().subscribe(
       data => {
         this.unitList = data;
+        console.log('unit: ' + data);
       },
       err => console.error(err),
       () => console.log('units loaded')
@@ -65,6 +69,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getGroups().subscribe(
       data => {
         this.groupList = data;
+        console.log('group: ' + data);
       },
       err => console.error(err),
       () => console.log('groups loaded')
@@ -76,6 +81,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getLocations().subscribe(
       data => {
         this.locationList = data;
+        console.log('location: ' + data);
       },
       err => console.error(err),
       () => console.log('locations loaded')
