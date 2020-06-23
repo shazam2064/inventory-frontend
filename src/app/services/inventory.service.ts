@@ -4,6 +4,9 @@ import {Observable, throwError} from "rxjs";
 import {Item} from "../models/item.model";
 import {catchError, retry} from "rxjs/operators";
 import {Warehouse} from "../models/warehouse.model";
+import {Group} from "../models/group.model";
+import {Unit} from "../models/unit.model";
+import {MovementType} from "../models/movement-type.model";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,10 +20,6 @@ export class InventoryService {
 
   // Get all lists of warehouse, group, units, location, and movement types
 
-  // getWarehouses() {
-  //   return this.http.get('/server/inventory/v1/warehouses');
-  // }
-
   getWarehouses(): Observable<Warehouse> {
     return this.http.get<Warehouse>('/server/inventory/v1/warehouses')
       .pipe(
@@ -29,24 +28,44 @@ export class InventoryService {
       )
   }
 
-  getGroups() {
-    return this.http.get('/server/inventory/v1/groups');
+  getGroups(): Observable<Group> {
+    return this.http.get<Group>('/server/inventory/v1/groups')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
-  getUnits() {
-    return this.http.get('/server/inventory/v1/units');
+  getUnits(): Observable<Unit> {
+    return this.http.get<Unit>('/server/inventory/v1/units')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
-  getLocations() {
-    return this.http.get('/server/inventory/v1/locations');
+  getLocations(): Observable<Location> {
+    return this.http.get<Location>('/server/inventory/v1/locations')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
-  getMovementTypes() {
-    return this.http.get('/server/inventory/v1/movement-types');
+  getMovementTypes(): Observable<MovementType> {
+    return this.http.get<MovementType>('/server/inventory/v1/movement-types')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
-  getItems() {
-    return this.http.get('/server/inventory/v1/items');
+  getItems(): Observable<Item> {
+    return this.http.get<Item>('/server/inventory/v1/items')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
   // get stuff by id
