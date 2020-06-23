@@ -17,11 +17,13 @@ export class AddItemComponent implements OnInit {
   public unitList;
   public groupList;
   public locationList;
+  Warehouse: any = [];
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
-    this.getWarehouseList();
+    // this.getWarehouseList();
+    this.loadWarehouses();
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
@@ -42,16 +44,25 @@ export class AddItemComponent implements OnInit {
     });
   }
 
-  getWarehouseList() {
-    this.inventoryService.getWarehouses().subscribe(
-      data => {
-        this.warehouseList = data;
-        String(data);
-        console.log('warehouse: ' , data);
-      },
-      err => console.error(err),
-      () => console.log('warehouses loaded')
-    );
+  // getWarehouseList() {
+  //   this.inventoryService.getWarehouses().subscribe(
+  //     data => {
+  //       this.warehouseList = data;
+  //       // String(data);
+  //       console.log('warehouse: ' + data, data);
+  //       console.log(this.warehouseList);
+  //     },
+  //     err => console.error(err),
+  //     () => console.log('warehouses loaded')
+  //   );
+  // }
+
+  loadWarehouses() {
+    return this.inventoryService.getWarehouses().subscribe((data: {}) => {
+      this.Warehouse = data;
+      console.log(data)
+      console.log(this.Warehouse)
+    })
   }
 
   getUnitList() {
@@ -95,6 +106,7 @@ export class AddItemComponent implements OnInit {
       this.inventoryService.createItem(this.newItem.value).subscribe(
         data => {
           this.newItem.reset();
+          console.log(data)
           return true;
 
         },

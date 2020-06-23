@@ -1,5 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from "rxjs";
+import {Item} from "../models/item.model";
+import {catchError, retry} from "rxjs/operators";
+import {Warehouse} from "../models/warehouse.model";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,8 +17,16 @@ export class InventoryService {
 
   // Get all lists of warehouse, group, units, location, and movement types
 
-  getWarehouses() {
-    return this.http.get('/server/inventory/v1/warehouses');
+  // getWarehouses() {
+  //   return this.http.get('/server/inventory/v1/warehouses');
+  // }
+
+  getWarehouses(): Observable<Warehouse> {
+    return this.http.get<Warehouse>('/server/inventory/v1/warehouses')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 
   getGroups() {
@@ -166,6 +178,21 @@ export class InventoryService {
 
   getItemAuto() {
     return this.http.get('/server/inventory/v1/items/I001');
+  }
+
+  // Error handle
+
+  handleError(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }
