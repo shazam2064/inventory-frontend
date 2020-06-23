@@ -12,9 +12,8 @@ import { UnitComponent } from './components/unit/unit.component';
 import { LocationComponent } from './components/location/location.component';
 import { MovementTypeComponent } from './components/movement-type/movement-type.component';
 import {HttpClientModule} from '@angular/common/http';
-import {InventoryService} from './services/inventory.service';
 import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-warehouse.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
 import { AddUnitComponent } from './components/unit/add-unit/add-unit.component';
 import { AddLocationComponent } from './components/location/add-location/add-location.component';
@@ -24,12 +23,11 @@ import { GroupEditComponent } from './components/group/group-edit/group-edit.com
 import { UnitEditComponent } from './components/unit/unit-edit/unit-edit.component';
 import { LocationEditComponent } from './components/location/location-edit/location-edit.component';
 import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
-import {WarehouseService} from './services/warehouse.service';
-import {LoginService} from './services/login.service';
 import { ItemComponent } from './components/item/item.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { AddItemComponent } from './components/item/add-item/add-item.component';
+import {InventoryService} from "./services/inventory.service";
 
 @NgModule({
   declarations: [
@@ -64,10 +62,7 @@ import { AddItemComponent } from './components/item/add-item/add-item.component'
         ReactiveFormsModule,
         FormsModule,
     ],
-  providers: [
-    InventoryService,
-    WarehouseService
-  ],
+  providers: [InventoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

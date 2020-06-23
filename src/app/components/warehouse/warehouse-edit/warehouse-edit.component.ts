@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {throwError} from 'rxjs';
-import {WarehouseService} from '../../../services/warehouse.service';
+import {InventoryService} from "../../../services/inventory.service";
+
 
 @Component({
   selector: 'app-warehouse-edit',
@@ -14,7 +15,7 @@ export class WarehouseEditComponent implements OnInit {
   public warehouseDetails;
   updatedWarehouse: FormGroup;
 
-  constructor(private inventoryService: WarehouseService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getWarehouse(this.route.snapshot.params.id);
