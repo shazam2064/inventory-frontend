@@ -1,11 +1,10 @@
 <h3 class="display-4 text-muted mb-4">Add a new Group</h3>
-<button class="btn btn-secondary mb-5"  routerLink="/group">Return to list</button>
+<button class="btn btn-secondary mb-5" routerLink="/group">Return to list</button>
 <div class="col-sm-9 pl-5">
-  <form [formGroup]="newGroup" (ngSubmit)="submitGroup()">
-    <div class="form-group">
-      <label for="name">Group Name</label>
-      <input class="form-control" type="text" id="name" formControlName="name">
-    </div>
-    <button class="btn btn-primary" type="submit" >Add Group</button>
-  </form>
+  <div class="form-group">
+    <label for="name">Group Name</label>
+    <input [(ngModel)]="groupDetails.name" class="form-control" type="text" id="name">
+  </div>
+  <button class="btn btn-primary" type="submit" (click)="submitGroup(groupDetails)">Add Group</button>
 </div>
+

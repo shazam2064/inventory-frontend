@@ -183,7 +183,7 @@ export class InventoryService {
 
   updateWarehouse(id, warehouse): Observable<Warehouse> {
     // @ts-ignore
-    return this.http.put<Warehouse>(('/server/inventory/v1/warehouses') + id, JSON.stringify(warehouse), this.httpOptions)
+    return this.http.put<Warehouse>(('/server/inventory/v1/warehouses/') + id, JSON.stringify(warehouse), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -193,7 +193,7 @@ export class InventoryService {
 
   updateGroup(id, group): Observable<Group> {
     // @ts-ignore
-    return this.http.put<Group>(('/server/inventory/v1/groups') + id, JSON.stringify(group), this.httpOptions)
+    return this.http.put<Group>(('/server/inventory/v1/groups/') + id, JSON.stringify(group), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -202,7 +202,7 @@ export class InventoryService {
 
   updateUnit(id, unit): Observable<Unit> {
     // @ts-ignore
-    return this.http.put<Unit>(('/server/inventory/v1/units') + id, JSON.stringify(unit), this.httpOptions)
+    return this.http.put<Unit>(('/server/inventory/v1/units/') + id, JSON.stringify(unit), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -211,7 +211,7 @@ export class InventoryService {
 
   updateLocation(id, location): Observable<Location> {
     // @ts-ignore
-    return this.http.put<Location>(('/server/inventory/v1/locations') + id, JSON.stringify(location), this.httpOptions)
+    return this.http.put<Location>(('/server/inventory/v1/locations/') + id, JSON.stringify(location), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -220,7 +220,7 @@ export class InventoryService {
 
   updateMovementType(id, movementType): Observable<MovementType> {
     // @ts-ignore
-    return this.http.put<MovementType>(('/server/inventory/v1/movement-types') + id, JSON.stringify(movementType), this.httpOptions)
+    return this.http.put<MovementType>(('/server/inventory/v1/movement-types/') + id, JSON.stringify(movementType), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -229,7 +229,7 @@ export class InventoryService {
 
   updateItem(id, item): Observable<Item> {
     // @ts-ignore
-    return this.http.put<Item>(('/server/inventory/v1/items') + id, JSON.stringify(item), this.httpOptions)
+    return this.http.put<Item>(('/server/inventory/v1/items/') + id, JSON.stringify(item), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -239,7 +239,7 @@ export class InventoryService {
   // delete stuff
 
   deleteWarehouse(id){
-    return this.http.delete<Warehouse>(('/server/inventory/v1/items') + id, this.httpOptions)
+    return this.http.delete<Warehouse>(('/server/inventory/v1/warehouses/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -247,7 +247,7 @@ export class InventoryService {
   }
 
   deleteGroup(id){
-    return this.http.delete<Group>(('/server/inventory/v1/groups') + id, this.httpOptions)
+    return this.http.delete<Group>(('/server/inventory/v1/groups/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -255,7 +255,7 @@ export class InventoryService {
   }
 
   deleteUnit(id){
-    return this.http.delete<Unit>(('/server/inventory/v1/units') + id, this.httpOptions)
+    return this.http.delete<Unit>(('/server/inventory/v1/units/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -263,7 +263,7 @@ export class InventoryService {
   }
 
   deleteLocation(id){
-    return this.http.delete<Location>(('/server/inventory/v1/locations') + id, this.httpOptions)
+    return this.http.delete<Location>(('/server/inventory/v1/locations/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -271,7 +271,7 @@ export class InventoryService {
   }
 
   deleteMovementType(id){
-    return this.http.delete<MovementType>(('/server/inventory/v1/movement-types') + id, this.httpOptions)
+    return this.http.delete<MovementType>(('/server/inventory/v1/movement-types/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -279,7 +279,7 @@ export class InventoryService {
   }
 
   deleteItem(id){
-    return this.http.delete<Item>(('/server/inventory/v1/items') + id, this.httpOptions)
+    return this.http.delete<Item>(('/server/inventory/v1/items/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)

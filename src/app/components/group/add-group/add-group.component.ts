@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
@@ -11,34 +11,16 @@ import {throwError} from 'rxjs';
 })
 export class AddGroupComponent implements OnInit {
 
-  newGroup: FormGroup;
-  validMessage: string = '';
+  @Input() groupDetails = {name: ''}
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
-  ngOnInit() {
-    this.newGroup = new FormGroup({
-      name: new FormControl('', Validators.required)
-    });
-  }
+  ngOnInit() {}
 
-  submitGroup() {
-    if (this.newGroup.valid) {
-      console.log("Your group has been created. Thank you!");
-      this.inventoryService.createGroup(this.newGroup.value).subscribe(
-        data => {
-          this.newGroup.reset();
-          return true;
-
-        },
-        error => {
-          return throwError(error);
-        }
-      );
-      this.router.navigate(['group']);
-    } else {
-      console.log("Please fill out the form before submitting >:( ");
-    }
+  submitGroup(dataGroup) {
+    this.inventoryService.createGroup(this.groupDetails).subscribe((data: {}) => {
+      this.router.navigate(['/group'])
+    })
   }
 
 }
