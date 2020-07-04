@@ -13,7 +13,7 @@
       <div>
         <label>Units</label>
         <select class="form-control" formControlName="unit">
-          <option *ngFor="let m of unitList"
+          <option *ngFor="let m of Unit"
                   [value]="m">
             {{m.name}}
           </option>
@@ -22,7 +22,7 @@
       <div>
         <label>Groups</label>
         <select class="form-control" formControlName="group">
-          <option *ngFor="let m of groupList"
+          <option *ngFor="let m of Group"
                   [value]="m">
             {{m.name}}
           </option>
@@ -31,7 +31,7 @@
       <div>
         <label>Locations</label>
         <select class="form-control" formControlName="location">
-          <option *ngFor="let m of locationList"
+          <option *ngFor="let m of Location"
                   [value]="m">
             {{m.aisle}}  {{m.rack}} {{m.shelf}}
           </option>
@@ -40,7 +40,7 @@
       <div>
         <label>Warehouses</label>
         <select class="form-control" formControlName="warehouse">
-          <option *ngFor="let m of warehouseList"
+          <option *ngFor="let m of Warehouse"
                   [value]="m">
             {{m.name}}
           </option>

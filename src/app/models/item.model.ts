@@ -1,17 +1,19 @@
 export class Item {
-  id: string;
-  name: string;
-  description: string;
-  brand: string;
-  unit: string;
-  group: string;
-  location: string;
-  warehouse: string;
-  min: number;
-  max: number;
-  reorderPoint: number;
-  entryDate: Date;
-  departureDate: Date;
-  ultimateValue: number;
-
+  constructor(
+    public id: string,
+    public name: string,
+    public description: string,
+    public brand: string,
+    public unit: string,
+    public group: string,
+    public location: string,
+    public warehouse: string,
+    public min: number,
+    public max: number,
+    public reorderPoint: number,
+    public entryDate: Date,
+    public departureDate: Date,
+    public ultimateValue: number
+  ) {
+  }
 }

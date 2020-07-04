@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {InventoryService} from '../../services/inventory.service';
 import {ActivatedRoute} from '@angular/router';
+import {Item} from "../../models/item.model";
 
 @Component({
   selector: 'app-item',
@@ -15,7 +16,22 @@ export class ItemComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.getItem(this.route.snapshot.params.id);
+    this.itemAutomatically = new Item(
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      1,
+      3,
+      2,
+      new Date(),
+      new Date(),
+      4
+    );
     this.getItemList();
     this.getItemAutomatically();
   }
