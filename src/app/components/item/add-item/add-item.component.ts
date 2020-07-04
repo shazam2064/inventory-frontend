@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {Router} from '@angular/router';
@@ -12,52 +12,38 @@ import {Item} from "../../../models/item.model";
 })
 export class AddItemComponent implements OnInit {
 
-  newItem: FormGroup;
-  public warehouseList;
-  public unitList;
-  public groupList;
-  public locationList;
-  Warehouse: any = [];
+  @Input() itemDetails = {
+    name: '',
+    description: '',
+    brand: '',
+    unit: '',
+    group: '',
+    location: '',
+    warehouse: '',
+    min: '',
+    max: '',
+    reorderPoint: '',
+    entryDate: '',
+    departureDate: '',
+    ultimateValue: ''
+  }
 
-  constructor(private inventoryService: InventoryService, private router: Router) {}
+  Warehouse: any = [];
+  Group: any = [];
+  Unit: any = [];
+  Location: any = [];
+
+  constructor(private inventoryService: InventoryService, private router: Router) {
+  }
 
   ngOnInit() {
-    // this.getWarehouseList();
-    this.loadWarehouses();
+    this.getWarehouses();
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
-    this.newItem = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      brand: new FormControl('', Validators.required),
-      unit: new FormControl('', Validators.required),
-      group: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
-      warehouse: new FormControl('', Validators.required),
-      min: new FormControl('', Validators.required),
-      max: new FormControl('', Validators.required),
-      reorderPoint: new FormControl('', Validators.required),
-      // entryDate: new FormControl('', Validators.required),
-      // departureDate: new FormControl('', Validators.required),
-      ultimateValue: new FormControl('', Validators.required)
-    });
   }
 
-  // getWarehouseList() {
-  //   this.inventoryService.getWarehouses().subscribe(
-  //     data => {
-  //       this.warehouseList = data;
-  //       // String(data);
-  //       console.log('warehouse: ' + data, data);
-  //       console.log(this.warehouseList);
-  //     },
-  //     err => console.error(err),
-  //     () => console.log('warehouses loaded')
-  //   );
-  // }
-
-  loadWarehouses() {
+  getWarehouses() {
     return this.inventoryService.getWarehouses().subscribe((data: {}) => {
       this.Warehouse = data;
       console.log(data)
@@ -66,58 +52,28 @@ export class AddItemComponent implements OnInit {
   }
 
   getUnitList() {
-    this.inventoryService.getUnits().subscribe(
-      data => {
-        this.unitList = data;
-        console.log('unit: ' + data);
-      },
-      err => console.error(err),
-      () => console.log('units loaded')
-    );
+    return this.inventoryService.getUnits().subscribe((data: {}) => {
+      this.Unit = data;
+    })
   }
 
   getGroupList() {
-    this.inventoryService.getGroups().subscribe(
-      data => {
-        this.groupList = data;
-        console.log('group: ' + data);
-      },
-      err => console.error(err),
-      () => console.log('groups loaded')
-    );
+    return this.inventoryService.getGroups().subscribe((data: {}) => {
+      this.Group = data;
+    })
   }
 
 
   getLocationList() {
-    this.inventoryService.getLocations().subscribe(
-      data => {
-        this.locationList = data;
-        console.log('location: ' + data);
-      },
-      err => console.error(err),
-      () => console.log('locations loaded')
-    );
+    return this.inventoryService.getLocations().subscribe((data: {}) => {
+      this.Location = data;
+    })
   }
 
 
-  submitItem() {
-    if (this.newItem.valid) {
-      console.log("Your item has been created. Thank you!");
-      this.inventoryService.createItem(this.newItem.value).subscribe(
-        data => {
-          this.newItem.reset();
-          console.log(data)
-          return true;
-
-        },
-        error => {
-          return throwError(error);
-        }
-      );
-      this.router.navigate(['item']);
-    } else {
-      console.log("Please fill out the form before submitting >:( ");
-    }
+  submitItem(dataItem) {
+    this.inventoryService.createItem(this.itemDetails).subscribe(data => {
+      this.router.navigate(['/item']);
+    })
   }
-
 }

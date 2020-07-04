@@ -13,8 +13,6 @@ export class AddUnitComponent implements OnInit {
 
   @Input() unitDetails = { name: ''}
 
-  newUnit: FormGroup;
-
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit() {
