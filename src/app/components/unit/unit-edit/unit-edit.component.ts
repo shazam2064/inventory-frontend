@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {InventoryService} from '../../../services/inventory.service';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {throwError} from 'rxjs';
+import {InventoryService} from "../../../services/inventory.service";
+
 
 @Component({
   selector: 'app-unit-edit',
@@ -11,55 +10,44 @@ import {throwError} from 'rxjs';
 })
 export class UnitEditComponent implements OnInit {
 
-  public unitDetails;
-  updatedUnit: FormGroup;
+  id = this.route.snapshot.params['id'];
+  unitData: any = {};
+  Unit: any = [];
 
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private inventoryService: InventoryService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getUnit(this.route.snapshot.params.id);
-
-    this.updatedUnit = new FormGroup({
-      name: new FormControl('', Validators.required)
+    this.inventoryService.getUnit(this.id).subscribe((data: {}) => {
+      this.unitData = data;
     });
   }
 
-  getUnit(id: string) {
-    this.inventoryService.getUnit(id).subscribe(
-      data => {
-        this.unitDetails = data;
-      },
-      err => console.error(err),
-      () => console.log('unit loaded'),
-    );
+
+  deleteUnit(id) {
+    if (window.confirm('Are you sure, you want to delete?')){
+      this.inventoryService.deleteUnit(id).subscribe(data => {
+        // this.getUnitList();
+        this.router.navigate(['/unit']);
+      })
+    }
   }
 
-  deleteUnit(id: string) {
-    this.inventoryService.deleteUnit(id).subscribe(
-      data => {
-        this.unitDetails = data;
-      },
-      err => console.error(err),
-      () => console.log('unit loaded'),
-    );
+  getUnitList() {
+    return this.inventoryService.getUnits().subscribe((data: {}) => {
+      this.Unit = data;
+    })
   }
 
 
-  updateUnit(id:string) {
-    if (this.updatedUnit.valid) {
-      console.log('Your unit has been updated. Thank you!');
-      this.inventoryService.updateUnit(id, this.updatedUnit.value).subscribe(
-        data => {
-          this.updatedUnit.reset();
-          return true;
-        },
-        error => {
-          return throwError(error);
-        }
-      );
-      this.router.navigate(['unit']);
-    } else {
-      console.log('Please fill out the form before submitting >:( ');
+  updateUnit() {
+    if(window.confirm('Are you sure, you want to update?')){
+      this.inventoryService.updateUnit(this.id, this.unitData).subscribe(data => {
+        this.router.navigate(['/unit']);
+      })
     }
   }
 

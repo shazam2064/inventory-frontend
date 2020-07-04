@@ -11,10 +11,9 @@ import {throwError} from 'rxjs';
 })
 export class AddUnitComponent implements OnInit {
 
-  @Input() unitDetails = {id: '', name: ''}
+  @Input() unitDetails = { name: ''}
 
   newUnit: FormGroup;
-  validMessage: string = '';
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
@@ -22,7 +21,7 @@ export class AddUnitComponent implements OnInit {
   }
 
   submitUnit(dataUnit) {
-    this.inventoryService.createWarehouse(this.unitDetails).subscribe((data: {}) => {
+    this.inventoryService.createUnit(this.unitDetails).subscribe((data: {}) => {
       this.router.navigate(['/unit'])
     })
   }

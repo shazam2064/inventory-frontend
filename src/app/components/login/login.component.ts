@@ -1,37 +1,32 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 import {User} from '../../models/user.model';
-import {LoginService} from '../../services/login.service';
-import {Router} from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ LoginService ]
 })
 export class LoginComponent {
 
-  isAuthenticatedLogin: boolean;
-  passwordInput: any;
+  username = 'Gabriel';
+  password = '';
+  errorMessage = 'Invalid Credentials';
+  invalidLogin = false;
 
-  passwordInputField(event) {
-    this.passwordInput = event.target.value;
+  constructor(private loginService: LoginService, private router: Router) {
   }
 
-  constructor(private router: Router, private loginService: LoginService) {
-    this.isAuthenticatedLogin = false;
-  }
-
-
-  login() {
-    if (this.passwordInput == '2020') {
-      this.router.navigate(['']);
-      this.isAuthenticatedLogin = true;
+  handleLogin() {
+    if (this.loginService.authenticate(this.username, this.password)) {
+      this.router.navigate(['home', this.username])
+      this.invalidLogin = false
     } else {
-      console.log('enter user name and password');
+      this.invalidLogin = true
     }
   }
-
-
 
 
 }

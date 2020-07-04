@@ -6,46 +6,50 @@
           <a class="nav-link" href="#">Inventory</a>
         </li>
       </ul>
+
+      <div *ngIf="loginService.isUserLoggedIn()"  class="dropleft btn btn-light" (click)="logout()">
+          <a>Logout</a>
+      </div>
     </div>
   </nav>
 
   <div class="container-fluid">
   <div class="row mt-lg-5">
-    <nav id="sidebarMenu" class=" col-lg-2 col-md-3 d-md-block bg-light sidebar collapse">
+    <nav *ngIf="loginService.isUserLoggedIn()" id="sidebarMenu" class=" col-lg-2 col-md-3 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="#">
+            <a class="nav-link list-group-item-action bg-light" routerLink="home/Gabriel">
               Home
             </a>
           </li>
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="warehouse">
+            <a class="nav-link list-group-item-action bg-light" routerLink="warehouse">
               Warehouses
             </a>
           </li>
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="group">
+            <a class="nav-link list-group-item-action bg-light" routerLink="group">
               Groups
             </a>
           </li>
           <li >
-            <a class="nav-link list-group-item-action bg-light" href="unit">
+            <a class="nav-link list-group-item-action bg-light" routerLink="unit">
               Units
             </a>
           </li>
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="location">
+            <a class="nav-link list-group-item-action bg-light" routerLink="location">
               Locations
             </a>
           </li>
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="movement-type">
+            <a class="nav-link list-group-item-action bg-light" routerLink="movement-type">
               Movement Types
             </a>
           </li>
           <li>
-            <a class="nav-link list-group-item-action bg-light" href="item">
+            <a class="nav-link list-group-item-action bg-light" routerLink="item">
               Items
             </a>
           </li>

@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-group-edit',
@@ -10,55 +8,44 @@ import {throwError} from 'rxjs';
   styleUrls: ['./group-edit.component.css']
 })
 export class GroupEditComponent implements OnInit {
+  id = this.route.snapshot.params['id'];
+  groupData: any = {};
+  Group: any = [];
 
-  public groupDetails;
-  updatedGroup: FormGroup;
-
-  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private inventoryService: InventoryService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getGroup(this.route.snapshot.params.id);
-    this.updatedGroup = new FormGroup({
-      name: new FormControl('', Validators.required)
+    this.inventoryService.getGroup(this.id).subscribe((data: {}) => {
+      this.groupData = data;
     });
   }
 
-  getGroup(id: string) {
-    this.inventoryService.getGroup(id).subscribe(
-      data => {
-        this.groupDetails = data;
-      },
-      err => console.error(err),
-      () => console.log('group loaded'),
-    );
+
+  deleteGroup(id) {
+    if (window.confirm('Are you sure, you want to delete?')){
+      this.inventoryService.deleteGroup(id).subscribe(data => {
+        // this.getGroupList();
+        this.router.navigate(['/group']);
+      })
+    }
   }
 
-  deleteGroup(id: string) {
-    this.inventoryService.deleteGroup(id).subscribe(
-      data => {
-        this.groupDetails = data;
-      },
-      err => console.error(err),
-      () => console.log('group loaded'),
-    );
+  getGroupList() {
+    return this.inventoryService.getGroups().subscribe((data: {}) => {
+      this.Group = data;
+    })
   }
 
 
-  updateGroup(id:string) {
-    if (this.updatedGroup.valid) {
-      console.log('Your group has been updated. Thank you!');
-      this.inventoryService.updateGroup(id, this.updatedGroup.value).subscribe(
-        data => {
-          this.updatedGroup.reset();
-          return true;
-        },
-        error => {
-          return throwError(error);
-        }
-      );
-      this.router.navigate(['group']);
-    } else {
-      console.log('Please fill out the form before submitting >:( ');
+  updateGroup() {
+    if(window.confirm('Are you sure, you want to update?')){
+      this.inventoryService.updateGroup(this.id, this.groupData).subscribe(data => {
+        this.router.navigate(['/group']);
+      })
     }
   }
 

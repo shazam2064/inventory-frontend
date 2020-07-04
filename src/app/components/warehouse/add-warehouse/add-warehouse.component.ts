@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {InventoryService} from '../../../services/inventory.service';
-import {throwError} from 'rxjs';
 import {Router} from '@angular/router';
 
 

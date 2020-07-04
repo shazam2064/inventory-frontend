@@ -21,30 +21,32 @@ import {ItemComponent} from './components/item/item.component';
 import {ItemDetailsComponent} from './components/item/item-details/item-details.component';
 import {AddItemComponent} from './components/item/add-item/add-item.component';
 import {ItemEditComponent} from './components/item/item-edit/item-edit.component';
+import {RouteGuardService} from "./services/route-guard.service";
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent, pathMatch: 'full'},
-  {path: 'warehouse', component: WarehouseComponent},
-  {path: 'add-warehouse', component: AddWarehouseComponent},
-  {path: 'edit-warehouse/:id', component: WarehouseEditComponent},
-  {path: 'location', component: LocationComponent},
-  {path: 'add-location', component: AddLocationComponent},
-  {path: 'edit-location/:id', component: LocationEditComponent},
-  {path: 'unit', component: UnitComponent},
-  {path: 'add-unit', component: AddUnitComponent},
-  {path: 'edit-unit/:id', component: UnitEditComponent},
-  {path: 'group', component: GroupComponent},
-  {path: 'add-group', component: AddGroupComponent},
-  {path: 'edit-group/:id', component: GroupEditComponent},
-  {path: 'movement-type', component: MovementTypeComponent},
-  {path: 'add-movement-type', component: AddMovementTypeComponent},
-  {path: 'edit-movement-type/:id', component: MovementTypeEditComponent},
-  {path: 'item', component: ItemComponent},
-  {path: 'item-details/:id', component: ItemDetailsComponent},
-  {path: 'item-edit/:id', component: ItemEditComponent},
-  {path: 'add-item', component: AddItemComponent}
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'home/Gabriel', component: HomeComponent, canActivate: [RouteGuardService]},
+  {path: 'warehouse', component: WarehouseComponent, canActivate: [RouteGuardService]},
+  {path: 'add-warehouse', component: AddWarehouseComponent, canActivate: [RouteGuardService]},
+  {path: 'edit-warehouse/:id', component: WarehouseEditComponent, canActivate: [RouteGuardService]},
+  {path: 'location', component: LocationComponent, canActivate: [RouteGuardService]},
+  {path: 'add-location', component: AddLocationComponent, canActivate: [RouteGuardService]},
+  {path: 'edit-location/:id', component: LocationEditComponent, canActivate: [RouteGuardService]},
+  {path: 'unit', component: UnitComponent, canActivate: [RouteGuardService]},
+  {path: 'add-unit', component: AddUnitComponent, canActivate: [RouteGuardService]},
+  {path: 'edit-unit/:id', component: UnitEditComponent, canActivate: [RouteGuardService]},
+  {path: 'group', component: GroupComponent, canActivate: [RouteGuardService]},
+  {path: 'add-group', component: AddGroupComponent, canActivate: [RouteGuardService]},
+  {path: 'edit-group/:id', component: GroupEditComponent, canActivate: [RouteGuardService]},
+  {path: 'movement-type', component: MovementTypeComponent, canActivate: [RouteGuardService]},
+  {path: 'add-movement-type', component: AddMovementTypeComponent, canActivate: [RouteGuardService]},
+  {path: 'edit-movement-type/:id', component: MovementTypeEditComponent, canActivate: [RouteGuardService]},
+  {path: 'item', component: ItemComponent, canActivate: [RouteGuardService]},
+  {path: 'item-details/:id', component: ItemDetailsComponent, canActivate: [RouteGuardService]},
+  {path: 'item-edit/:id', component: ItemEditComponent, canActivate: [RouteGuardService]},
+  {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]}
 ];
 
 @NgModule({

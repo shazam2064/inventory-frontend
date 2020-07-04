@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {throwError} from 'rxjs';
 import {InventoryService} from "../../../services/inventory.service";
 
 
@@ -15,7 +13,6 @@ export class WarehouseEditComponent implements OnInit {
   id = this.route.snapshot.params['id'];
   warehouseData: any = {};
   Warehouse: any = [];
-  public warehouseDetails;
 
   constructor(
     private inventoryService: InventoryService,
