@@ -35,74 +35,31 @@
       </div>
       <br>
       <h3>Details of the Item</h3>
-      <div class="container mt-lg-5">
-        <table class="table table-bordered table-hover table-sm">
-          <thead class="thead-light">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Brand</th>
-            <th>Unit</th>
-            <th>Group</th>
-            <th>Location</th>
-            <th>Warehouse</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Reorder Point</th>
-            <th>Entry Date</th>
-            <th>Departure Date</th>
-            <th>Ultimate Value</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              {{itemAutomatically.id}}
-            </td>
-            <td>
-              {{itemAutomatically.name}}
-            </td>
-            <td>
-              {{itemAutomatically.description}}
-            </td>
-            <td>
-              {{itemAutomatically.brand}}
-            </td>
-            <td>
-              {{itemAutomatically.unit}}
-            </td>
-            <td>
-              {{itemAutomatically.group}}
-            </td>
-            <td>
-              {{itemAutomatically.location}}
-            </td>
-            <td>
-              {{itemAutomatically.warehouse}}
-            </td>
-            <td>
-              {{itemAutomatically.min}}
-            </td>
-            <td>
-              {{itemAutomatically.max}}
-            </td>
-            <td>
-              {{itemAutomatically.reorderPoint}}
-            </td>
-            <td>
-              {{itemAutomatically.entryDate | date:'fullDate'}}
-            </td>
-            <td>
-              {{itemAutomatically.departureDate | date:'fullDate'}}
-            </td>
-            <td>
-              {{itemAutomatically.ultimateValue}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+      <br>
+        <div class="col-12 pl-5">
+          <div class="container border border-dark">
+            <div class="row">
+              <div class="col">
+                <p>Name: {{itemAutomatically.name}}</p>
+                <p>Description: {{itemAutomatically.description}}</p>
+                <p>Brand: {{itemAutomatically.brand}}</p>
+                <p>Unit: {{itemAutomatically.unit}}</p>
+                <p>Group: {{itemAutomatically.group}}</p>
+                <p>Location: {{itemAutomatically.location}}</p>
+                <p>Warehouse: {{itemAutomatically.warehouse}}</p>
+              </div>
+              <div class="col">
+                <p>Min: {{itemAutomatically.min}}</p>
+                <p>Max: {{itemAutomatically.max}}</p>
+                <p>Reorder Point: {{itemAutomatically.reorderPoint}}</p>
+                <p>Entry Date: {{itemAutomatically.entryDate | date:'fullDate'}}</p>
+                <p>Departure Date: {{itemAutomatically.departureDate | date:'fullDate'}}</p>
+                <p>Ultimate Value : {{itemAutomatically.ultimateValue}}</p>
+              </div>
+            </div>
+          </div>
       </div>
+      <br>
       <div class="container">
         <button routerLink="/item-edit/{{itemAutomatically.id}}" class="btn btn-success">Edit</button>
       </div>

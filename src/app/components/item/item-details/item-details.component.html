@@ -21,7 +21,7 @@
           <tbody>
           <tr *ngFor="let item of itemList">
             <td>
-              <a [routerLink]="['/item-details', item.id]" (click)="reload()" >{{item.id}}</a>
+              <a [routerLink]="['/item-details', item.id]" (click)="reload()">{{item.id}}</a>
             </td>
             <td>
               {{item.name}}
@@ -35,74 +35,40 @@
       </div>
       <br>
       <h3>Details of the Item</h3>
-      <div class="container mt-lg-5">
-        <table class="table table-bordered table-hover table-sm">
-          <thead class="thead-light">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Brand</th>
-            <th>Unit</th>
-            <th>Group</th>
-            <th>Location</th>
-            <th>Warehouse</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Reorder Point</th>
-            <th>Entry Date</th>
-            <th>Departure Date</th>
-            <th>Ultimate Value</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              {{itemDetails.id}}
-            </td>
-            <td>
-              {{itemDetails.name}}
-            </td>
-            <td>
-              {{itemDetails.description}}
-            </td>
-            <td>
-              {{itemDetails.brand}}
-            </td>
-            <td>
-              {{itemDetails.unit}}
-            </td>
-            <td>
-              {{itemDetails.group}}
-            </td>
-            <td>
-              {{itemDetails.location}}
-            </td>
-            <td>
-              {{itemDetails.warehouse}}
-            </td>
-            <td>
-              {{itemDetails.min}}
-            </td>
-            <td>
-              {{itemDetails.max}}
-            </td>
-            <td>
-              {{itemDetails.reorderPoint}}
-            </td>
-            <td>
-              {{itemDetails.entryDate | date:'fullDate'}}
-            </td>
-            <td>
-              {{itemDetails.departureDate | date:'fullDate'}}
-            </td>
-            <td>
-              {{itemDetails.ultimateValue}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+      <br>
+      <div class="col-12 pl-5">
+        <div class="container border border-dark">
+          <dl class="row">
+            <dt class="col-sm-3">Name:</dt>
+            <dd class="col-sm-9">{{itemDetails.name}}</dd>
+            <dt class="col-sm-3">Description:</dt>
+            <dd class="col-sm-9">{{itemDetails.description}}</dd>
+            <dt class="col-sm-3">Brand:</dt>
+            <dd class="col-sm-9">{{itemDetails.brand}}</dd>
+            <dt class="col-sm-3">Unit:</dt>
+            <dd class="col-sm-9">{{itemDetails.unit}}</dd>
+            <dt class="col-sm-3">Group:</dt>
+            <dd class="col-sm-9">{{itemDetails.group}}</dd>
+            <dt class="col-sm-3">Location:</dt>
+            <dd class="col-sm-9">{{itemDetails.location}}</dd>
+            <dt class="col-sm-3">Warehouse:</dt>
+            <dd class="col-sm-9">{{itemDetails.warehouse}}</dd>
+            <dt class="col-sm-3">Min:</dt>
+            <dd class="col-sm-9">{{itemDetails.min}}</dd>
+            <dt class="col-sm-3">Max:</dt>
+            <dd class="col-sm-9">{{itemDetails.max}}</dd>
+            <dt class="col-sm-3">Reorder Point:</dt>
+            <dd class="col-sm-9">{{itemDetails.reorderPoint}}</dd>
+            <dt class="col-sm-3">Entry Date:</dt>
+            <dd class="col-sm-9">{{itemDetails.entryDate | date:'fullDate'}}</dd>
+            <dt class="col-sm-3">Departure Date:</dt>
+            <dd class="col-sm-9">{{itemDetails.departureDate | date:'fullDate'}}</dd>
+            <dt class="col-sm-3">Ultimate Value :</dt>
+            <dd class="col-sm-9">{{itemDetails.ultimateValue}}</dd>
+          </dl>
+        </div>
       </div>
+      <br>
       <div class="container">
         <button routerLink="/item-edit/{{itemDetails.id}}" class="btn btn-success">Edit</button>
       </div>

@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {InventoryService} from '../../../services/inventory.service';
-import {Router} from '@angular/router';
-import {throwError} from 'rxjs';
-import {Item} from "../../../models/item.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { InventoryService } from '../../../services/inventory.service';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { Item } from "../../../models/item.model";
 
 @Component({
   selector: 'app-add-item',
@@ -71,9 +71,20 @@ export class AddItemComponent implements OnInit {
   }
 
 
-  submitItem(dataItem) {
-    this.inventoryService.createItem(this.itemDetails).subscribe(data => {
-      this.router.navigate(['/item']);
-    })
+  // submitItem(dataItem) {
+  //   this.inventoryService.createItem(this.itemDetails).subscribe(data => {
+  //     this.router.navigate(['/item']);
+  //   })
+  // }
+
+  submitItem() {
+    this.inventoryService.createItem(this.itemDetails).subscribe(
+      data => {
+        console.log(data)
+        this.router.navigate(['item'])
+      }
+    )
   }
+
+
 }

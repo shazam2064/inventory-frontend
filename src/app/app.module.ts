@@ -28,6 +28,7 @@ import { ItemDetailsComponent } from './components/item/item-details/item-detail
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { AddItemComponent } from './components/item/add-item/add-item.component';
 import {InventoryService} from "./services/inventory.service";
+import { ItemFormComponent } from './components/item/item-form/item-form.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {InventoryService} from "./services/inventory.service";
     ItemComponent,
     ItemDetailsComponent,
     ItemEditComponent,
-    AddItemComponent
+    AddItemComponent,
+    ItemFormComponent
   ],
     imports: [
         BrowserModule,
