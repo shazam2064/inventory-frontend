@@ -22,7 +22,6 @@ import { ItemDetailsComponent } from './components/item/item-details/item-detail
 import { AddItemComponent } from './components/item/add-item/add-item.component';
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { RouteGuardService } from "./services/route-guard.service";
-import { ItemFormComponent } from "./components/item/item-form/item-form.component";
 
 
 const routes: Routes = [
@@ -47,9 +46,8 @@ const routes: Routes = [
   {path: 'item', component: ItemComponent, canActivate: [RouteGuardService]},
   {path: 'item-details/:id', component: ItemDetailsComponent, canActivate: [RouteGuardService]},
   {path: 'item-edit/:id', component: ItemEditComponent, canActivate: [RouteGuardService]},
-  {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]},
-  {path: 'item-form/:id', component: ItemFormComponent, canActivate: [RouteGuardService]}
-];
+  {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

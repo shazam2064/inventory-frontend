@@ -38,25 +38,34 @@
       <br>
         <div class="col-12 pl-5">
           <div class="container border border-dark">
-            <div class="row">
-              <div class="col">
-                <p>Name: {{itemAutomatically.name}}</p>
-                <p>Description: {{itemAutomatically.description}}</p>
-                <p>Brand: {{itemAutomatically.brand}}</p>
-                <p>Unit: {{itemAutomatically.unit}}</p>
-                <p>Group: {{itemAutomatically.group}}</p>
-                <p>Location: {{itemAutomatically.location}}</p>
-                <p>Warehouse: {{itemAutomatically.warehouse}}</p>
-              </div>
-              <div class="col">
-                <p>Min: {{itemAutomatically.min}}</p>
-                <p>Max: {{itemAutomatically.max}}</p>
-                <p>Reorder Point: {{itemAutomatically.reorderPoint}}</p>
-                <p>Entry Date: {{itemAutomatically.entryDate | date:'fullDate'}}</p>
-                <p>Departure Date: {{itemAutomatically.departureDate | date:'fullDate'}}</p>
-                <p>Ultimate Value : {{itemAutomatically.ultimateValue}}</p>
-              </div>
-            </div>
+            <dl class="row">
+              <dt class="col-sm-3">Name:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.name}}</dd>
+              <dt class="col-sm-3">Description:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.description}}</dd>
+              <dt class="col-sm-3">Brand:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.brand}}</dd>
+              <dt class="col-sm-3">Unit:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.unit}}</dd>
+              <dt class="col-sm-3">Group:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.group}}</dd>
+              <dt class="col-sm-3">Location:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.location}}</dd>
+              <dt class="col-sm-3">Warehouse:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.warehouse}}</dd>
+              <dt class="col-sm-3">Min:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.min}}</dd>
+              <dt class="col-sm-3">Max:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.max}}</dd>
+              <dt class="col-sm-3">Reorder Point:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.reorderPoint}}</dd>
+              <dt class="col-sm-3">Entry Date:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.entryDate | date:'fullDate'}}</dd>
+              <dt class="col-sm-3">Departure Date:</dt>
+              <dd class="col-sm-9">{{itemAutomatically.departureDate | date:'fullDate'}}</dd>
+              <dt class="col-sm-3">Ultimate Value :</dt>
+              <dd class="col-sm-9">{{itemAutomatically.ultimateValue}}</dd>
+            </dl>
           </div>
       </div>
       <br>

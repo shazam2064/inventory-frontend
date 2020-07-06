@@ -41,7 +41,7 @@ export class ItemDetailsComponent implements OnInit {
     setTimeout(() => {
         window.location.reload()
       },
-      700);
+      300);
   }
 
   getItem(id: string) {
