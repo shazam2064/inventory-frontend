@@ -11,7 +11,7 @@ import { GroupComponent } from './components/group/group.component';
 import { UnitComponent } from './components/unit/unit.component';
 import { LocationComponent } from './components/location/location.component';
 import { MovementTypeComponent } from './components/movement-type/movement-type.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AddWarehouseComponent } from './components/warehouse/add-warehouse/add-warehouse.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddGroupComponent } from './components/group/add-group/add-group.component';
@@ -27,7 +27,8 @@ import { ItemComponent } from './components/item/item.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { AddItemComponent } from './components/item/add-item/add-item.component';
-import {InventoryService} from "./services/inventory.service";
+import { InventoryService } from "./services/inventory.service";
+import { IconsModule } from "./icons.module";
 
 @NgModule({
   declarations: [
@@ -55,14 +56,17 @@ import {InventoryService} from "./services/inventory.service";
     ItemEditComponent,
     AddItemComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        FormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    IconsModule,
+  ],
   providers: [InventoryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+

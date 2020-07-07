@@ -71,12 +71,6 @@ export class AddItemComponent implements OnInit {
   }
 
 
-  // submitItem(dataItem) {
-  //   this.inventoryService.createItem(this.itemDetails).subscribe(data => {
-  //     this.router.navigate(['/item']);
-  //   })
-  // }
-
   submitItem() {
     this.inventoryService.createItem(this.itemDetails).subscribe(
       data => {
