@@ -8,13 +8,13 @@
   <!--    <span class="navbar-toggler-icon"></span>-->
   <!--  </button>-->
   <!--  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
-  <div class="btn-group dropleft">
+  <div *ngIf="loginService.isUserLoggedIn()" class="btn-group dropleft">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
       <i-feather name="user"></i-feather>
       Gabriel
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item">Action</a>
       <a class="dropdown-item">Another Action</a>
       <div class="dropdown-divider"></div>
