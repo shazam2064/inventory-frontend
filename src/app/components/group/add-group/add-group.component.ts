@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {InventoryService} from '../../../services/inventory.service';
-import {Router} from '@angular/router';
-import {throwError} from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { InventoryService } from '../../../services/inventory.service';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { throwError } from "rxjs";
 
 @Component({
   selector: 'app-add-group',
@@ -11,16 +11,67 @@ import {throwError} from 'rxjs';
 })
 export class AddGroupComponent implements OnInit {
 
-  @Input() groupDetails = {name: ''}
+  newGroup: FormGroup;
+  validMessage: string = '';
 
-  constructor(private inventoryService: InventoryService, private router: Router) {}
-
-  ngOnInit() {}
-
-  submitGroup(dataGroup) {
-    this.inventoryService.createGroup(this.groupDetails).subscribe((data: {}) => {
-      this.router.navigate(['/group'])
-    })
+  constructor(private inventoryService: InventoryService, private router: Router) {
   }
 
+  ngOnInit() {
+    this.newGroup = new FormGroup({
+      'name' : new FormControl('',
+        [ Validators.required, Validators.minLength(4)]
+      )
+    });
+  }
+  get name() { return this.newGroup.get('name'); }
+
+  submitGroup() {
+    if (this.newGroup.valid) {
+      console.log('Your group has been created. Thank you!');
+      this.inventoryService.createGroup(this.newGroup.value).subscribe(
+        data => {
+          this.newGroup.reset();
+          return true;
+
+        },
+        error => {
+          return throwError(error);
+        }
+      );
+      this.router.navigate(['group']);
+    } else {
+      console.log('Please fill out the form before submitting >:( ');
+    }
+  }
+
+
 }
+
+
+// import { Component, Input, OnInit } from '@angular/core';
+// import { InventoryService } from '../../../services/inventory.service';
+// import { Router } from '@angular/router';
+//
+// @Component({
+//   selector: 'app-add-group',
+//   templateUrl: './add-group.component.html',
+//   styleUrls: ['./add-group.component.css']
+// })
+// export class AddGroupComponent implements OnInit {
+//
+//   @Input() groupDetails = {name: ''}
+//
+//   constructor(private inventoryService: InventoryService, private router: Router) {
+//   }
+//
+//   ngOnInit() {
+//   }
+//
+//   submitGroup(dataGroup) {
+//     this.inventoryService.createGroup(this.groupDetails).subscribe((data: {}) => {
+//       this.router.navigate(['/group'])
+//     })
+//   }
+//
+// }

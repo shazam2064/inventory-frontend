@@ -10,13 +10,46 @@
   Return to list
 </button>
 <div class="col-sm-9 pl-5">
-  <div class="form-group">
-    <label for="aisle">Location Aisle</label>
-    <input [(ngModel)]="locationDetails.aisle" class="form-control" type="text" id="aisle">
-    <label for="rack">Location Rack</label>
-    <input [(ngModel)]="locationDetails.rack" class="form-control" type="text" id="rack">
-    <label for="shelf">Location Shelf</label>
-    <input [(ngModel)]="locationDetails.shelf" class="form-control" type="text" id="shelf">
-  </div>
-  <button class="btn btn-primary" type="submit" (click)="submitLocation(locationDetails)">Add Location</button>
+  <form [formGroup]="newLocation" (ngSubmit)="submitLocation()">
+    <div class="form-group">
+      <label for="aisle">Location Aisle</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="aisle"
+        formControlName="aisle"
+        [class.is-invalid]="aisle.invalid && (aisle.dirty || aisle.touched)"
+      >
+      <div *ngIf="(aisle.invalid && aisle.touched) || aisle.dirty">
+        <small *ngIf="aisle.errors?.required" class="text-danger">Aisle is required.</small>
+      </div>
+      <label for="rack">Location Rack</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="rack"
+        formControlName="rack"
+        [class.is-invalid]="rack.invalid && (rack.dirty || rack.touched)"
+      >
+      <div *ngIf="(rack.invalid && rack.touched) || rack.dirty">
+        <small *ngIf="rack.errors?.required" class="text-danger">Rack is required.</small>
+      </div>
+      <label for="shelf">Location Shelf</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="shelf"
+        formControlName="shelf"
+        [class.is-invalid]="shelf.invalid && (shelf.dirty || shelf.touched)"
+      >
+      <div *ngIf="(shelf.invalid && shelf.touched) || shelf.dirty">
+        <small *ngIf="shelf.errors?.required" class="text-danger">Shelf is required.</small>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Add Location</button>
+  </form>
 </div>

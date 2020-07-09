@@ -28,22 +28,61 @@ export class AddItemComponent implements OnInit {
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
-    this.newItem = this.fb.group({
-      name: [''],
-      description: [''],
-      brand: [''],
-      unit: [''],
-      group: [''],
-      location: [''],
-      warehouse: [''],
-      min: [''],
-      max: [''],
-      reorderPoint: [''],
-      entryDate: [''],
-      departureDate: [''],
-      ultimateValue: ['']
+    this.newItem = new  FormGroup({
+      'name':  new FormControl('',
+        [ Validators.required, Validators.minLength(4)]
+      ),
+      'description':   new FormControl('',
+        [ Validators.required, Validators.minLength(4)]
+      ),
+      'brand':   new FormControl('',
+        [ Validators.required, Validators.minLength(4)]
+      ),
+      'unit':   new FormControl('',
+        [ Validators.required]
+      ),
+      'group':   new FormControl('',
+        [ Validators.required]
+      ),
+      'location':   new FormControl('',
+        [ Validators.required]
+      ),
+      'warehouse':   new FormControl('',
+        [ Validators.required]
+      ),
+      'min':   new FormControl('',
+        [ Validators.required]
+      ),
+      'max':   new FormControl('',
+        [ Validators.required]
+      ),
+      'reorderPoint':   new FormControl('',
+        [ Validators.required]
+      ),
+      'entryDate':   new FormControl('',
+        [ Validators.required]
+      ),
+      'departureDate':   new FormControl('',
+        [ Validators.required]
+      ),
+      'ultimateValue':   new FormControl('',
+        [ Validators.required]
+      )
     });
   }
+  get name() { return this.newItem.get('name'); }
+  get description() { return this.newItem.get('description'); }
+  get brand() { return this.newItem.get('brand'); }
+  get warehouses() { return this.newItem.get('warehouses'); }
+  get groups() { return this.newItem.get('groups'); }
+  get units() { return this.newItem.get('units'); }
+  get locations() { return this.newItem.get('locations'); }
+  get minV() { return this.newItem.get('min'); }
+  get maxV() { return this.newItem.get('max'); }
+  get reorderPoint() { return this.newItem.get('reorderPoint'); }
+  get entryDate() { return this.newItem.get('entryDate'); }
+  get departureDate() { return this.newItem.get('departureDate'); }
+  get ultimateValue() { return this.newItem.get('ultimateValue'); }
 
   // getWarehouseList() {
   //   this.inventoryService.getWarehouses().subscribe(
