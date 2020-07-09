@@ -33,10 +33,10 @@ export class AddItemComponent implements OnInit {
         [ Validators.required, Validators.minLength(4)]
       ),
       'description':   new FormControl('',
-        [ Validators.required, Validators.minLength(4)]
+        [ Validators.required, Validators.minLength(10)]
       ),
       'brand':   new FormControl('',
-        [ Validators.required, Validators.minLength(4)]
+        [ Validators.required, Validators.minLength(2)]
       ),
       'unit':   new FormControl('',
         [ Validators.required]
