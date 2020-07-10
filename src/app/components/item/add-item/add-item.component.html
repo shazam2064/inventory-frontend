@@ -50,8 +50,7 @@
         <label>Warehouses
           <select class="form-control" formControlName="warehouse">
             <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of Warehouse"
-                    [value]="m">
+            <option *ngFor="let m of Warehouse">
               {{m.name}}
             </option>
           </select>
@@ -61,8 +60,7 @@
         <label>Groups
           <select class="form-control" formControlName="group">
             <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of groupList"
-                    [value]="m">
+            <option *ngFor="let m of groupList">
               {{m.name}}
             </option>
           </select>
@@ -72,8 +70,7 @@
         <label>Units
           <select class="form-control" formControlName="unit">
             <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of unitList"
-                    [value]="m">
+            <option *ngFor="let m of unitList">
               {{m.name}}
             </option>
           </select>
@@ -83,8 +80,7 @@
         <label>Locations
           <select class="form-control" formControlName="location">
             <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of locationList"
-                    [value]="m">
+            <option *ngFor="let m of locationList">
               {{m.aisle}}  {{m.rack}} {{m.shelf}}
             </option>
           </select>
