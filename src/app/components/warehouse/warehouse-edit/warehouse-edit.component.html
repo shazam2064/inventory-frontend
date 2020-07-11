@@ -14,16 +14,18 @@
     <div class="form-group">
       <label for="name">Warehouse Name</label>
       <input
-        required
-        minlength="4"
         class="form-control"
         type="text"
         id="name"
+        [formControl]="name"
+        required
+        minlength="4"
+        [(ngModel)]="warehouseData.name"
         [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
       >
       <div *ngIf="(name.invalid && name.touched) || name.dirty">
         <small *ngIf="name.errors?.required" class="text-danger">Name is required.</small>
-        <small *ngIf="name.errors?.minLength" class="text-danger">Name must be at least 4 characters long.</small>
+        <small *ngIf="name.errors?.minlength" class="text-danger">Name must be at least 4 characters long.</small>
       </div>
     </div>
     <div class="btn-group form-group">

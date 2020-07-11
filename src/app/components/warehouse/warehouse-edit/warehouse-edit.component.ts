@@ -24,10 +24,11 @@ export class WarehouseEditComponent implements OnInit {
   ngOnInit() {
     this.inventoryService.getWarehouse(this.id).subscribe((data: {}) => {
       this.warehouseData = data;
+      console.log(this.warehouseData)
     });
     this.updatedWarehouse = new FormGroup({
       'name' : new FormControl('',
-        [ Validators.required, Validators.minLength(4)]
+        [Validators.required, Validators.minLength(4)]
       )
     });
   }

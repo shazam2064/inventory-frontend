@@ -13,10 +13,8 @@
         formControlName="name"
         [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
       >
-      <div *ngIf="(name.invalid && name.touched) || name.dirty">
-        <small *ngIf="name.errors?.required" class="text-danger">Name is required.</small>
-        <small *ngIf="name.errors?.minlength" class="text-danger">Name must be at least 4 characters long.</small>
-      </div>
+      <div *ngIf="name.errors?.required" class="invalid-feedback">Name is required.</div>
+      <div *ngIf="name.errors?.minlength" class="invalid-feedback ">Name must be at least 4 characters long.</div>
       <br>
       <button class="btn btn-primary" type="submit">Add Unit</button>
     </div>
