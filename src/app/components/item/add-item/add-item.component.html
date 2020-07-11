@@ -1,8 +1,8 @@
 <h3 class="display-4 text-muted mb-4">Add a new Item</h3>
 <button class="btn btn-secondary mb-5" routerLink="/item">Return to list</button>
-<div class="col-lg-11 pl-5">
-  <form [formGroup]="newItem" (ngSubmit)="submitItem()">
-    <div class="form-group">
+<form [formGroup]="newItem" (ngSubmit)="submitItem()">
+  <div class="form-row">
+    <div class="form-group col-lg-3">
       <label for="name"> Name</label>
       <input
         required
@@ -17,6 +17,24 @@
         <small *ngIf="name.errors?.required" class="text-danger">Name is required.</small>
         <small *ngIf="name.errors?.minlength" class="text-danger">Name must be at least 4 characters long.</small>
       </div>
+    </div>
+    <div class="form-group col-lg-3">
+      <label for="brand"> Brand</label>
+      <input
+        required
+        minlength="2"
+        class="form-control"
+        type="text"
+        id="brand"
+        formControlName="brand"
+        [class.is-invalid]="brand.invalid && (brand.dirty || brand.touched)"
+      >
+      <div *ngIf="(brand.invalid && brand.touched) || brand.dirty">
+        <small *ngIf="brand.errors?.required" class="text-danger">Brand is required.</small>
+        <small *ngIf="brand.errors?.minlength" class="text-danger">Brand must be at least 2 characters long.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-6">
       <label for="description"> Description</label>
       <textarea
         required
@@ -32,65 +50,57 @@
         <small *ngIf="description.errors?.minlength" class="text-danger">Description must be at least 10 characters
           long.</small>
       </div>
-      <label for="brand"> Brand</label>
-      <input
-        required
-        minlength="2"
-        class="form-control"
-        type="text"
-        id="brand"
-        formControlName="brand"
-        [class.is-invalid]="brand.invalid && (brand.dirty || brand.touched)"
-      >
-      <div *ngIf="(brand.invalid && brand.touched) || brand.dirty">
-        <small *ngIf="brand.errors?.required" class="text-danger">Brand is required.</small>
-        <small *ngIf="brand.errors?.minlength" class="text-danger">Brand must be at least 2 characters long.</small>
-      </div>
-      <div>
-        <label>Warehouses
-          <select class="form-control" formControlName="warehouse">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of Warehouse">
-              {{m.name}}
-            </option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>Groups
-          <select class="form-control" formControlName="group">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of groupList">
-              {{m.name}}
-            </option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>Units
-          <select class="form-control" formControlName="unit">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of unitList">
-              {{m.name}}
-            </option>
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>Locations
-          <select class="form-control" formControlName="location">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of locationList">
-              {{m.aisle}}  {{m.rack}} {{m.shelf}}
-            </option>
-          </select>
-        </label>
-      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-3">
+      <label>Warehouses
+        <select class="form-control" formControlName="warehouse">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of Warehouse">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group col-lg-3">
+      <label>Groups
+        <select class="form-control" formControlName="group">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of groupList">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group col-lg-3">
+      <label>Units
+        <select class="form-control" formControlName="unit">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of unitList">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group col-lg-3">
+      <label>Locations
+        <select class="form-control" formControlName="location">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of locationList">
+            {{m.aisle}}  {{m.rack}} {{m.shelf}}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-3">
       <label for="min"> Min</label>
       <input
         required
         class="form-control"
-        type="text"
+        type="number"
         id="min"
         formControlName="min"
         [class.is-invalid]="minV.invalid && (minV.dirty || minV.touched)"
@@ -98,11 +108,13 @@
       <div *ngIf="(minV.invalid && minV.touched) || minV.dirty">
         <small *ngIf="minV.errors?.required" class="text-danger">Min is required.</small>
       </div>
+    </div>
+    <div class="form-group col-lg-3">
       <label for="max"> Max</label>
       <input
         required
         class="form-control"
-        type="text"
+        type="number"
         id="max"
         formControlName="max"
         [class.is-invalid]="maxV.invalid && (maxV.dirty || maxV.touched)"
@@ -110,11 +122,13 @@
       <div *ngIf="(maxV.invalid && maxV.touched) || maxV.dirty">
         <small *ngIf="maxV.errors?.required" class="text-danger">Max is required.</small>
       </div>
+    </div>
+    <div class="form-group col-lg-3">
       <label for="reorderPoint"> Reorder Point</label>
       <input
         required
         class="form-control"
-        type="text"
+        type="number"
         id="reorderPoint"
         formControlName="reorderPoint"
         [class.is-invalid]="reorderPoint.invalid && (reorderPoint.dirty || reorderPoint.touched)"
@@ -122,30 +136,8 @@
       <div *ngIf="(reorderPoint.invalid && reorderPoint.touched) || reorderPoint.dirty">
         <small *ngIf="reorderPoint.errors?.required" class="text-danger">Reorder Point is required.</small>
       </div>
-      <label for="entryDate"> Entry Date</label>
-      <input
-        required
-        class="form-control"
-        type="date"
-        id="entryDate"
-        formControlName="entryDate"
-        [class.is-invalid]="entryDate.invalid && (entryDate.dirty || entryDate.touched)"
-      >
-      <div *ngIf="(entryDate.invalid && entryDate.touched) || entryDate.dirty">
-        <small *ngIf="entryDate.errors?.required" class="text-danger">Entry Date is required.</small>
-      </div>
-      <label for="departureDate"> Departure Date</label>
-      <input
-        required
-        class="form-control"
-        type="date"
-        id="departureDate"
-        formControlName="departureDate"
-        [class.is-invalid]="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
-      >
-      <div *ngIf="(departureDate.invalid && departureDate.touched) || departureDate.dirty">
-        <small *ngIf="departureDate.errors?.required" class="text-danger">Departure Date is required.</small>
-      </div>
+    </div>
+    <div class="form-group col-lg-3">
       <label for="ultimateValue"> Ultimate Value</label>
       <input
         required
@@ -159,7 +151,36 @@
         <small *ngIf="ultimateValue.errors?.required" class="text-danger">Ultimate Value is required.</small>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Add Item</button>
-  </form>
-</div>
-
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-4">
+      <label for="entryDate"> Entry Date</label>
+      <input
+        required
+        class="form-control"
+        type="date"
+        id="entryDate"
+        formControlName="entryDate"
+        [class.is-invalid]="entryDate.invalid && (entryDate.dirty || entryDate.touched)"
+      >
+      <div *ngIf="(entryDate.invalid && entryDate.touched) || entryDate.dirty">
+        <small *ngIf="entryDate.errors?.required" class="text-danger">Entry Date is required.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-4">
+      <label for="departureDate"> Departure Date</label>
+      <input
+        required
+        class="form-control"
+        type="date"
+        id="departureDate"
+        formControlName="departureDate"
+        [class.is-invalid]="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
+      >
+      <div *ngIf="(departureDate.invalid && departureDate.touched) || departureDate.dirty">
+        <small *ngIf="departureDate.errors?.required" class="text-danger">Departure Date is required.</small>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Add Item</button>
+</form>
