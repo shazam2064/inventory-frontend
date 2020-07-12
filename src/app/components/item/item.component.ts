@@ -16,6 +16,7 @@ export class ItemComponent implements OnInit {
   public groupData;
   public locationData;
   public unitData;
+  term: string;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 

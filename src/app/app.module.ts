@@ -29,6 +29,7 @@ import { ItemEditComponent } from './components/item/item-edit/item-edit.compone
 import { AddItemComponent } from './components/item/add-item/add-item.component';
 import { InventoryService } from "./services/inventory.service";
 import { IconsModule } from "./icons.module";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { IconsModule } from "./icons.module";
     ReactiveFormsModule,
     FormsModule,
     IconsModule,
+    Ng2SearchPipeModule
   ],
   providers: [InventoryService],
   bootstrap: [AppComponent]
