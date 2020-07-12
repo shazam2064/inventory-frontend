@@ -3,12 +3,21 @@
   <div class="row">
     <div class="container">
       <br>
-      <button
-        class="btn btn-primary"
-        routerLink="/add-item"
-      >
-        Add a item.
-      </button>
+      <div class="row">
+        <div class="col-2">
+          <button
+            class="btn btn-primary"
+            routerLink="/add-item"
+          >
+            Add a item.
+          </button>
+        </div>
+        <div class="col-8">
+          <form class=" my-2 my-lg-0">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          </form>
+        </div>
+      </div>
       <div class="container mt-lg-5">
         <table class="table table-bordered table-hover">
           <thead class="thead-light">
@@ -46,13 +55,13 @@
             <dt class="col-sm-3">Brand:</dt>
             <dd class="col-sm-9">{{itemDetails.brand}}</dd>
             <dt class="col-sm-3">Unit:</dt>
-            <dd (click)="toggle($event)" class="col-sm-9">{{itemDetails.unit}}</dd>
+            <dd class="col-sm-9">{{itemDetails.unit}}</dd>
             <dt class="col-sm-3">Group:</dt>
-            <dd (click)="toggle($event)" class="col-sm-9">{{itemDetails.group}}</dd>
+            <dd class="col-sm-9">{{itemDetails.group}}</dd>
             <dt class="col-sm-3">Location:</dt>
-            <dd (click)="toggle($event)" class="col-sm-9">{{itemDetails.location}}</dd>
+            <dd class="col-sm-9">{{itemDetails.location}}</dd>
             <dt class="col-sm-3">Warehouse:</dt>
-            <dd (click)="toggle($event)" class="col-sm-9">{{itemDetails.warehouse}}</dd>
+            <dd class="col-sm-9">{{itemDetails.warehouse}}</dd>
             <dt class="col-sm-3">Min:</dt>
             <dd class="col-sm-9">{{itemDetails.min}}</dd>
             <dt class="col-sm-3">Max:</dt>
