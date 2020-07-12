@@ -12,6 +12,7 @@ export class ItemDetailsComponent implements OnInit {
 
   public itemList;
   public itemDetails;
+  term: string;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
   }

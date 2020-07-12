@@ -11,69 +11,63 @@
           >
             Add a item.
           </button>
-        </div>
-        <div class="col-8">
-          <form class=" my-2 my-lg-0">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          </form>
+
         </div>
       </div>
-      <div class="container mt-lg-5">
+      <div class="container mt-lg-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search ID, Name, or Description Here" [(ngModel)]="term">
+        </div>
         <table class="table table-bordered table-hover">
           <thead class="thead-light">
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of itemList">
+          <tr *ngFor="let item of itemList | filter:term">
             <td>
               <a [routerLink]="['/item-details', item.id]" (click)="reload()">{{item.id}}</a>
             </td>
-            <td>
-              {{item.name}}
-            </td>
-            <td>
-              {{item.description}}
-            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
           </tr>
           </tbody>
         </table>
       </div>
       <br>
-      <h3>Details of the Item</h3>
-      <br>
-      <div class="col-12 pl-5">
-        <div class="container border border-dark">
+      <div class="card">
+        <h3 class="card-header">Details of the Item</h3>
+        <div class="card-body">
           <dl class="row">
-            <dt class="col-sm-3">Name:</dt>
-            <dd class="col-sm-9">{{itemDetails.name}}</dd>
-            <dt class="col-sm-3">Description:</dt>
-            <dd class="col-sm-9">{{itemDetails.description}}</dd>
-            <dt class="col-sm-3">Brand:</dt>
-            <dd class="col-sm-9">{{itemDetails.brand}}</dd>
-            <dt class="col-sm-3">Unit:</dt>
-            <dd class="col-sm-9">{{itemDetails.unit}}</dd>
-            <dt class="col-sm-3">Group:</dt>
-            <dd class="col-sm-9">{{itemDetails.group}}</dd>
-            <dt class="col-sm-3">Location:</dt>
-            <dd class="col-sm-9">{{itemDetails.location}}</dd>
-            <dt class="col-sm-3">Warehouse:</dt>
-            <dd class="col-sm-9">{{itemDetails.warehouse}}</dd>
-            <dt class="col-sm-3">Min:</dt>
-            <dd class="col-sm-9">{{itemDetails.min}}</dd>
-            <dt class="col-sm-3">Max:</dt>
-            <dd class="col-sm-9">{{itemDetails.max}}</dd>
-            <dt class="col-sm-3">Reorder Point:</dt>
-            <dd class="col-sm-9">{{itemDetails.reorderPoint}}</dd>
-            <dt class="col-sm-3">Entry Date:</dt>
-            <dd class="col-sm-9">{{itemDetails.entryDate | date:'fullDate'}}</dd>
-            <dt class="col-sm-3">Departure Date:</dt>
-            <dd class="col-sm-9">{{itemDetails.departureDate | date:'fullDate'}}</dd>
-            <dt class="col-sm-3">Ultimate Value :</dt>
-            <dd class="col-sm-9">{{itemDetails.ultimateValue}}</dd>
+            <dt class="col-sm-3 lead">Name:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.name}}</em></dd>
+            <dt class="col-sm-3 lead">Description:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.description}}</em></dd>
+            <dt class="col-sm-3 lead">Brand:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.brand}}</em></dd>
+            <dt class="col-sm-3 lead">Unit:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.unit}}</em></dd>
+            <dt class="col-sm-3 lead">Group:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.group}}</em></dd>
+            <dt class="col-sm-3 lead">Location:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.location}}</em></dd>
+            <dt class="col-sm-3 lead">Warehouse:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.warehouse}}</em></dd>
+            <dt class="col-sm-3 lead">Min:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.min}}</em></dd>
+            <dt class="col-sm-3 lead">Max:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.max}}</em></dd>
+            <dt class="col-sm-3 lead">Reorder Point:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.reorderPoint}}</em></dd>
+            <dt class="col-sm-3 lead">Entry Date:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.entryDate | date:'fullDate'}}</em></dd>
+            <dt class="col-sm-3 lead">Departure Date:</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.departureDate | date:'fullDate'}}</em></dd>
+            <dt class="col-sm-3 lead">Ultimate Value :</dt>
+            <dd class="col-sm-3"><em>{{itemDetails.ultimateValue}}</em></dd>
           </dl>
         </div>
       </div>
