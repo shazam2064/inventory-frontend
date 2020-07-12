@@ -44,6 +44,10 @@ export class ItemDetailsComponent implements OnInit {
       300);
   }
 
+  toggle(event) {
+    console.log(event.target.id);
+  }
+
   getItem(id: string) {
     this.inventoryService.getItem(id).subscribe(
       data => {

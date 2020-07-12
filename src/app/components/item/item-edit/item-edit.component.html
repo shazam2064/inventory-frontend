@@ -9,7 +9,7 @@
   </svg>
   Return to list
 </button>
-<form  [formGroup]="updatedItem" (ngSubmit)="updateItem(itemDetails.id)">
+<form [formGroup]="updatedItem" (ngSubmit)="updateItem(itemDetails.id)">
   <div class="form-row">
     <div class="form-group col-lg-3">
       <label for="name"> Name</label>
@@ -177,7 +177,8 @@
         type="date"
         id="entryDate"
         formControlName="entryDate"
-        [(ngModel)]="itemDetails.entryDate"
+        [ngModel]="itemDetails.entryDate |  date: 'yyyy-MM-dd'"
+        (ngModelChange)="itemDetails.entryDate = $event"
         [class.is-invalid]="entryDate.invalid && (entryDate.dirty || entryDate.touched)"
       >
       <div *ngIf="(entryDate.invalid && entryDate.touched) || entryDate.dirty">
@@ -192,7 +193,8 @@
         type="date"
         id="departureDate"
         formControlName="departureDate"
-        [(ngModel)]="itemDetails.departureDate"
+        [ngModel]="itemDetails.departureDate |  date: 'yyyy-MM-dd'"
+        (ngModelChange)="itemDetails.departureDate = $event"
         [class.is-invalid]="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
       >
       <div *ngIf="(departureDate.invalid && departureDate.touched) || departureDate.dirty">
@@ -201,110 +203,13 @@
     </div>
   </div>
 
-      <div class="btn-group">
-        <button class="btn btn-success" type="submit">Update Item</button>
-        <button
-          class="btn btn-danger"
-          (click)="deleteItem(itemDetails.id)"
-          type="submit"
-        >Delete Item
-        </button>
+  <div class="btn-group">
+    <button class="btn btn-success" type="submit">Update Item</button>
+    <button
+      class="btn btn-danger"
+      (click)="deleteItem(itemDetails.id)"
+      type="submit"
+    >Delete Item
+    </button>
   </div>
 </form>
-
-
-
-
-<!--<h3 class="display-4 text-muted mb-4">Edit a Item</h3>-->
-<!--<button class="btn btn-secondary mb-5" routerLink="/item">-->
-<!--  <svg class="bi bi-arrow-left-circle" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"-->
-<!--       xmlns="http://www.w3.org/2000/svg">-->
-<!--    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>-->
-<!--    <path fill-rule="evenodd"-->
-<!--          d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>-->
-<!--    <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>-->
-<!--  </svg>-->
-<!--  Return to list-->
-<!--</button>-->
-<!--<div class="col-12 pl-5">-->
-<!--  <form [formGroup]=""></form>-->
-
-<!--  <div class="form-group">-->
-<!--    <label for="name">Name</label>-->
-<!--    <input [(ngModel)]="itemData.name" class="form-control" type="text" id="name">-->
-<!--    <label for="description"> Description</label>-->
-<!--    <textarea [(ngModel)]="itemData.description" class="form-control" id="description"></textarea>-->
-<!--    <label for="brand">Brand</label>-->
-<!--    <input [(ngModel)]="itemData.brand" class="form-control" type="text" id="brand">-->
-
-<!--    <div>-->
-<!--      <label>Units</label>-->
-<!--      <select class="form-control" formControlName="unit">-->
-<!--        <option *ngFor="let m of Unit"-->
-<!--                [value]="m">-->
-<!--          {{m.name}}-->
-<!--        </option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <label>Groups</label>-->
-<!--      <select class="form-control" formControlName="group">-->
-<!--        <option *ngFor="let m of Group"-->
-<!--                [value]="m">-->
-<!--          {{m.name}}-->
-<!--        </option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <label>Locations</label>-->
-<!--      <select class="form-control" formControlName="location">-->
-<!--        <option *ngFor="let m of Location"-->
-<!--                [value]="m">-->
-<!--          {{m.aisle}}  {{m.rack}} {{m.shelf}}-->
-<!--        </option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <label>Warehouses</label>-->
-<!--      <select class="form-control" formControlName="warehouse">-->
-<!--        <option *ngFor="let m of Warehouse"-->
-<!--                [value]="m">-->
-<!--          {{m.name}}-->
-<!--        </option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <label for="min">Min</label>-->
-<!--    <input [(ngModel)]="itemData.min" class="form-control" type="text" id="min">-->
-<!--    <label for="max">Max</label>-->
-<!--    <input [(ngModel)]="itemData.max" class="form-control" type="text" id="max">-->
-<!--    <label for="reorderPoint">Reorder Point</label>-->
-<!--    <input [(ngModel)]="itemData.reorderPoint" class="form-control" type="text" id="reorderPoint">-->
-<!--    <label for="entryDate"> Entry Date</label>-->
-<!--    <input [(ngModel)]="itemDetails.entryDate" class="form-control" type="date" id="entryDate"-->
-<!--           formControlName="entryDate">-->
-<!--    <label for="departureDate"> Departure Date</label>-->
-<!--    <input [(ngModel)]="itemDetails.departureDate" class="form-control" type="date" id="departureDate"-->
-<!--           formControlName="departureDate">-->
-<!--    <label for="ultimateValue">Ultimate Value</label>-->
-<!--    <input [(ngModel)]="itemData.ultimateValue" class="form-control" type="text" id="ultimateValue">-->
-<!--  </div>-->
-
-<!--  <div class="btn-group form-group">-->
-<!--    <button-->
-<!--      class="btn btn-success"-->
-<!--      type="submit"-->
-<!--      (click)="updateItem()"-->
-<!--    >-->
-<!--      Update Item-->
-<!--    </button>-->
-
-<!--    <button-->
-<!--      class="btn btn-danger"-->
-<!--      (click)="deleteItem(itemData.id)"-->
-<!--      type="submit"-->
-<!--    >Delete Item-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</div>-->
-
-

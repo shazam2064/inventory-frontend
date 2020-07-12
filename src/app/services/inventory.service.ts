@@ -169,14 +169,6 @@ export class InventoryService {
       )
   }
 
-  // createItem(item): Observable<Item> {
-  //   return this.http.post<Item> (this.apiURL + '/items', JSON.stringify(item), this.httpOptions)
-  //     .pipe(
-  //       retry(1),
-  //       catchError(this.handleError)
-  //     )
-  // }
-
   createItem(item) {
     return this.http.post<Item> (this.apiURL + '/items', item)
       .pipe(
@@ -184,10 +176,6 @@ export class InventoryService {
         catchError(this.handleError)
       )
   }
-
-  // createTodo(username, todo) {
-  //   return this.http.post(`${TODO_JPA_URL}/users/${username}/todos`, todo);
-  // }
 
   // update stuff
 
@@ -301,10 +289,8 @@ export class InventoryService {
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
-      // Get client-side error
       errorMessage = error.error.message;
     } else {
-      // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
