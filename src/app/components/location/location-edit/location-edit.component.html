@@ -10,32 +10,59 @@
   Return to list
 </button>
 <div class="col-sm-9 pl-5">
-
-  <div class="form-group">
-    <label for="aisle">Location Aisle</label>
-    <input [(ngModel)]="locationData.aisle" class="form-control" type="text" id="aisle">
-    <label for="rack">Location Rack</label>
-    <input [(ngModel)]="locationData.rack" class="form-control" type="text" id="rack">
-    <label for="shelf">Location shelf</label>
-    <input [(ngModel)]="locationData.shelf" class="form-control" type="text" id="shelf">
-  </div>
-  <div class="btn-group form-group">
-    <button
-      class="btn btn-success"
-      type="submit"
-      (click)="updateLocation()"
-    >
-      Update Location
-    </button>
-
-    <button
-      class="btn btn-danger"
-      (click)="deleteLocation(locationData.id)"
-      type="submit"
-    >Delete Location
-    </button>
-  </div>
-
+  <form [formGroup]="updatedLocation" (ngSubmit)="updateLocation(locationDetails.id)">
+    <div class="form-group">
+      <label for="aisle">Location Aisle</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="aisle"
+        formControlName="aisle"
+        [(ngModel)]="locationDetails.aisle"
+        [class.is-invalid]="aisle.invalid && (aisle.dirty || aisle.touched)"
+      >
+      <div *ngIf="(aisle.invalid && aisle.touched) || aisle.dirty">
+        <small *ngIf="aisle.errors?.required" class="text-danger">Aisle is required.</small>
+      </div>
+      <label for="rack">Location Rack</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="rack"
+        formControlName="rack"
+        [(ngModel)]="locationDetails.rack"
+        [class.is-invalid]="rack.invalid && (rack.dirty || rack.touched)"
+      >
+      <div *ngIf="(rack.invalid && rack.touched) || rack.dirty">
+        <small *ngIf="rack.errors?.required" class="text-danger">Rack is required.</small>
+      </div>
+      <label for="shelf">Location Shelf</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="shelf"
+        formControlName="shelf"
+        [(ngModel)]="locationDetails.shelf"
+        [class.is-invalid]="shelf.invalid && (shelf.dirty || shelf.touched)"
+      >
+      <div *ngIf="(shelf.invalid && shelf.touched) || shelf.dirty">
+        <small *ngIf="shelf.errors?.required" class="text-danger">Shelf is required.</small>
+      </div>
+    </div>
+    <br>
+    <div class="btn-group">
+      <button class="btn btn-success" type="submit">Update Location</button>
+      <button
+        class="btn btn-danger"
+        (click)="deleteLocation(locationDetails.id)"
+        type="submit"
+      >Delete Location
+      </button>
+    </div>
+  </form>
 </div>
 
 

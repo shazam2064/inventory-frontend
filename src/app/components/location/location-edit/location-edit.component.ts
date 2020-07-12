@@ -11,46 +11,75 @@ import {throwError} from 'rxjs';
 })
 export class LocationEditComponent implements OnInit {
 
-  id = this.route.snapshot.params['id'];
-  locationData: any = {};
-  Location: any = [];
+  public locationDetails;
+  updatedLocation: FormGroup;
 
-  constructor(
-    private inventoryService: InventoryService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private inventoryService: InventoryService, private router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.inventoryService.getLocation(this.id).subscribe((data: {}) => {
-      this.locationData = data;
+    this.getLocation(this.route.snapshot.params.id);
+
+    this.updatedLocation = new FormGroup({
+      'aisle': new FormControl('',
+        [Validators.required]
+      ),
+      'rack': new FormControl('',
+        [Validators.required]
+      ),
+      'shelf': new FormControl('',
+        [Validators.required]
+      )
     });
   }
 
-
-  deleteLocation(id) {
-    if (window.confirm('Are you sure, you want to delete?')){
-      this.inventoryService.deleteLocation(id).subscribe(data => {
-        // this.getLocationList();
-        this.router.navigate(['/location']);
-      })
-    }
+  get aisle() {
+    return this.updatedLocation.get('aisle');
+  }
+  get rack() {
+    return this.updatedLocation.get('rack');
+  }
+  get shelf() {
+    return this.updatedLocation.get('shelf');
   }
 
-  getLocationList() {
-    return this.inventoryService.getLocations().subscribe((data: {}) => {
-      this.Location = data;
-    })
+  getLocation(id: string) {
+    this.inventoryService.getLocation(id).subscribe(
+      data => {
+        this.locationDetails = data;
+      },
+      err => console.error(err),
+      () => console.log('location loaded'),
+    );
+  }
+
+  deleteLocation(id: string) {
+    this.inventoryService.deleteLocation(id).subscribe(
+      data => {
+        this.locationDetails = data;
+      },
+      err => console.error(err),
+      () => console.log('location loaded'),
+    );
   }
 
 
-  updateLocation() {
-    if(window.confirm('Are you sure, you want to update?')){
-      this.inventoryService.updateLocation(this.id, this.locationData).subscribe(data => {
-        this.router.navigate(['/location']);
-      })
+  updateLocation(id:string) {
+    if (this.updatedLocation.valid) {
+      console.log('Your location has been updated. Thank you!');
+      this.inventoryService.updateLocation(id, this.updatedLocation.value).subscribe(
+        data => {
+          this.updatedLocation.reset();
+          return true;
+        },
+        error => {
+          return throwError(error);
+        }
+      );
+      this.router.navigate(['location']);
+    } else {
+      console.log('Please fill out the form before submitting >:( ');
     }
   }
 
 }
-
