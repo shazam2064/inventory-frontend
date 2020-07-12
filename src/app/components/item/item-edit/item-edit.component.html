@@ -9,85 +9,302 @@
   </svg>
   Return to list
 </button>
-<div class="col-12 pl-5">
-  <form [formGroup]=""></form>
-
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input [(ngModel)]="itemData.name" class="form-control" type="text" id="name">
-    <label for="description"> Description</label>
-    <textarea [(ngModel)]="itemData.description" class="form-control" id="description"></textarea>
-    <label for="brand">Brand</label>
-    <input [(ngModel)]="itemData.brand" class="form-control" type="text" id="brand">
-
-    <div>
-      <label>Units</label>
-      <select class="form-control" formControlName="unit">
-        <option *ngFor="let m of Unit"
-                [value]="m">
-          {{m.name}}
-        </option>
-      </select>
+<form  [formGroup]="updatedItem" (ngSubmit)="updateItem(itemDetails.id)">
+  <div class="form-row">
+    <div class="form-group col-lg-3">
+      <label for="name"> Name</label>
+      <input
+        required
+        minlength="4"
+        class="form-control"
+        type="text"
+        id="name"
+        formControlName="name"
+        [(ngModel)]="itemDetails.name"
+        [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+      >
+      <div *ngIf="(name.invalid && name.touched) || name.dirty">
+        <small *ngIf="name.errors?.required" class="text-danger">Name is required.</small>
+        <small *ngIf="name.errors?.minlength" class="text-danger">Name must be at least 4 characters long.</small>
+      </div>
     </div>
-    <div>
-      <label>Groups</label>
-      <select class="form-control" formControlName="group">
-        <option *ngFor="let m of Group"
-                [value]="m">
-          {{m.name}}
-        </option>
-      </select>
+    <div class="form-group col-lg-3">
+      <label for="brand"> Brand</label>
+      <input
+        required
+        minlength="2"
+        class="form-control"
+        type="text"
+        id="brand"
+        formControlName="brand"
+        [(ngModel)]="itemDetails.brand"
+        [class.is-invalid]="brand.invalid && (brand.dirty || brand.touched)"
+      >
+      <div *ngIf="(brand.invalid && brand.touched) || brand.dirty">
+        <small *ngIf="brand.errors?.required" class="text-danger">Brand is required.</small>
+        <small *ngIf="brand.errors?.minlength" class="text-danger">Brand must be at least 2 characters long.</small>
+      </div>
     </div>
-    <div>
-      <label>Locations</label>
-      <select class="form-control" formControlName="location">
-        <option *ngFor="let m of Location"
-                [value]="m">
-          {{m.aisle}}  {{m.rack}} {{m.shelf}}
-        </option>
-      </select>
+    <div class="form-group col-lg-6">
+      <label for="description"> Description</label>
+      <textarea
+        required
+        minlength="10"
+        class="form-control"
+        id="description"
+        formControlName="description"
+        [(ngModel)]="itemDetails.description"
+        [class.is-invalid]="description.invalid && (description.dirty || description.touched)"
+      >
+      </textarea>
+      <div *ngIf="(description.invalid && description.touched) || description.dirty">
+        <small *ngIf="description.errors?.required" class="text-danger">Description is required.</small>
+        <small *ngIf="description.errors?.minlength" class="text-danger">Description must be at least 10 characters
+          long.</small>
+      </div>
     </div>
-    <div>
-      <label>Warehouses</label>
-      <select class="form-control" formControlName="warehouse">
-        <option *ngFor="let m of Warehouse"
-                [value]="m">
-          {{m.name}}
-        </option>
-      </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-3">
+      <label>Warehouses
+        <select class="form-control" formControlName="warehouse">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of warehouseList">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
     </div>
-    <label for="min">Min</label>
-    <input [(ngModel)]="itemData.min" class="form-control" type="text" id="min">
-    <label for="max">Max</label>
-    <input [(ngModel)]="itemData.max" class="form-control" type="text" id="max">
-    <label for="reorderPoint">Reorder Point</label>
-    <input [(ngModel)]="itemData.reorderPoint" class="form-control" type="text" id="reorderPoint">
-    <label for="entryDate"> Entry Date</label>
-    <input [(ngModel)]="itemDetails.entryDate" class="form-control" type="date" id="entryDate"
-           formControlName="entryDate">
-    <label for="departureDate"> Departure Date</label>
-    <input [(ngModel)]="itemDetails.departureDate" class="form-control" type="date" id="departureDate"
-           formControlName="departureDate">
-    <label for="ultimateValue">Ultimate Value</label>
-    <input [(ngModel)]="itemData.ultimateValue" class="form-control" type="text" id="ultimateValue">
+    <div class="form-group col-lg-3">
+      <label>Groups
+        <select class="form-control" formControlName="group">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of groupList">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group col-lg-3">
+      <label>Units
+        <select class="form-control" formControlName="unit">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of unitList">
+            {{m.name}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div class="form-group col-lg-3">
+      <label>Locations
+        <select class="form-control" formControlName="location">
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let m of locationList">
+            {{m.aisle}}  {{m.rack}} {{m.shelf}}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-3">
+      <label for="min"> Min</label>
+      <input
+        required
+        class="form-control"
+        type="number"
+        id="min"
+        formControlName="min"
+        [(ngModel)]="itemDetails.min"
+        [class.is-invalid]="minV.invalid && (minV.dirty || minV.touched)"
+      >
+      <div *ngIf="(minV.invalid && minV.touched) || minV.dirty">
+        <small *ngIf="minV.errors?.required" class="text-danger">Min is required.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-3">
+      <label for="max"> Max</label>
+      <input
+        required
+        class="form-control"
+        type="number"
+        id="max"
+        formControlName="max"
+        [(ngModel)]="itemDetails.max"
+        [class.is-invalid]="maxV.invalid && (maxV.dirty || maxV.touched)"
+      >
+      <div *ngIf="(maxV.invalid && maxV.touched) || maxV.dirty">
+        <small *ngIf="maxV.errors?.required" class="text-danger">Max is required.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-3">
+      <label for="reorderPoint"> Reorder Point</label>
+      <input
+        required
+        class="form-control"
+        type="number"
+        id="reorderPoint"
+        formControlName="reorderPoint"
+        [(ngModel)]="itemDetails.reorderPoint"
+        [class.is-invalid]="reorderPoint.invalid && (reorderPoint.dirty || reorderPoint.touched)"
+      >
+      <div *ngIf="(reorderPoint.invalid && reorderPoint.touched) || reorderPoint.dirty">
+        <small *ngIf="reorderPoint.errors?.required" class="text-danger">Reorder Point is required.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-3">
+      <label for="ultimateValue"> Ultimate Value</label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        id="ultimateValue"
+        formControlName="ultimateValue"
+        [(ngModel)]="itemDetails.ultimateValue"
+        [class.is-invalid]="ultimateValue.invalid && (ultimateValue.dirty || ultimateValue.touched)"
+      >
+      <div *ngIf="(ultimateValue.invalid && ultimateValue.touched) || ultimateValue.dirty">
+        <small *ngIf="ultimateValue.errors?.required" class="text-danger">Ultimate Value is required.</small>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-lg-4">
+      <label for="entryDate"> Entry Date</label>
+      <input
+        required
+        class="form-control"
+        type="date"
+        id="entryDate"
+        formControlName="entryDate"
+        [(ngModel)]="itemDetails.entryDate"
+        [class.is-invalid]="entryDate.invalid && (entryDate.dirty || entryDate.touched)"
+      >
+      <div *ngIf="(entryDate.invalid && entryDate.touched) || entryDate.dirty">
+        <small *ngIf="entryDate.errors?.required" class="text-danger">Entry Date is required.</small>
+      </div>
+    </div>
+    <div class="form-group col-lg-4">
+      <label for="departureDate"> Departure Date</label>
+      <input
+        required
+        class="form-control"
+        type="date"
+        id="departureDate"
+        formControlName="departureDate"
+        [(ngModel)]="itemDetails.departureDate"
+        [class.is-invalid]="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
+      >
+      <div *ngIf="(departureDate.invalid && departureDate.touched) || departureDate.dirty">
+        <small *ngIf="departureDate.errors?.required" class="text-danger">Departure Date is required.</small>
+      </div>
+    </div>
   </div>
 
-  <div class="btn-group form-group">
-    <button
-      class="btn btn-success"
-      type="submit"
-      (click)="updateItem()"
-    >
-      Update Item
-    </button>
-
-    <button
-      class="btn btn-danger"
-      (click)="deleteItem(itemData.id)"
-      type="submit"
-    >Delete Item
-    </button>
+      <div class="btn-group">
+        <button class="btn btn-success" type="submit">Update Item</button>
+        <button
+          class="btn btn-danger"
+          (click)="deleteItem(itemDetails.id)"
+          type="submit"
+        >Delete Item
+        </button>
   </div>
-</div>
+</form>
+
+
+
+
+<!--<h3 class="display-4 text-muted mb-4">Edit a Item</h3>-->
+<!--<button class="btn btn-secondary mb-5" routerLink="/item">-->
+<!--  <svg class="bi bi-arrow-left-circle" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"-->
+<!--       xmlns="http://www.w3.org/2000/svg">-->
+<!--    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>-->
+<!--    <path fill-rule="evenodd"-->
+<!--          d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>-->
+<!--    <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>-->
+<!--  </svg>-->
+<!--  Return to list-->
+<!--</button>-->
+<!--<div class="col-12 pl-5">-->
+<!--  <form [formGroup]=""></form>-->
+
+<!--  <div class="form-group">-->
+<!--    <label for="name">Name</label>-->
+<!--    <input [(ngModel)]="itemData.name" class="form-control" type="text" id="name">-->
+<!--    <label for="description"> Description</label>-->
+<!--    <textarea [(ngModel)]="itemData.description" class="form-control" id="description"></textarea>-->
+<!--    <label for="brand">Brand</label>-->
+<!--    <input [(ngModel)]="itemData.brand" class="form-control" type="text" id="brand">-->
+
+<!--    <div>-->
+<!--      <label>Units</label>-->
+<!--      <select class="form-control" formControlName="unit">-->
+<!--        <option *ngFor="let m of Unit"-->
+<!--                [value]="m">-->
+<!--          {{m.name}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label>Groups</label>-->
+<!--      <select class="form-control" formControlName="group">-->
+<!--        <option *ngFor="let m of Group"-->
+<!--                [value]="m">-->
+<!--          {{m.name}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label>Locations</label>-->
+<!--      <select class="form-control" formControlName="location">-->
+<!--        <option *ngFor="let m of Location"-->
+<!--                [value]="m">-->
+<!--          {{m.aisle}}  {{m.rack}} {{m.shelf}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label>Warehouses</label>-->
+<!--      <select class="form-control" formControlName="warehouse">-->
+<!--        <option *ngFor="let m of Warehouse"-->
+<!--                [value]="m">-->
+<!--          {{m.name}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <label for="min">Min</label>-->
+<!--    <input [(ngModel)]="itemData.min" class="form-control" type="text" id="min">-->
+<!--    <label for="max">Max</label>-->
+<!--    <input [(ngModel)]="itemData.max" class="form-control" type="text" id="max">-->
+<!--    <label for="reorderPoint">Reorder Point</label>-->
+<!--    <input [(ngModel)]="itemData.reorderPoint" class="form-control" type="text" id="reorderPoint">-->
+<!--    <label for="entryDate"> Entry Date</label>-->
+<!--    <input [(ngModel)]="itemDetails.entryDate" class="form-control" type="date" id="entryDate"-->
+<!--           formControlName="entryDate">-->
+<!--    <label for="departureDate"> Departure Date</label>-->
+<!--    <input [(ngModel)]="itemDetails.departureDate" class="form-control" type="date" id="departureDate"-->
+<!--           formControlName="departureDate">-->
+<!--    <label for="ultimateValue">Ultimate Value</label>-->
+<!--    <input [(ngModel)]="itemData.ultimateValue" class="form-control" type="text" id="ultimateValue">-->
+<!--  </div>-->
+
+<!--  <div class="btn-group form-group">-->
+<!--    <button-->
+<!--      class="btn btn-success"-->
+<!--      type="submit"-->
+<!--      (click)="updateItem()"-->
+<!--    >-->
+<!--      Update Item-->
+<!--    </button>-->
+
+<!--    <button-->
+<!--      class="btn btn-danger"-->
+<!--      (click)="deleteItem(itemData.id)"-->
+<!--      type="submit"-->
+<!--    >Delete Item-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->
 
 
