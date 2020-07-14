@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {InventoryService} from '../../services/inventory.service';
-import {ActivatedRoute} from '@angular/router';
+import { InventoryService } from '../../services/inventory.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-group',
@@ -10,8 +10,10 @@ import {ActivatedRoute} from '@angular/router';
 export class GroupComponent implements OnInit {
 
   public groupList;
+  term: string;
 
-  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
+  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.getGroupList();

@@ -84,19 +84,6 @@ export class AddItemComponent implements OnInit {
   get departureDate() { return this.newItem.get('departureDate'); }
   get ultimateValue() { return this.newItem.get('ultimateValue'); }
 
-  // getWarehouseList() {
-  //   this.inventoryService.getWarehouses().subscribe(
-  //     data => {
-  //       this.warehouseList = data;
-  //       // String(data);
-  //       console.log('warehouse: ' + data, data);
-  //       console.log(this.warehouseList);
-  //     },
-  //     err => console.error(err),
-  //     () => console.log('warehouses loaded')
-  //   );
-  // }
-
   loadWarehouses() {
     return this.inventoryService.getWarehouses().subscribe((data: {}) => {
       this.Warehouse = data;
@@ -148,7 +135,6 @@ export class AddItemComponent implements OnInit {
           this.newItem.reset();
           console.log("Check here " + data)
           return true;
-
         },
         error => {
           return throwError(error);
@@ -162,87 +148,3 @@ export class AddItemComponent implements OnInit {
 
 }
 
-// import { Component, Input, OnInit } from '@angular/core';
-// import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { InventoryService } from '../../../services/inventory.service';
-// import { Router } from '@angular/router';
-// import { throwError } from 'rxjs';
-// import { Item } from "../../../models/item.model";
-//
-// @Component({
-//   selector: 'app-add-item',
-//   templateUrl: './add-item.component.html',
-//   styleUrls: ['./add-item.component.css']
-// })
-// export class AddItemComponent implements OnInit {
-//
-//   @Input() itemDetails = {
-//     name: '',
-//     description: '',
-//     brand: '',
-//     unit: '',
-//     group: '',
-//     location: '',
-//     warehouse: '',
-//     min: '',
-//     max: '',
-//     reorderPoint: '',
-//     entryDate: '',
-//     departureDate: '',
-//     ultimateValue: ''
-//   }
-//
-//   Warehouse: any = [];
-//   Group: any = [];
-//   Unit: any = [];
-//   Location: any = [];
-//
-//   constructor(private inventoryService: InventoryService, private router: Router) {
-//   }
-//
-//   ngOnInit() {
-//     this.getWarehouses();
-//     this.getUnitList();
-//     this.getGroupList();
-//     this.getLocationList();
-//   }
-//
-//   getWarehouses() {
-//     return this.inventoryService.getWarehouses().subscribe((data: {}) => {
-//       this.Warehouse = data;
-//       console.log(data)
-//       console.log(this.Warehouse)
-//     })
-//   }
-//
-//   getUnitList() {
-//     return this.inventoryService.getUnits().subscribe((data: {}) => {
-//       this.Unit = data;
-//     })
-//   }
-//
-//   getGroupList() {
-//     return this.inventoryService.getGroups().subscribe((data: {}) => {
-//       this.Group = data;
-//     })
-//   }
-//
-//
-//   getLocationList() {
-//     return this.inventoryService.getLocations().subscribe((data: {}) => {
-//       this.Location = data;
-//     })
-//   }
-//
-//
-//   submitItem() {
-//     this.inventoryService.createItem(this.itemDetails).subscribe(
-//       data => {
-//         console.log(data)
-//         this.router.navigate(['item'])
-//       }
-//     )
-//   }
-//
-//
-// }

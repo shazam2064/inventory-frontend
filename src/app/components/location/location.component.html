@@ -9,18 +9,21 @@
       >
         Add a location.
       </button>
-      <div class="container mt-lg-5">
+      <div class="container mt-lg-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search ID, Aisle, Rack or Shelf Here" [(ngModel)]="term">
+        </div>
         <table class="table table-bordered table-hover">
           <thead class="thead-light">
           <tr>
-            <th>ID</th>
-            <th>Aisle</th>
-            <th>Rack</th>
-            <th>Shelf</th>
+            <th scope="col">ID</th>
+            <th scope="col">Aisle</th>
+            <th scope="col">Rack</th>
+            <th scope="col">Shelf</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let location of locationList">
+          <tr *ngFor="let location of locationList | filter:term">
             <td>
               {{location.id}}
             </td>

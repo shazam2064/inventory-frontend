@@ -11,6 +11,7 @@ import {InventoryService} from "../../services/inventory.service";
 export class WarehouseComponent implements OnInit {
 
   public warehouseList;
+  term: string;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 

@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class MovementTypeComponent implements OnInit {
 
   public movementTypeList;
+  term: string;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 

@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class UnitComponent implements OnInit {
 
   public unitList;
+  term: string;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 

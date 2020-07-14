@@ -5,20 +5,23 @@
       <br>
       <button
         class="btn btn-primary"
-      routerLink="/add-unit"
+        routerLink="/add-unit"
       >
         Add a unit.
       </button>
-      <div class="container mt-lg-5">
+      <div class="container mt-lg-3">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search ID, or Name Here" [(ngModel)]="term">
+        </div>
         <table class="table table-bordered table-hover">
           <thead class="thead-light">
           <tr>
-            <th>ID</th>
-            <th>Name</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let unit of unitList">
+          <tr *ngFor="let unit of unitList | filter:term">
             <td>
               {{unit.id}}
             </td>

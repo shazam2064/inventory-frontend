@@ -21,6 +21,8 @@ export class ItemComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getItemList();
+    this.getItemAutomatically();
     this.itemAutomatically = new Item(
       '',
       '',
@@ -37,8 +39,6 @@ export class ItemComponent implements OnInit {
       new Date(),
       4
     );
-    this.getItemList();
-    this.getItemAutomatically();
   }
 
   getItemList() {
