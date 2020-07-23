@@ -1,11 +1,8 @@
 <div class="alert alert-danger" *ngIf="invalidLogin">{{errorMessage}}</div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-4 invisible">
-      <span>aaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-    </div>
-    <div class="col-lg-4">
+  <div class="row ml-5">
+    <div class="col-lg-4 ml-5">
       <form class="form-signin align-content-center">
         <div class="text-center mb-4">
           <br>
@@ -43,9 +40,6 @@
         <button class="btn btn-lg btn-primary btn-block" (click)="handleLogin()" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021</p>
       </form>
-    </div>
-    <div class="col-lg-4 invisible">
-      <span>aaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
     </div>
   </div>
 </div>

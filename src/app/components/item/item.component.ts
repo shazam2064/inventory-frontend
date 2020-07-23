@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {InventoryService} from '../../services/inventory.service';
-import {ActivatedRoute} from '@angular/router';
-import {Item} from "../../models/item.model";
+import { InventoryService } from '../../services/inventory.service';
+import { ActivatedRoute } from '@angular/router';
+import { Item } from "../../models/item.model";
 
 @Component({
   selector: 'app-item',
@@ -17,11 +17,14 @@ export class ItemComponent implements OnInit {
   public locationData;
   public unitData;
   term: string;
+  totalElements: number = 0;
 
-  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
+  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.getItemList();
+    // this.getItemList();
+    this.loadItems({page: "4", size: "2"})
     this.getItemAutomatically();
     this.itemAutomatically = new Item(
       '',
@@ -70,7 +73,7 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  getLocationId(id:string) {
+  getLocationId(id: string) {
     this.inventoryService.getLocation(id).subscribe((data: {}) => {
       this.locationData = data;
     });
@@ -87,4 +90,14 @@ export class ItemComponent implements OnInit {
     );
   }
 
+  loadItems(request) {
+    this.inventoryService.getItemsRequest(request)
+      .subscribe(data => {
+        this.itemList = data;
+        this.totalElements = data['totalElements'];
+      }, error => {
+        console.error(error);
+      })
+
+  }
 }

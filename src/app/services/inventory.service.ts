@@ -77,6 +77,15 @@ export class InventoryService {
       )
   }
 
+  getItemsRequest(request): Observable<Item> {
+    const params = request
+    return this.http.get<Item>(this.apiURL + '/items', {params})
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
   // get stuff by id
 
   getWarehouse(id): Observable<Warehouse> {
