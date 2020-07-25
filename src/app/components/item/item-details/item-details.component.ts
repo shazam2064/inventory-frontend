@@ -13,11 +13,13 @@ export class ItemDetailsComponent implements OnInit {
   public itemList;
   public itemDetails;
   term: string;
+  totalElements: number = 0;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.loadItems({page: "4", size: "2"})
     this.itemDetails = new Item(
       '',
       '',
@@ -35,7 +37,7 @@ export class ItemDetailsComponent implements OnInit {
       4
     );
     this.getItem(this.route.snapshot.params.id);
-    this.getItemList();
+    // this.getItemList();
   }
 
   reload() {
@@ -67,6 +69,17 @@ export class ItemDetailsComponent implements OnInit {
       err => console.error(err),
       () => console.log('items loaded')
     );
+
+  }
+
+  loadItems(request) {
+    this.inventoryService.getItemsRequest(request)
+      .subscribe(data => {
+        this.itemList = data;
+        this.totalElements = data['totalElements'];
+      }, error => {
+        console.error(error);
+      })
 
   }
 

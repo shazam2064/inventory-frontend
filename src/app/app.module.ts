@@ -30,6 +30,8 @@ import { AddItemComponent } from './components/item/add-item/add-item.component'
 import { InventoryService } from "./services/inventory.service";
 import { IconsModule } from "./icons.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { TestComponent } from './components/test/test.component';
+import { PaginationDirective } from "./components/test/pagination.directive";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     ItemComponent,
     ItemDetailsComponent,
     ItemEditComponent,
-    AddItemComponent
+    AddItemComponent,
+    TestComponent,
+    PaginationDirective
   ],
   imports: [
     BrowserModule,
