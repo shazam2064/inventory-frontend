@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { FeatherModule } from 'angular-feather';
-import { Archive, Home, LogOut, MapPin, Move, Package, User, Clipboard, Layers, Grid } from 'angular-feather/icons';
+import {Archive, Home, LogOut, MapPin, Move, Package, User, Clipboard, Layers, Grid, ShoppingCart} from 'angular-feather/icons';
 
 
 const icons = {
@@ -14,7 +14,8 @@ const icons = {
   Move,
   Package,
   Layers,
-  Grid
+  Grid,
+  ShoppingCart
 };
 
 @NgModule({

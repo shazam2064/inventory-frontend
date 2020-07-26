@@ -23,8 +23,8 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getItemList();
-    this.loadItems({page: "4", size: "2"})
+    this.getItemList();
+    // this.loadItems({page: "4", size: "2"});
     this.getItemAutomatically();
     this.itemAutomatically = new Item(
       '',

@@ -6,10 +6,10 @@ import { throwError } from "rxjs";
 
 @Component({
   selector: 'app-movement-type-edit',
-  templateUrl: './movement-type-edit.component.html',
-  styleUrls: ['./movement-type-edit.component.css']
+  templateUrl: './movement-header-edit.component.html',
+  styleUrls: ['./movement-header-edit.component.css']
 })
-export class MovementTypeEditComponent implements OnInit {
+export class MovementHeaderEditComponent implements OnInit {
 
   public movementTypeDetails;
   updatedMovementType: FormGroup;

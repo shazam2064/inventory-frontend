@@ -7,6 +7,7 @@ import {Warehouse} from "../models/warehouse.model";
 import {Group} from "../models/group.model";
 import {Unit} from "../models/unit.model";
 import {MovementType} from "../models/movement-type.model";
+import {MovementHeader} from '../models/movement-header.model';
 
 
 const httpOptions = {
@@ -63,6 +64,14 @@ export class InventoryService {
 
   getMovementTypes(): Observable<MovementType> {
     return this.http.get<MovementType>(this.apiURL + '/movement-types')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+    getMovementHeaders(): Observable<MovementHeader> {
+    return this.http.get<MovementHeader>(this.apiURL + '/movement-headers')
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -128,6 +137,14 @@ export class InventoryService {
       )
   }
 
+    getMovementHeader(id): Observable<MovementHeader> {
+    return this.http.get<MovementHeader>((this.apiURL + '/movement-headers/') + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
   getItem(id): Observable<Item> {
     return this.http.get<Item>((this.apiURL + '/items/') + id)
       .pipe(
@@ -172,6 +189,14 @@ export class InventoryService {
 
   createMovementType(movementType): Observable<MovementType> {
     return this.http.post<MovementType> (this.apiURL + '/movement-types', JSON.stringify(movementType), this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+   createMovementHeader(movementHeader): Observable<MovementHeader> {
+    return this.http.post<MovementHeader> (this.apiURL + '/movement-headers', JSON.stringify(movementHeader), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -229,6 +254,14 @@ export class InventoryService {
       )
   }
 
+  updateMovementHeader(id, movementHeader): Observable<MovementHeader> {
+    return this.http.put<MovementHeader>((this.apiURL + '/movement-headers/') + id, JSON.stringify(movementHeader), this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
   updateItem(id, item): Observable<Item> {
     return this.http.put<Item>((this.apiURL + '/items/') + id, JSON.stringify(item), this.httpOptions)
       .pipe(
@@ -273,6 +306,14 @@ export class InventoryService {
 
   deleteMovementType(id){
     return this.http.delete<MovementType>((this.apiURL + '/movement-types/') + id, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  deleteMovementHeader(id){
+    return this.http.delete<MovementHeader>((this.apiURL + '/movement-headers/') + id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)

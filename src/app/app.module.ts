@@ -32,6 +32,10 @@ import { IconsModule } from "./icons.module";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { TestComponent } from './components/test/test.component';
 import { PaginationDirective } from "./components/test/pagination.directive";
+import { MovementHeaderComponent } from './components/movement-header/movement-header.component';
+import {AddMovementHeaderComponent} from './components/movement-header/add-movement-header/add-movement-header.component';
+import {MovementHeaderEditComponent} from './components/movement-header/movement-header-edit/movement-header-edit.component';
+import { ItemListCartComponent } from './components/item-list-cart/item-list-cart.component';
 
 @NgModule({
   declarations: [
@@ -49,17 +53,21 @@ import { PaginationDirective } from "./components/test/pagination.directive";
     AddUnitComponent,
     AddLocationComponent,
     AddMovementTypeComponent,
+    AddMovementHeaderComponent,
     WarehouseEditComponent,
     GroupEditComponent,
     UnitEditComponent,
     LocationEditComponent,
     MovementTypeEditComponent,
+    MovementHeaderEditComponent,
     ItemComponent,
     ItemDetailsComponent,
     ItemEditComponent,
     AddItemComponent,
     TestComponent,
-    PaginationDirective
+    PaginationDirective,
+    MovementHeaderComponent,
+    ItemListCartComponent
   ],
   imports: [
     BrowserModule,

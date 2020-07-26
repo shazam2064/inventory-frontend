@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('authenticateUser')
+    let user = sessionStorage.getItem('authenticateUser');
     return !(user === null)
   }
 

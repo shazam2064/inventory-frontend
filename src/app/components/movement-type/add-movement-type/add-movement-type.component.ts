@@ -56,11 +56,11 @@ export class AddMovementTypeComponent implements OnInit {
 // import {Router} from '@angular/router';
 //
 // @Component({
-//   selector: 'app-add-movement-type',
-//   templateUrl: './add-movement-type.component.html',
-//   styleUrls: ['./add-movement-type.component.css']
+//   selector: 'app-add-movement-header',
+//   templateUrl: './add-movement-header.component.html',
+//   styleUrls: ['./add-movement-header.component.css']
 // })
-// export class AddMovementTypeComponent implements OnInit {
+// export class AddMovementHeaderComponent implements OnInit {
 //
 //   @Input() movementTypeDetails = {name: ''}
 //

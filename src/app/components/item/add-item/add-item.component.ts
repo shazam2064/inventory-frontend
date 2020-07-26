@@ -133,7 +133,7 @@ export class AddItemComponent implements OnInit {
       this.inventoryService.createItem(this.newItem.value).subscribe(
         data => {
           this.newItem.reset();
-          console.log("Check here " + this.newItem)
+          console.log("Check here " + this.newItem);
           return true;
         },
         error => {
