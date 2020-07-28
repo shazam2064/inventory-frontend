@@ -64,6 +64,16 @@ export class ItemListCartComponent implements OnInit {
     );
   }
 
+  getItem(id: string) {
+    this.inventoryService.getItem(id).subscribe(
+      data => {
+        this.itemDetails = data;
+      },
+      err => console.error(err),
+      () => console.log('Item loaded'),
+    );
+  }
+
   submitItem() {
     if (this.newItem.valid) {
       console.log("Your item has been created. Thank you!");

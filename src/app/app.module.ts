@@ -36,6 +36,7 @@ import { MovementHeaderComponent } from './components/movement-header/movement-h
 import {AddMovementHeaderComponent} from './components/movement-header/add-movement-header/add-movement-header.component';
 import {MovementHeaderEditComponent} from './components/movement-header/movement-header-edit/movement-header-edit.component';
 import { ItemListCartComponent } from './components/item-list-cart/item-list-cart.component';
+import { ItemListCartDetailsComponent } from './components/item-list-cart/item-list-cart-details/item-list-cart-details.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ItemListCartComponent } from './components/item-list-cart/item-list-car
     TestComponent,
     PaginationDirective,
     MovementHeaderComponent,
-    ItemListCartComponent
+    ItemListCartComponent,
+    ItemListCartDetailsComponent
   ],
   imports: [
     BrowserModule,

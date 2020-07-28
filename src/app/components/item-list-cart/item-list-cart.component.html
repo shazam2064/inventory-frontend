@@ -2,99 +2,69 @@
   <h1>Item List Cart</h1>
 </div>
 <br>
-<div class="container">
-  <form [formGroup]="newItem" (ngSubmit)="submitItem()">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label>Items
-            <select class="custom-select" formControlName="name">
-              <option value="" disabled selected>Choose your option</option>
-              <option *ngFor="let i of itemList">
-                {{i.name}}
-              </option>
-            </select>
-          </label>
-        </div>
-        <br>
-        <br>
-        <button class="btn btn-primary btn-lg btn-block ">
-          Add Item
-        </button>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="quantity">Quantity</label>
-          <input
-            required
-            class="form-control"
-            type="number"
-            id="quantity"
-            formControlName="quantity"
-            [class.is-invalid]="quantity.invalid && (quantity.dirty || quantity.touched)"
-          >
-          <div *ngIf="(quantity.invalid && quantity.touched) || quantity.dirty">
-            <small *ngIf="quantity.errors?.required" class="text-danger">Quantity is required.</small>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="container">
+      <form [formGroup]="newItem" (ngSubmit)="submitItem()">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Items</label>
+              <select class="custom-select" formControlName="name">
+                <option value="" disabled selected>Choose your option</option>
+                <option *ngFor="let i of itemList">
+                  {{i.id}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input
+                required
+                class="form-control"
+                type="number"
+                id="quantity"
+                formControlName="quantity"
+                [class.is-invalid]="quantity.invalid && (quantity.dirty || quantity.touched)"
+              >
+              <div *ngIf="(quantity.invalid && quantity.touched) || quantity.dirty">
+                <small *ngIf="quantity.errors?.required" class="text-danger">Quantity is required.</small>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <div class="card">
-            <div class="card-header">Display the Item and Quantity</div>
-            <div class="card-body">
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                    <label class="lead">Name:</label>
-                    <p><em>{{ itemName }}</em></p>
-                  </div>
-                  <div class="col-sm">
-                    <label class=" lead">Quantity</label>
-                    <p><em>{{ itemName }}</em></p>
-                  </div>
-                </div>
+        <button class="btn btn-primary">
+          Add Item
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <div class="card">
+        <div class="card-header">Display the Item and Quantity</div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <label class="lead">Name:</label>
+                <p><em>{{ itemName }}</em></p>
+              </div>
+              <div class="col-sm">
+                <label class=" lead">Quantity:</label>
+                <p><em>{{ itemName }}</em></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>
+
 <br>
 <div class="container">
-  <div class="card">
-    <h3 class="card-header">Details of the Item</h3>
-    <div class="card-body">
-      <dl class="row">
-        <dt class="col-sm-3 lead">Name:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.name}}</em></dd>
-        <dt class="col-sm-3 lead">Description:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.description}}</em></dd>
-        <dt class="col-sm-3 lead">Brand:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.brand}}</em></dd>
-        <dt class="col-sm-3 lead">Unit:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.unit}}</em></dd>
-        <dt class="col-sm-3 lead">Group:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.group}}</em></dd>
-        <dt class="col-sm-3 lead">Location:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.location}}</em></dd>
-        <dt class="col-sm-3 lead">Warehouse:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.warehouse}}</em></dd>
-        <dt class="col-sm-3 lead">Min:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.min}}</em></dd>
-        <dt class="col-sm-3 lead">Max:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.max}}</em></dd>
-        <dt class="col-sm-3 lead">Reorder Point:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.reorderPoint}}</em></dd>
-        <dt class="col-sm-3 lead">Entry Date:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.entryDate | date:'fullDate'}}</em></dd>
-        <dt class="col-sm-3 lead">Departure Date:</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.departureDate | date:'fullDate'}}</em></dd>
-        <dt class="col-sm-3 lead">Ultimate Value :</dt>
-        <dd class="col-sm-3"><em>{{itemDetails.ultimateValue}}</em></dd>
-      </dl>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>
