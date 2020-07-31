@@ -18,7 +18,6 @@ import { LocationEditComponent } from './components/location/location-edit/locat
 import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { ItemComponent } from './components/item/item.component';
-import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { AddItemComponent } from './components/item/add-item/add-item.component';
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { RouteGuardService } from "./services/route-guard.service";
@@ -53,7 +52,6 @@ const routes: Routes = [
   {path: 'add-movement-header', component: AddMovementHeaderComponent, canActivate: [RouteGuardService]},
   {path: 'edit-movement-header/:id', component: MovementHeaderEditComponent, canActivate: [RouteGuardService]},
   {path: 'item', component: ItemComponent, canActivate: [RouteGuardService]},
-  {path: 'item-details/:id', component: ItemDetailsComponent, canActivate: [RouteGuardService]},
   {path: 'item-edit/:id', component: ItemEditComponent, canActivate: [RouteGuardService]},
   {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]},
   {path: 'test', component: TestComponent, canActivate: [RouteGuardService]},

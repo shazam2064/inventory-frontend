@@ -17,6 +17,8 @@ export class ItemListCartComponent implements OnInit {
   newItem: FormGroup;
   public itemName;
   public itemQuantity;
+  currentItem = null;
+  currentIndex = -1;
 
   constructor(private inventoryService: InventoryService, private router: Router) {
   }
@@ -53,6 +55,11 @@ export class ItemListCartComponent implements OnInit {
     return this.newItem.get('quantity');
   }
 
+  setActiveItem(item, index) {
+    this.currentItem = item;
+    this.currentIndex = index;
+  }
+
   getItemList() {
     this.inventoryService.getItems().subscribe(
       data => {
@@ -77,9 +84,9 @@ export class ItemListCartComponent implements OnInit {
   submitItem() {
     if (this.newItem.valid) {
       console.log("Your item has been created. Thank you!");
-      sessionStorage.setItem('newItem', JSON.stringify(this.name.value));
+      sessionStorage.setItem('newItem', this.name.value);
       this.itemName = sessionStorage.getItem('newItem');
-      sessionStorage.setItem('newQuantity', JSON.stringify(this.quantity.value));
+      sessionStorage.setItem('newQuantity', this.quantity.value);
       this.itemQuantity = sessionStorage.getItem('newQuantity');
 
     } else {

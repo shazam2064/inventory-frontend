@@ -24,7 +24,6 @@ import { UnitEditComponent } from './components/unit/unit-edit/unit-edit.compone
 import { LocationEditComponent } from './components/location/location-edit/location-edit.component';
 import { MovementTypeEditComponent } from './components/movement-type/movement-type-edit/movement-type-edit.component';
 import { ItemComponent } from './components/item/item.component';
-import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { AddItemComponent } from './components/item/add-item/add-item.component';
 import { InventoryService } from "./services/inventory.service";
@@ -33,8 +32,8 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { TestComponent } from './components/test/test.component';
 import { PaginationDirective } from "./components/test/pagination.directive";
 import { MovementHeaderComponent } from './components/movement-header/movement-header.component';
-import {AddMovementHeaderComponent} from './components/movement-header/add-movement-header/add-movement-header.component';
-import {MovementHeaderEditComponent} from './components/movement-header/movement-header-edit/movement-header-edit.component';
+import { AddMovementHeaderComponent } from './components/movement-header/add-movement-header/add-movement-header.component';
+import { MovementHeaderEditComponent } from './components/movement-header/movement-header-edit/movement-header-edit.component';
 import { ItemListCartComponent } from './components/item-list-cart/item-list-cart.component';
 import { ItemListCartDetailsComponent } from './components/item-list-cart/item-list-cart-details/item-list-cart-details.component';
 
@@ -62,7 +61,6 @@ import { ItemListCartDetailsComponent } from './components/item-list-cart/item-l
     MovementTypeEditComponent,
     MovementHeaderEditComponent,
     ItemComponent,
-    ItemDetailsComponent,
     ItemEditComponent,
     AddItemComponent,
     TestComponent,

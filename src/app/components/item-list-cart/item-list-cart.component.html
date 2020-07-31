@@ -12,8 +12,9 @@
               <label>Items</label>
               <select class="custom-select" formControlName="name">
                 <option value="" disabled selected>Choose your option</option>
-                <option *ngFor="let i of itemList">
-                  {{i.name}}
+                <option *ngFor="let item of itemList; let in = index" [class.active]="in == currentIndex"
+                        (click)="setActiveItem(item, in)">
+                  {{item.name}}
                 </option>
               </select>
             </div>
@@ -35,7 +36,7 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" type="submit">
           Add Item
         </button>
       </form>
@@ -64,6 +65,42 @@
   </div>
 </div>
 <br>
-<div class="container">
-  <router-outlet></router-outlet>
+<div *ngIf="currentItem" class="container">
+  <div class="card">
+    <h3 class="card-header">Details of the Item</h3>
+    <div class="card-body">
+      <dl class="row">
+        <dt class="col-sm-3 lead"><strong>Name:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.name}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Description:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.description}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Brand:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.brand}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Unit:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.unit}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Group:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.group}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Location:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.location}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Warehouse:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.warehouse}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Min:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.min}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Max:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.max}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Reorder Point:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.reorderPoint}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Entry Date:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.entryDate | date:'fullDate'}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Departure Date:</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.departureDate | date:'fullDate'}}</em></dd>
+        <dt class="col-sm-3 lead"><strong>Ultimate Value :</strong></dt>
+        <dd class="col-sm-3"><em>{{currentItem.ultimateValue}}</em></dd>
+      </dl>
+    </div>
+  </div>
 </div>
+<div *ngIf="!currentItem " class="container">
+  <p>Please Select an Item</p>
+</div>
+

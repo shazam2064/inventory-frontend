@@ -18,6 +18,8 @@ export class ItemComponent implements OnInit {
   public unitData;
   term: string;
   totalElements: number = 0;
+  currentItem = null;
+  currentIndex = -1;
 
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
   }
@@ -44,6 +46,11 @@ export class ItemComponent implements OnInit {
     );
   }
 
+  setActiveItem(item, index) {
+    this.currentItem = item;
+    this.currentIndex = index;
+  }
+
   getItemList() {
     this.inventoryService.getItems().subscribe(
       data => {
@@ -53,32 +60,6 @@ export class ItemComponent implements OnInit {
       () => console.log('items loaded')
     );
   }
-
-  getGroupId(id: string) {
-    this.inventoryService.getGroup(id).subscribe((data: {}) => {
-      this.groupData = data;
-    });
-  }
-
-  getUnitId(id: string) {
-    this.inventoryService.getUnit(id).subscribe((data: {}) => {
-      this.unitData = data;
-    });
-  }
-
-  getWarehouseId(id: string) {
-    this.inventoryService.getWarehouse(id).subscribe((data: {}) => {
-      this.warehouseData = data;
-      console.log(this.warehouseData)
-    });
-  }
-
-  getLocationId(id: string) {
-    this.inventoryService.getLocation(id).subscribe((data: {}) => {
-      this.locationData = data;
-    });
-  }
-
 
   getItemAutomatically() {
     this.inventoryService.getItemAuto().subscribe(

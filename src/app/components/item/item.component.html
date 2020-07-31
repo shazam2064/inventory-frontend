@@ -22,9 +22,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let item of itemList | filter:term">
+          <tr *ngFor="let item of itemList | filter:term; let i = index"  [class.active]="i == currentIndex" (click)="setActiveItem(item, i)">
             <td>
-              <a [routerLink]="['/item-details', item.id]">{{item.id}}</a>
+              {{item.id}}
             </td>
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
@@ -55,43 +55,85 @@
           </div>
         </div>
         <br>
-        <div class="card">
-          <h3 class="card-header">Details of the Item</h3>
-          <div class="card-body">
-            <dl class="row">
-              <dt class="col-sm-3 lead">Name:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.name}}</em></dd>
-              <dt class="col-sm-3 lead">Description:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.description}}</em></dd>
-              <dt class="col-sm-3 lead">Brand:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.brand}}</em></dd>
-              <dt class="col-sm-3 lead">Unit:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.unit}}</em></dd>
-              <dt class="col-sm-3 lead">Group:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.group}}</em></dd>
-              <dt class="col-sm-3 lead">Location:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.location}}</em></dd>
-              <dt class="col-sm-3 lead">Warehouse:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.warehouse}}</em></dd>
-              <dt class="col-sm-3 lead">Min:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.min}}</em></dd>
-              <dt class="col-sm-3 lead">Max:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.max}}</em></dd>
-              <dt class="col-sm-3 lead">Reorder Point:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.reorderPoint}}</em></dd>
-              <dt class="col-sm-3 lead">Entry Date:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.entryDate | date:'fullDate'}}</em></dd>
-              <dt class="col-sm-3 lead">Departure Date:</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.departureDate | date:'fullDate'}}</em></dd>
-              <dt class="col-sm-3 lead">Ultimate Value :</dt>
-              <dd class="col-sm-3"><em>{{itemAutomatically.ultimateValue}}</em></dd>
-            </dl>
+        <div *ngIf="currentItem" class="container">
+          <div class="card">
+            <h3 class="card-header">Details of the Item</h3>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-sm-3 lead">Name:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.name}}</em></dd>
+                <dt class="col-sm-3 lead">Description:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.description}}</em></dd>
+                <dt class="col-sm-3 lead">Brand:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.brand}}</em></dd>
+                <dt class="col-sm-3 lead">Unit:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.unit}}</em></dd>
+                <dt class="col-sm-3 lead">Group:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.group}}</em></dd>
+                <dt class="col-sm-3 lead">Location:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.location}}</em></dd>
+                <dt class="col-sm-3 lead">Warehouse:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.warehouse}}</em></dd>
+                <dt class="col-sm-3 lead">Min:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.min}}</em></dd>
+                <dt class="col-sm-3 lead">Max:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.max}}</em></dd>
+                <dt class="col-sm-3 lead">Reorder Point:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.reorderPoint}}</em></dd>
+                <dt class="col-sm-3 lead">Entry Date:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.entryDate | date:'fullDate'}}</em></dd>
+                <dt class="col-sm-3 lead">Departure Date:</dt>
+                <dd class="col-sm-3"><em>{{currentItem.departureDate | date:'fullDate'}}</em></dd>
+                <dt class="col-sm-3 lead">Ultimate Value :</dt>
+                <dd class="col-sm-3"><em>{{currentItem.ultimateValue}}</em></dd>
+              </dl>
+            </div>
+          </div>
+          <br>
+          <div class="container">
+            <button routerLink="/item-edit/{{itemAutomatically.id}}" class="btn btn-success">Edit</button>
           </div>
         </div>
-        <br>
-        <div class="container">
-          <button routerLink="/item-edit/{{itemAutomatically.id}}" class="btn btn-success">Edit</button>
+        <div *ngIf="!currentItem" class="container">
+          <div class="card">
+            <h3 class="card-header">Details of the Item</h3>
+            <div class="card-body">
+              <dl class="row">
+                <dt class="col-sm-3 lead">Name:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.name}}</em></dd>
+                <dt class="col-sm-3 lead">Description:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.description}}</em></dd>
+                <dt class="col-sm-3 lead">Brand:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.brand}}</em></dd>
+                <dt class="col-sm-3 lead">Unit:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.unit}}</em></dd>
+                <dt class="col-sm-3 lead">Group:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.group}}</em></dd>
+                <dt class="col-sm-3 lead">Location:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.location}}</em></dd>
+                <dt class="col-sm-3 lead">Warehouse:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.warehouse}}</em></dd>
+                <dt class="col-sm-3 lead">Min:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.min}}</em></dd>
+                <dt class="col-sm-3 lead">Max:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.max}}</em></dd>
+                <dt class="col-sm-3 lead">Reorder Point:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.reorderPoint}}</em></dd>
+                <dt class="col-sm-3 lead">Entry Date:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.entryDate | date:'fullDate'}}</em></dd>
+                <dt class="col-sm-3 lead">Departure Date:</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.departureDate | date:'fullDate'}}</em></dd>
+                <dt class="col-sm-3 lead">Ultimate Value :</dt>
+                <dd class="col-sm-3"><em>{{itemAutomatically.ultimateValue}}</em></dd>
+              </dl>
+            </div>
+          </div>
+          <br>
+          <div class="container">
+            <button routerLink="/item-edit/{{itemAutomatically.id}}" class="btn btn-success">Edit</button>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
