@@ -79,6 +79,8 @@ export class ItemListCartComponent implements OnInit {
       console.log("Your item has been created. Thank you!");
       sessionStorage.setItem('newItem', JSON.stringify(this.name.value));
       this.itemName = sessionStorage.getItem('newItem');
+      sessionStorage.setItem('newQuantity', JSON.stringify(this.quantity.value));
+      this.itemQuantity = sessionStorage.getItem('newQuantity');
 
     } else {
       console.log("Please fill out the form before submitting >:( ");
