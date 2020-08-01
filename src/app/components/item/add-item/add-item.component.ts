@@ -18,13 +18,11 @@ export class AddItemComponent implements OnInit {
   public unitList;
   public groupList;
   public locationList;
-  Warehouse: any = [];
 
   constructor(private inventoryService: InventoryService, private router: Router, private fb: FormBuilder) {}
 
   ngOnInit() {
-    // this.getWarehouseList();
-    this.loadWarehouses();
+    this.getWarehouseList();
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
@@ -84,18 +82,22 @@ export class AddItemComponent implements OnInit {
   get departureDate() { return this.newItem.get('departureDate'); }
   get ultimateValue() { return this.newItem.get('ultimateValue'); }
 
-  loadWarehouses() {
-    return this.inventoryService.getWarehouses().subscribe((data: {}) => {
-      this.Warehouse = data;
-      console.log(data)
-      console.log(this.Warehouse)
-    })
+  //here
+  getWarehouseList() {
+    return this.inventoryService.getWarehouses().subscribe(
+      data => {
+        const { warehouses } = data;
+        this.warehouseList = warehouses;
+        console.log(warehouses);
+      }
+    )
   }
 
   getUnitList() {
     this.inventoryService.getUnits().subscribe(
       data => {
-        this.unitList = data;
+        const { units } = data;
+        this.unitList = units;
         console.log('unit: ' + data);
       },
       err => console.error(err),
@@ -106,7 +108,8 @@ export class AddItemComponent implements OnInit {
   getGroupList() {
     this.inventoryService.getGroups().subscribe(
       data => {
-        this.groupList = data;
+        const { groups } = data;
+        this.groupList = groups;
         console.log('group: ' + data);
       },
       err => console.error(err),
@@ -118,14 +121,15 @@ export class AddItemComponent implements OnInit {
   getLocationList() {
     this.inventoryService.getLocations().subscribe(
       data => {
-        this.locationList = data;
+        const { locations } = data;
+        this.locationList = locations;
         console.log('location: ' + data);
       },
       err => console.error(err),
       () => console.log('locations loaded')
     );
   }
-
+//here
 
   submitItem() {
     if (this.newItem.valid) {

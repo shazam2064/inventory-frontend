@@ -15,10 +15,12 @@ export class ItemListCartComponent implements OnInit {
   public itemList;
   public itemDetails;
   newItem: FormGroup;
+  newItems: string;
   public itemName;
   public itemQuantity;
   currentItem = null;
   currentIndex = -1;
+  Items = []
 
   constructor(private inventoryService: InventoryService, private router: Router) {
   }
@@ -88,6 +90,9 @@ export class ItemListCartComponent implements OnInit {
       this.itemName = sessionStorage.getItem('newItem');
       sessionStorage.setItem('newQuantity', this.quantity.value);
       this.itemQuantity = sessionStorage.getItem('newQuantity');
+      sessionStorage.setItem('Items', JSON.stringify( this.newItem.value));
+      this.newItems = sessionStorage.getItem('Items');
+
 
     } else {
       console.log("Please fill out the form before submitting >:( ");

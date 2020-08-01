@@ -36,6 +36,7 @@ import { AddMovementHeaderComponent } from './components/movement-header/add-mov
 import { MovementHeaderEditComponent } from './components/movement-header/movement-header-edit/movement-header-edit.component';
 import { ItemListCartComponent } from './components/item-list-cart/item-list-cart.component';
 import { ItemListCartDetailsComponent } from './components/item-list-cart/item-list-cart-details/item-list-cart-details.component';
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ItemListCartDetailsComponent } from './components/item-list-cart/item-l
     ReactiveFormsModule,
     FormsModule,
     IconsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [InventoryService],
   bootstrap: [AppComponent]

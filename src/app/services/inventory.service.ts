@@ -30,69 +30,64 @@ export class InventoryService {
 
   // Get all lists of warehouse, group, units, location, and movement types
 
-  getWarehouses(): Observable<Warehouse> {
-    return this.http.get<Warehouse>(this.apiURL + '/warehouses')
+  getWarehouses(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/warehouses')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getGroups(): Observable<Group> {
-    return this.http.get<Group>(this.apiURL + '/groups')
+  getGroups(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/groups')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getUnits(): Observable<Unit> {
-    return this.http.get<Unit>(this.apiURL + '/units')
+  getUnits(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/units')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getLocations(): Observable<Location> {
-    return this.http.get<Location>(this.apiURL + '/locations')
+  getLocations(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/locations')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getMovementTypes(): Observable<MovementType> {
-    return this.http.get<MovementType>(this.apiURL + '/movement-types')
+  getMovementTypes(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/movement-types')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-    getMovementHeaders(): Observable<MovementHeader> {
-    return this.http.get<MovementHeader>(this.apiURL + '/movement-headers')
+    getMovementHeaders(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/movement-headers')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getItems(): Observable<Item> {
-    return this.http.get<Item>(this.apiURL + '/items')
+  getItems(): Observable<any> {
+    return this.http.get<any>(this.apiURL + '/items')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  getItemsRequest(request): Observable<Item> {
-    const params = request
-    return this.http.get<Item>(this.apiURL + '/items', {params})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getItemsRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/items', {params});
   }
 
   // get stuff by id
