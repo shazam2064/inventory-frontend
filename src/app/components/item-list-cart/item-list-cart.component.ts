@@ -65,7 +65,8 @@ export class ItemListCartComponent implements OnInit {
   getItemList() {
     this.inventoryService.getItems().subscribe(
       data => {
-        this.itemList = data;
+        const { items } = data;
+        this.itemList = items;
         console.log('item: ' + data);
       },
       err => console.error(err),

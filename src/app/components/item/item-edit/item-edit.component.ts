@@ -106,19 +106,21 @@ export class ItemEditComponent implements OnInit {
   get ultimateValue() { return this.updatedItem.get('ultimateValue'); }
 
   getWarehouseList() {
-    this.inventoryService.getWarehouses().subscribe(
+    return this.inventoryService.getWarehouses().subscribe(
       data => {
-        this.warehouseList = data;
-      },
-      err => console.error(err),
-      () => console.log('warehouses loaded')
-    );
+        const { warehouses } = data;
+        this.warehouseList = warehouses;
+        console.log(warehouses);
+      }
+    )
   }
 
   getUnitList() {
     this.inventoryService.getUnits().subscribe(
       data => {
-        this.unitList = data;
+        const { units } = data;
+        this.unitList = units;
+        console.log('unit: ' + data);
       },
       err => console.error(err),
       () => console.log('units loaded')
@@ -128,7 +130,9 @@ export class ItemEditComponent implements OnInit {
   getGroupList() {
     this.inventoryService.getGroups().subscribe(
       data => {
-        this.groupList = data;
+        const { groups } = data;
+        this.groupList = groups;
+        console.log('group: ' + data);
       },
       err => console.error(err),
       () => console.log('groups loaded')
@@ -139,7 +143,9 @@ export class ItemEditComponent implements OnInit {
   getLocationList() {
     this.inventoryService.getLocations().subscribe(
       data => {
-        this.locationList = data;
+        const { locations } = data;
+        this.locationList = locations;
+        console.log('location: ' + data);
       },
       err => console.error(err),
       () => console.log('locations loaded')
