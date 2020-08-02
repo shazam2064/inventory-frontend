@@ -32,7 +32,8 @@ export class WarehouseComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getWarehouseList();
+    // this.getWarehouseList();
+    this.retrieveWarehouses();
   }
 
   getRequestParams(searchName, page, pageSize) {
@@ -57,7 +58,7 @@ export class WarehouseComponent implements OnInit {
   retrieveWarehouses() {
     const params = this.getRequestParams(this.name, this.page, this.pageSize);
 
-    this.inventoryService.getItemsRequest(params)
+    this.inventoryService.getWarehouseRequest(params)
       .subscribe(
         response => {
           const {warehouses, totalWarehouses} = response;

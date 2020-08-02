@@ -38,6 +38,10 @@ export class InventoryService {
       )
   }
 
+  getWarehouseRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/warehouses', {params});
+  }
+
   getGroups(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/groups')
       .pipe(
