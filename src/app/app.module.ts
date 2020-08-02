@@ -35,7 +35,6 @@ import { MovementHeaderComponent } from './components/movement-header/movement-h
 import { AddMovementHeaderComponent } from './components/movement-header/add-movement-header/add-movement-header.component';
 import { MovementHeaderEditComponent } from './components/movement-header/movement-header-edit/movement-header-edit.component';
 import { ItemListCartComponent } from './components/item-list-cart/item-list-cart.component';
-import { ItemListCartDetailsComponent } from './components/item-list-cart/item-list-cart-details/item-list-cart-details.component';
 import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
@@ -67,8 +66,7 @@ import { NgxPaginationModule } from "ngx-pagination";
     TestComponent,
     PaginationDirective,
     MovementHeaderComponent,
-    ItemListCartComponent,
-    ItemListCartDetailsComponent
+    ItemListCartComponent
   ],
   imports: [
     BrowserModule,

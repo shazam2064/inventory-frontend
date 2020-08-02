@@ -12,8 +12,8 @@
               <label>Items</label>
               <select class="custom-select" formControlName="name">
                 <option value="" disabled selected>Choose your option</option>
-                <option *ngFor="let item of itemList; let in = index" [class.active]="in == currentIndex"
-                        (click)="setActiveItem(item, in)">
+                <option *ngFor="let item of itemList; let indexvar = index" [class.active]="indexvar == currentIndex"
+                        (click)="setActiveItem(item, indexvar)">
                   {{item.name}}
                 </option>
               </select>

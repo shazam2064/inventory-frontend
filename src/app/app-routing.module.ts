@@ -26,8 +26,6 @@ import {MovementHeaderEditComponent} from './components/movement-header/movement
 import {MovementHeaderComponent} from './components/movement-header/movement-header.component';
 import {AddMovementHeaderComponent} from './components/movement-header/add-movement-header/add-movement-header.component';
 import {ItemListCartComponent} from './components/item-list-cart/item-list-cart.component';
-import { ItemListCartDetailsComponent } from "./components/item-list-cart/item-list-cart-details/item-list-cart-details.component";
-
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -55,9 +53,7 @@ const routes: Routes = [
   {path: 'item-edit/:id', component: ItemEditComponent, canActivate: [RouteGuardService]},
   {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]},
   {path: 'test', component: TestComponent, canActivate: [RouteGuardService]},
-  {path: 'itc', component: ItemListCartComponent, canActivate: [RouteGuardService], children: [
-      {path: ':id', component: ItemListCartDetailsComponent, canActivate: [RouteGuardService]}
-    ]}
+  {path: 'itc', component: ItemListCartComponent, canActivate: [RouteGuardService]}
   ];
 
 @NgModule({
