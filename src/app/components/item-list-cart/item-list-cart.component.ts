@@ -16,13 +16,14 @@ export class ItemListCartComponent implements OnInit {
   public itemDetails;
   newItem: FormGroup;
   newItems: string;
+  nameItem: '';
   public itemName;
   public itemQuantity;
   currentItem = null;
   currentIndex = -1;
   Items = []
 
-  constructor(private inventoryService: InventoryService, private router: Router) {
+  constructor(private inventoryService: InventoryService) {
   }
 
   ngOnInit() {
@@ -84,14 +85,18 @@ export class ItemListCartComponent implements OnInit {
     );
   }
 
+  showToConsole() {
+    console.log('This element was clicked');
+  }
+
   submitItem() {
     if (this.newItem.valid) {
       console.log("Your item has been created. Thank you!");
-      sessionStorage.setItem('newItem', this.name.value);
+      sessionStorage.setItem('ItemName', this.name.value);
       this.itemName = sessionStorage.getItem('newItem');
-      sessionStorage.setItem('newQuantity', this.quantity.value);
+      sessionStorage.setItem('Quantity', this.quantity.value);
       this.itemQuantity = sessionStorage.getItem('newQuantity');
-      sessionStorage.setItem('Items', JSON.stringify( this.newItem.value));
+      sessionStorage.setItem('ItemList', JSON.stringify( this.newItem.value));
       this.newItems = sessionStorage.getItem('Items');
 
 
