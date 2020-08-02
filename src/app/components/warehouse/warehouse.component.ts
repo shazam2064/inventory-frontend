@@ -58,7 +58,7 @@ export class WarehouseComponent implements OnInit {
   retrieveWarehouses() {
     const params = this.getRequestParams(this.name, this.page, this.pageSize);
 
-    this.inventoryService.getWarehouseRequest(params)
+    this.inventoryService.getWarehousesRequest(params)
       .subscribe(
         response => {
           const {warehouses, totalWarehouses} = response;

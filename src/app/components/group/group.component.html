@@ -4,9 +4,8 @@
     <div class="container">
       <br>
       <button
-        class="btn btn-primary "
         routerLink="/add-group"
-      >
+        class="btn btn-primary">
         Add a group.
       </button>
       <div class="container mt-lg-3">
@@ -21,7 +20,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let group of groupList | filter:term">
+          <tr *ngFor="let group of groupList | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                 let i = index"
+              [class.active]="i == currentIndex" (click)="setActiveItem(group, i)">
             <td>
               {{group.id}}
             </td>
@@ -36,10 +41,25 @@
           </tr>
           </tbody>
         </table>
+        <div class="col-md-12">
+          <div class="row">
+            <pagination-controls
+              previousLabel="Previous"
+              nextLabel="Next"
+              responsive="true"
+              (pageChange)="handlePageChange($event)"
+            ></pagination-controls>
+            <div class="col-6">
+              Items per Page:
+              <select (change)="handlePageSizeChange($event)">
+                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-

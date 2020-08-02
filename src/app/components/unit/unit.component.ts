@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {InventoryService} from '../../services/inventory.service';
 import {ActivatedRoute} from '@angular/router';
+import {InventoryService} from "../../services/inventory.service";
+
 
 @Component({
   selector: 'app-unit',
@@ -28,11 +29,11 @@ export class UnitComponent implements OnInit {
     this.currentIndex = index;
   }
 
-
   constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getUnitList();
+    // this.getUnitList();
+    this.retrieveUnits();
   }
 
   getRequestParams(searchName, page, pageSize) {
@@ -57,7 +58,7 @@ export class UnitComponent implements OnInit {
   retrieveUnits() {
     const params = this.getRequestParams(this.name, this.page, this.pageSize);
 
-    this.inventoryService.getItemsRequest(params)
+    this.inventoryService.getUnitsRequest(params)
       .subscribe(
         response => {
           const {units, totalUnits} = response;
@@ -82,6 +83,7 @@ export class UnitComponent implements OnInit {
     this.page = 1;
     this.retrieveUnits();
   }
+
 
   getUnitList() {
     this.inventoryService.getUnits().subscribe(

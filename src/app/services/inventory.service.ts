@@ -38,7 +38,7 @@ export class InventoryService {
       )
   }
 
-  getWarehouseRequest(params): Observable<any> {
+  getWarehousesRequest(params): Observable<any> {
     return this.http.get(this.apiURL + '/warehouses', {params});
   }
 
@@ -50,12 +50,20 @@ export class InventoryService {
       )
   }
 
+  getGroupsRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/groups', {params});
+  }
+
   getUnits(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/units')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
+  }
+
+  getUnitsRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/units', {params});
   }
 
   getLocations(): Observable<any> {
@@ -66,6 +74,10 @@ export class InventoryService {
       )
   }
 
+  getLocationsRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/locations', {params});
+  }
+
   getMovementTypes(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/movement-types')
       .pipe(
@@ -74,12 +86,20 @@ export class InventoryService {
       )
   }
 
+  getMovementTypesRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/movement-types', {params});
+  }
+
     getMovementHeaders(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/movement-headers')
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
+  }
+
+  getMovementHeadersRequest(params): Observable<any> {
+    return this.http.get(this.apiURL + '/movement-headers', {params});
   }
 
   getItems(): Observable<any> {

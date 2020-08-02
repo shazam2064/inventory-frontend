@@ -4,9 +4,8 @@
     <div class="container">
       <br>
       <button
-        class="btn btn-primary"
         routerLink="/add-unit"
-      >
+        class="btn btn-primary">
         Add a unit.
       </button>
       <div class="container mt-lg-3">
@@ -21,7 +20,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let unit of unitList | filter:term">
+          <tr *ngFor="let unit of unitList | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+                 let i = index"
+              [class.active]="i == currentIndex" (click)="setActiveItem(unit, i)">
             <td>
               {{unit.id}}
             </td>
@@ -36,11 +41,25 @@
           </tr>
           </tbody>
         </table>
+        <div class="col-md-12">
+          <div class="row">
+            <pagination-controls
+              previousLabel="Previous"
+              nextLabel="Next"
+              responsive="true"
+              (pageChange)="handlePageChange($event)"
+            ></pagination-controls>
+            <div class="col-6">
+              Items per Page:
+              <select (change)="handlePageSizeChange($event)">
+                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
