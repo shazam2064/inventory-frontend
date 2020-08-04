@@ -13,7 +13,7 @@
               <select class="custom-select dropdown" formControlName="name">
                 <option value="" disabled selected>Choose your option</option>
                 <option *ngFor="let item of itemList; let indexvar = index" type="button"
-                        [class.active]="indexvar == currentIndex" (click)="setActiveItem(item, indexvar)">
+                        [class.active]="indexvar == currentIndex" [ngValue]="item" (click)="setActiveItem(item, indexvar)">
                  {{item.name}}
                 </option>
               </select>

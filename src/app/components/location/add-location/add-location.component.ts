@@ -56,6 +56,7 @@ export class AddLocationComponent implements OnInit {
       this.router.navigate(['location']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

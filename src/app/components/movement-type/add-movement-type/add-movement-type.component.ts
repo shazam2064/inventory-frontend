@@ -42,6 +42,7 @@ export class AddMovementTypeComponent implements OnInit {
       this.router.navigate(['movement-type']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

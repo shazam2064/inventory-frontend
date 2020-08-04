@@ -80,6 +80,7 @@ export class UnitEditComponent implements OnInit {
       this.router.navigate(['unit']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

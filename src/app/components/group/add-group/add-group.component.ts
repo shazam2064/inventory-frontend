@@ -42,6 +42,7 @@ export class AddGroupComponent implements OnInit {
       this.router.navigate(['group']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

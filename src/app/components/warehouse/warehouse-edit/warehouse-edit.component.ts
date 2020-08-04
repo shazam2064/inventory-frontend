@@ -80,6 +80,7 @@ export class WarehouseEditComponent implements OnInit {
       this.router.navigate(['warehouse']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

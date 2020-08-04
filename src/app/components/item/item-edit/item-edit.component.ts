@@ -213,6 +213,7 @@ export class ItemEditComponent implements OnInit {
       this.router.navigate(['item']);
     } else {
       console.log('Please fill out the form before submitting >:( ');
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

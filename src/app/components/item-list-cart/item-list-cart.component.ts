@@ -102,6 +102,7 @@ export class ItemListCartComponent implements OnInit {
 
     } else {
       console.log("Please fill out the form before submitting >:( ");
+      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 
