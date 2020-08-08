@@ -92,7 +92,7 @@
   <div class="form-row">
     <div class="form-group col-lg-3">
         <select
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
           class="custom-select"
           formControlName="warehouse"
           (change)="changeWarehouse($event)"
@@ -103,7 +103,7 @@
           </option>
         </select>
         <div
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
           class="invalid-feedback">
           <sup>*</sup>Please choose a warehouse
         </div>
