@@ -230,6 +230,16 @@ export class TestComponent {
     }
   }
 
+  submitItem2() {
+    this.isSubmitted = true;
+    if (!this.newItem.valid) {
+      return false;
+    } else {
+      console.log("Your item has been created. Thank you!");
+      this.router.navigate(['item']);
+    }
+  }
+
 
 }
 

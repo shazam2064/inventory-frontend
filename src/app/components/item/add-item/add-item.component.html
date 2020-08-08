@@ -68,7 +68,7 @@
           class="form-control custom-select"
           formControlName="warehouse"
           (change)="changeWarehouse($event)"
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
           <option *ngFor="let m of warehouseList">
@@ -76,7 +76,7 @@
           </option>
         </select>
         <div
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
           class="invalid-feedback">
           <sup>*</sup>Please choose a warehouse
         </div>

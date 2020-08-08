@@ -171,7 +171,6 @@ export class AddItemComponent implements OnInit {
     );
   }
 
-//here
 
   // submitItem() {
   //   this.isSubmitted = true;
@@ -197,10 +196,7 @@ export class AddItemComponent implements OnInit {
   submitItem() {
     this.isSubmitted = true;
     if (!this.newItem.valid) {
-      console.log("Please fill out the form before submitting >:( ");
-      window.confirm('Please fill out the form before submitting >:( ');
       return false;
-
     } else {
       console.log("Your item has been created. Thank you!");
       this.inventoryService.createItem(this.newItem.value).subscribe(
