@@ -1,234 +1,95 @@
-<!--<div class="container">-->
-<!--  <div class="row custom-wrapper">-->
-<!--    <div class="col-md-12">-->
-<!--      &lt;!&ndash; Form starts &ndash;&gt;-->
-<!--      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">-->
-<!--        <div class="group-gap">-->
-<!--          <div class="d-block my-3">-->
-<!--            <div class="mb-3">-->
-<!--              <select-->
-<!--                [class.is-invalid]="isSubmitted && cityName.errors?.required"-->
-<!--                class="custom-select" (change)="changeCity($event)" formControlName="cityName">-->
-<!--                <option value="">Choose your city</option>-->
-<!--                <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>-->
-<!--              </select>-->
-<!--              &lt;!&ndash; error block &ndash;&gt;-->
-<!--              <div-->
-<!--                [class.is-invalid]="isSubmitted && cityName.errors?.required"-->
-<!--                class="invalid-feedback"-->
-<!--              >-->
-<!--                <sup>*</sup>Please enter your city name-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Submit Button &ndash;&gt;-->
-<!--        <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>-->
-<!--      </form>&lt;!&ndash; Form ends &ndash;&gt;-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-<h3 class="display-4 text-muted mb-4">Add a new Item</h3>
-<button class="btn btn-secondary mb-5" routerLink="/item">
-  <svg class="bi bi-arrow-left-circle" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
-       xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path fill-rule="evenodd"
-          d="M8.354 11.354a.5.5 0 0 0 0-.708L5.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z"/>
-    <path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
-  </svg>
-  Return to list
-</button>
-<form [formGroup]="newItem" (ngSubmit)="submitItem2()">
-  <div class="form-row">
-    <div class="form-group col-lg-3">
-      <label for="name"> Name</label>
-      <input
-        required
-        minlength="4"
-        class="form-control"
-        type="text"
-        id="name"
-        formControlName="name"
-        [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
-      >
-      <div *ngIf="(name.invalid && name.touched) || name.dirty">
-        <small *ngIf="name.errors?.required" class="text-danger">Name is required.</small>
-      </div>
-    </div>
-    <div class="form-group col-lg-3">
-      <label for="brand"> Brand</label>
-      <input
-        required
-        minlength="2"
-        class="form-control"
-        type="text"
-        id="brand"
-        formControlName="brand"
-        [class.is-invalid]="brand.invalid && (brand.dirty || brand.touched)"
-      >
-      <div *ngIf="(brand.invalid && brand.touched) || brand.dirty">
-        <small *ngIf="brand.errors?.required" class="text-danger">Brand is required.</small>
-      </div>
-    </div>
-    <div class="form-group col-lg-6">
-      <label for="description"> Description</label>
-      <textarea
-        required
-        minlength="10"
-        class="form-control"
-        id="description"
-        formControlName="description"
-        [class.is-invalid]="description.invalid && (description.dirty || description.touched)"
-      >
-      </textarea>
-      <div *ngIf="(description.invalid && description.touched) || description.dirty">
-        <small *ngIf="description.errors?.required" class="text-danger">Description is required.</small>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-lg-3">
-      <label>Warehouses
-        <select
-          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
-          class="custom-select"
-          formControlName="warehouse"
-          (change)="changeWarehouse($event)"
-        >
-          <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of warehouseList" [ngValue]="m">
-            {{m.name}}
-          </option>
-        </select>
-        <div
-          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
-          class="invalid-feedback">
-          <sup>*</sup>Please choose a warehouse
+<div class="container">
+  <form
+    [formGroup]="myform">
+    <fieldset formGroupName="name">
+      <div class="form-group"
+           [ngClass]="{
+        'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+        'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+      }">
+        <label>First Name</label>
+        <input type="text"
+               class="form-control"
+               formControlName="firstName"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+          <p *ngIf="firstName.errors.required">First Name is required</p>
         </div>
-      </label>
 
+<!--          <pre>Valid? {{ myform.controls.name.controls.firstName.valid }}</pre>-->
+<!--          <pre>Dirty? {{ myform.controls.name.controls.firstName.dirty }}</pre>-->
+
+      </div>
+      <div class="form-group"
+           [ngClass]="{
+        'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+        'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+      }">
+        <label>Last Name</label>
+        <input type="text"
+               class="form-control"
+               formControlName="lastName"
+               required>
+        <div class="form-control-feedback"
+             *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+          <p *ngIf="lastName.errors.required">Last Name is required</p>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': email.invalid && (email.dirty || email.touched),
+        'has-success': email.valid && (email.dirty || email.touched)
+   }">
+      <label>Email</label>
+      <input type="email"
+             class="form-control"
+             formControlName="email"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required</p>
+        <p *ngIf="password.errors.pattern">The email address must contain at least the @ character</p>
+      </div>
+      <!--
+        <pre>Valid? {{ myform.controls.email.valid }}</pre>
+        <pre>Dirty? {{ myform.controls.email.dirty }}</pre>
+      -->
     </div>
-    <div class="form-group col-lg-3">
-      <label>Groups
-        <select class="custom-select" formControlName="group">
-          <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of groupList">
-            {{m.name}}
-          </option>
-        </select>
-      </label>
-    </div>
-    <div class="form-group col-lg-3">
-      <label>Units
-        <select class="custom-select" formControlName="unit">
-          <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of unitList">
-            {{m.name}}
-          </option>
-        </select>
-      </label>
-    </div>
-    <div class="form-group col-lg-3">
-      <label>Locations
-        <select class="custom-select" formControlName="location">
-          <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of locationList">
-            {{m.aisle}}  {{m.rack}} {{m.shelf}}
-          </option>
-        </select>
-      </label>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-lg-3">
-      <label for="min"> Min</label>
-      <input
-        required
-        class="form-control"
-        type="number"
-        id="min"
-        formControlName="min"
-        [class.is-invalid]="minV.invalid && (minV.dirty || minV.touched)"
-      >
-      <div *ngIf="(minV.invalid && minV.touched) || minV.dirty">
-        <small *ngIf="minV.errors?.required" class="text-danger">Min is required.</small>
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': password.invalid && (password.dirty || password.touched),
+        'has-success': password.valid && (password.dirty || password.touched)
+   }">
+      <label>Password</label>
+      <input type="password"
+             class="form-control"
+             formControlName="password"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="password.errors && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required">Password is required</p>
+        <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
       </div>
     </div>
-    <div class="form-group col-lg-3">
-      <label for="max"> Max</label>
-      <input
-        required
-        class="form-control"
-        type="number"
-        id="max"
-        formControlName="max"
-        [class.is-invalid]="maxV.invalid && (maxV.dirty || maxV.touched)"
-      >
-      <div *ngIf="(maxV.invalid && maxV.touched) || maxV.dirty">
-        <small *ngIf="maxV.errors?.required" class="text-danger">Max is required.</small>
-      </div>
+    <!--
+      <pre>{{ password.errors | json }}</pre>
+    -->
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': language.invalid && (language.dirty || language.touched),
+        'has-success': language.valid && (language.dirty || language.touched)
+      }">
+      <label>Language</label>
+      <select class="form-control"
+              formControlName="language">
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of langs"
+                [value]="lang">{{lang}}
+        </option>
+      </select>
     </div>
-    <div class="form-group col-lg-3">
-      <label for="reorderPoint"> Reorder Point</label>
-      <input
-        required
-        class="form-control"
-        type="number"
-        id="reorderPoint"
-        formControlName="reorderPoint"
-        [class.is-invalid]="reorderPoint.invalid && (reorderPoint.dirty || reorderPoint.touched)"
-      >
-      <div *ngIf="(reorderPoint.invalid && reorderPoint.touched) || reorderPoint.dirty">
-        <small *ngIf="reorderPoint.errors?.required" class="text-danger">Reorder Point is required.</small>
-      </div>
-    </div>
-    <div class="form-group col-lg-3">
-      <label for="ultimateValue"> Ultimate Value</label>
-      <input
-        required
-        class="form-control"
-        type="text"
-        id="ultimateValue"
-        formControlName="ultimateValue"
-        [class.is-invalid]="ultimateValue.invalid && (ultimateValue.dirty || ultimateValue.touched)"
-      >
-      <div *ngIf="(ultimateValue.invalid && ultimateValue.touched) || ultimateValue.dirty">
-        <small *ngIf="ultimateValue.errors?.required" class="text-danger">Ultimate Value is required.</small>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-lg-4">
-      <label for="entryDate"> Entry Date</label>
-      <input
-        required
-        class="form-control"
-        type="date"
-        id="entryDate"
-        formControlName="entryDate"
-        [class.is-invalid]="entryDate.invalid && (entryDate.dirty || entryDate.touched)"
-      >
-      <div *ngIf="(entryDate.invalid && entryDate.touched) || entryDate.dirty">
-        <small *ngIf="entryDate.errors?.required" class="text-danger">Entry Date is required.</small>
-      </div>
-    </div>
-    <div class="form-group col-lg-4">
-      <label for="departureDate"> Departure Date</label>
-      <input
-        required
-        class="form-control"
-        type="date"
-        id="departureDate"
-        formControlName="departureDate"
-        [class.is-invalid]="departureDate.invalid && (departureDate.dirty || departureDate.touched)"
-      >
-      <div *ngIf="(departureDate.invalid && departureDate.touched) || departureDate.dirty">
-        <small *ngIf="departureDate.errors?.required" class="text-danger">Departure Date is required.</small>
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Add Item</button>
-</form>
+    <pre>{{myform.value | json}}</pre>
+  </form>
+</div>
