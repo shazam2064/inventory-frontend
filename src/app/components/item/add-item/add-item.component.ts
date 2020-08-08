@@ -128,6 +128,27 @@ export class AddItemComponent implements OnInit {
     })
   }
 
+  changeUnit(e) {
+    console.log(e.value)
+    this.unit.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeLocation(e) {
+    console.log(e.value)
+    this.location.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeGroup(e) {
+    console.log(e.value)
+    this.group.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
   getWarehouseList() {
     return this.inventoryService.getWarehouses().subscribe(
       data => {

@@ -105,20 +105,20 @@ export class ItemEditComponent implements OnInit {
     return this.updatedItem.get('brand');
   }
 
-  get warehouses() {
-    return this.updatedItem.get('warehouses');
+  get warehouse() {
+    return this.updatedItem.get('warehouse');
   }
 
-  get groups() {
-    return this.updatedItem.get('groups');
+  get group() {
+    return this.updatedItem.get('group');
   }
 
-  get units() {
-    return this.updatedItem.get('units');
+  get unit() {
+    return this.updatedItem.get('unit');
   }
 
-  get locations() {
-    return this.updatedItem.get('locations');
+  get location() {
+    return this.updatedItem.get('location');
   }
 
   get minV() {
@@ -200,11 +200,31 @@ export class ItemEditComponent implements OnInit {
 
   changeWarehouse(e) {
     console.log(e.value)
-    this.warehouses.setValue(e.target.value, {
+    this.warehouse.setValue(e.target.value, {
       onlySelf: true
     })
   }
 
+  changeUnit(e) {
+    console.log(e.value)
+    this.unit.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeLocation(e) {
+    console.log(e.value)
+    this.location.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  changeGroup(e) {
+    console.log(e.value)
+    this.group.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
   deleteItem(id: string) {
     this.inventoryService.deleteItem(id).subscribe(
       data => {
@@ -216,27 +236,6 @@ export class ItemEditComponent implements OnInit {
     this.router.navigate(['item']);
   }
 
-  // updateItem(id: string) {
-  //   this.isSubmitted = true;
-  //   if (this.updatedItem.valid) {
-  //     console.log('Your item has been updated. Thank you!');
-  //     this.inventoryService.updateItem(id, this.updatedItem.value).subscribe(
-  //       data => {
-  //         this.updatedItem.reset();
-  //         return true;
-  //       },
-  //       error => {
-  //         return throwError(error);
-  //       }
-  //     );
-  //     this.router.navigate(['item']);
-  //   } else {
-  //     console.log('Please fill out the form before submitting >:( ');
-  //     window.confirm('Please fill out the form before submitting >:( ');
-  //     return false;
-  //   }
-  //
-  // }
 
   updateItem(id: string) {
     this.isSubmitted = true;
