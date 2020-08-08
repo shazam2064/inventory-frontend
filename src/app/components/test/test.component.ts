@@ -61,7 +61,7 @@ import { throwError } from "rxjs";
 })
 export class TestComponent {
 
-  newItem;
+  newItem: FormGroup;
   public warehouseList;
   public unitList;
   public groupList;
@@ -76,20 +76,46 @@ export class TestComponent {
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
-    this.newItem = this.fb.group({
-      name: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      brand: ['', [Validators.required]],
-      unit: ['', [Validators.required]],
-      group: ['', [Validators.required]],
-      location: ['', [Validators.required]],
-      warehouse: ['', [Validators.required]],
-      min: ['', [Validators.required]],
-      max: ['', [Validators.required]],
-      reorderPoint: ['', [Validators.required]],
-      entryDate: ['', [Validators.required]],
-      departureDate: ['', [Validators.required]],
-      ultimateValue: ['', [Validators.required]]
+    this.newItem = new FormGroup({
+      'name': new FormControl('',
+        [Validators.required, Validators.minLength(4)]
+      ),
+      'description': new FormControl('',
+        [Validators.required, Validators.minLength(10)]
+      ),
+      'brand': new FormControl('',
+        [Validators.required, Validators.minLength(2)]
+      ),
+      'unit': new FormControl('',
+        [Validators.required]
+      ),
+      'group': new FormControl('',
+        [Validators.required]
+      ),
+      'location': new FormControl('',
+        [Validators.required]
+      ),
+      'warehouse': new FormControl('',
+        [Validators.required]
+      ),
+      'min': new FormControl('',
+        [Validators.required]
+      ),
+      'max': new FormControl('',
+        [Validators.required]
+      ),
+      'reorderPoint': new FormControl('',
+        [Validators.required]
+      ),
+      'entryDate': new FormControl('',
+        [Validators.required]
+      ),
+      'departureDate': new FormControl('',
+        [Validators.required]
+      ),
+      'ultimateValue': new FormControl('',
+        [Validators.required]
+      )
     });
   }
 
