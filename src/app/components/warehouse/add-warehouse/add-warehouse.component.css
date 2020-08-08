@@ -22,3 +22,10 @@ td {
   max-width: 500px;
   width: 100%;
 }
+
+/* invalid*/
+.form-control.ng-touched.ng-invalid{border:2px solid red;}
+
+/*valid*/
+.form-control.ng-touched.ng-valid{border:2px solid green;}
+
