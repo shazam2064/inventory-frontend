@@ -71,7 +71,7 @@
           class="form-control custom-select"
           formControlName="warehouse"
           (change)="changeWarehouse($event)"
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
           <option *ngFor="let m of warehouseList">
@@ -79,9 +79,9 @@
           </option>
         </select>
         <div
-          [class.is-invalid]="isSubmitted && warehouses.errors?.required"
+          [class.is-invalid]="isSubmitted && warehouse.errors?.required"
           class="invalid-feedback">
-          <sup>*</sup>Please choose a warehouse
+          Please choose a warehouse
         </div>
       </label>
     </div>
@@ -90,33 +90,59 @@
         <select
           class="form-control custom-select"
           formControlName="group"
-          [class.is-invalid]="groups.invalid && (groups.dirty || warehouses.touched)"
+          (change)="changeGroup($event)"
+          [class.is-invalid]="isSubmitted && group.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
           <option *ngFor="let m of groupList">
             {{m.name}}
           </option>
         </select>
+        <div
+          [class.is-invalid]="isSubmitted && group.errors?.required"
+          class="invalid-feedback">
+          Please choose a group
+        </div>
       </label>
     </div>
     <div class="form-group col-lg-3">
       <label>Units
-        <select class="form-control custom-select" formControlName="unit">
+        <select
+          class="form-control custom-select"
+          formControlName="unit"
+          (change)="changeUnit($event)"
+          [class.is-invalid]="isSubmitted && unit.errors?.required"
+        >
           <option value="" disabled selected>Choose your option</option>
           <option *ngFor="let m of unitList">
             {{m.name}}
           </option>
         </select>
+        <div
+          [class.is-invalid]="isSubmitted && unit.errors?.required"
+          class="invalid-feedback">
+          Please choose a unit
+        </div>
       </label>
     </div>
     <div class="form-group col-lg-3">
       <label>Locations
-        <select class="form-control custom-select" formControlName="location">
+        <select
+          class="form-control custom-select"
+          formControlName="location"
+          (change)="changeLocation($event)"
+          [class.is-invalid]="isSubmitted && location.errors?.required"
+        >
           <option value="" disabled selected>Choose your option</option>
           <option *ngFor="let m of locationList">
-            {{m.aisle}}  {{m.rack}} {{m.shelf}}
+            {{m.aisle}} {{m.rack}} {{m.shelf}}
           </option>
         </select>
+        <div
+          [class.is-invalid]="isSubmitted && location.errors?.required"
+          class="invalid-feedback">
+          Please choose a location
+        </div>
       </label>
     </div>
   </div>
