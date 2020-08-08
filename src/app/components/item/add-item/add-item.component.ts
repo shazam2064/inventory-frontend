@@ -1,10 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {InventoryService} from '../../../services/inventory.service';
-import {Router} from '@angular/router';
-import {throwError} from 'rxjs';
-import {Item} from "../../../models/item.model";
+import { InventoryService } from '../../../services/inventory.service';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-add-item',
@@ -18,77 +16,123 @@ export class AddItemComponent implements OnInit {
   public unitList;
   public groupList;
   public locationList;
+  isSubmitted = false;
 
-  constructor(private inventoryService: InventoryService, private router: Router, private fb: FormBuilder) {}
+  constructor(private inventoryService: InventoryService, private router: Router, private fb: FormBuilder) {
+  }
 
   ngOnInit() {
     this.getWarehouseList();
     this.getUnitList();
     this.getGroupList();
     this.getLocationList();
-    this.newItem = new  FormGroup({
-      'name':  new FormControl('',
-        [ Validators.required, Validators.minLength(4)]
+    this.newItem = new FormGroup({
+      'name': new FormControl('',
+        [Validators.required, Validators.minLength(4)]
       ),
-      'description':   new FormControl('',
-        [ Validators.required, Validators.minLength(10)]
+      'description': new FormControl('',
+        [Validators.required, Validators.minLength(10)]
       ),
-      'brand':   new FormControl('',
-        [ Validators.required, Validators.minLength(2)]
+      'brand': new FormControl('',
+        [Validators.required, Validators.minLength(2)]
       ),
-      'unit':   new FormControl('',
-        [ Validators.required]
+      'unit': new FormControl('',
+        [Validators.required]
       ),
-      'group':   new FormControl('',
-        [ Validators.required]
+      'group': new FormControl('',
+        [Validators.required]
       ),
-      'location':   new FormControl('',
-        [ Validators.required]
+      'location': new FormControl('',
+        [Validators.required]
       ),
-      'warehouse':   new FormControl('',
-        [ Validators.required]
+      'warehouse': new FormControl('',
+        [Validators.required]
       ),
-      'min':   new FormControl('',
-        [ Validators.required]
+      'min': new FormControl('',
+        [Validators.required]
       ),
-      'max':   new FormControl('',
-        [ Validators.required]
+      'max': new FormControl('',
+        [Validators.required]
       ),
-      'reorderPoint':   new FormControl('',
-        [ Validators.required]
+      'reorderPoint': new FormControl('',
+        [Validators.required]
       ),
-      'entryDate':   new FormControl('',
-        [ Validators.required]
+      'entryDate': new FormControl('',
+        [Validators.required]
       ),
-      'departureDate':   new FormControl('',
-        [ Validators.required]
+      'departureDate': new FormControl('',
+        [Validators.required]
       ),
-      'ultimateValue':   new FormControl('',
-        [ Validators.required]
+      'ultimateValue': new FormControl('',
+        [Validators.required]
       )
     });
   }
-  get name() { return this.newItem.get('name'); }
-  get description() { return this.newItem.get('description'); }
-  get brand() { return this.newItem.get('brand'); }
-  get warehouses() { return this.newItem.get('warehouses'); }
-  get groups() { return this.newItem.get('groups'); }
-  get units() { return this.newItem.get('units'); }
-  get locations() { return this.newItem.get('locations'); }
-  get minV() { return this.newItem.get('min'); }
-  get maxV() { return this.newItem.get('max'); }
-  get reorderPoint() { return this.newItem.get('reorderPoint'); }
-  get entryDate() { return this.newItem.get('entryDate'); }
-  get departureDate() { return this.newItem.get('departureDate'); }
-  get ultimateValue() { return this.newItem.get('ultimateValue'); }
 
-  //here
+  get name() {
+    return this.newItem.get('name');
+  }
+
+  get description() {
+    return this.newItem.get('description');
+  }
+
+  get brand() {
+    return this.newItem.get('brand');
+  }
+
+  get warehouse() {
+    return this.newItem.get('warehouse');
+  }
+
+  get group() {
+    return this.newItem.get('group');
+  }
+
+  get unit() {
+    return this.newItem.get('unit');
+  }
+
+  get location() {
+    return this.newItem.get('location');
+  }
+
+  get minV() {
+    return this.newItem.get('min');
+  }
+
+  get maxV() {
+    return this.newItem.get('max');
+  }
+
+  get reorderPoint() {
+    return this.newItem.get('reorderPoint');
+  }
+
+  get entryDate() {
+    return this.newItem.get('entryDate');
+  }
+
+  get departureDate() {
+    return this.newItem.get('departureDate');
+  }
+
+  get ultimateValue() {
+    return this.newItem.get('ultimateValue');
+  }
+
+  changeWarehouse(e) {
+    console.log(e.value)
+    this.warehouse.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
   getWarehouseList() {
     return this.inventoryService.getWarehouses().subscribe(
       data => {
-        const { warehouses } = data;
-        this.warehouseList = warehouses;
-        console.log(warehouses);
+        this.warehouseList = data;
+        console.log(data);
       }
     )
   }
@@ -96,8 +140,7 @@ export class AddItemComponent implements OnInit {
   getUnitList() {
     this.inventoryService.getUnits().subscribe(
       data => {
-        const { units } = data;
-        this.unitList = units;
+        this.unitList = data;
         console.log('unit: ' + data);
       },
       err => console.error(err),
@@ -108,8 +151,7 @@ export class AddItemComponent implements OnInit {
   getGroupList() {
     this.inventoryService.getGroups().subscribe(
       data => {
-        const { groups } = data;
-        this.groupList = groups;
+        this.groupList = data;
         console.log('group: ' + data);
       },
       err => console.error(err),
@@ -121,18 +163,45 @@ export class AddItemComponent implements OnInit {
   getLocationList() {
     this.inventoryService.getLocations().subscribe(
       data => {
-        const { locations } = data;
-        this.locationList = locations;
+        this.locationList = data;
         console.log('location: ' + data);
       },
       err => console.error(err),
       () => console.log('locations loaded')
     );
   }
+
 //here
 
+  // submitItem() {
+  //   this.isSubmitted = true;
+  //   if (this.newItem.valid) {
+  //     console.log("Your item has been created. Thank you!");
+  //     this.inventoryService.createItem(this.newItem.value).subscribe(
+  //       data => {
+  //         this.newItem.reset();
+  //         console.log("Check here " + this.newItem);
+  //         return true;
+  //       },
+  //       error => {
+  //         return throwError(error);
+  //       }
+  //     );
+  //     this.router.navigate(['item']);
+  //   } else {
+  //     console.log("Please fill out the form before submitting >:( ");
+  //     window.confirm('Please fill out the form before submitting >:( ');
+  //   }
+  // }
+
   submitItem() {
-    if (this.newItem.valid) {
+    this.isSubmitted = true;
+    if (!this.newItem.valid) {
+      console.log("Please fill out the form before submitting >:( ");
+      window.confirm('Please fill out the form before submitting >:( ');
+      return false;
+
+    } else {
       console.log("Your item has been created. Thank you!");
       this.inventoryService.createItem(this.newItem.value).subscribe(
         data => {
@@ -145,9 +214,6 @@ export class AddItemComponent implements OnInit {
         }
       );
       this.router.navigate(['item']);
-    } else {
-      console.log("Please fill out the form before submitting >:( ");
-      window.confirm('Please fill out the form before submitting >:( ');
     }
   }
 

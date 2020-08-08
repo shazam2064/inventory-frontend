@@ -88,8 +88,7 @@ export class MovementTypeComponent implements OnInit {
   getMovementTypeList() {
     this.inventoryService.getMovementTypes().subscribe(
       data => {
-        const { movementTypes } = data;
-        this.movementTypeList = movementTypes;
+        this.movementTypeList = data;
       },
       err => console.error(err),
       () => console.log('movement types loaded')

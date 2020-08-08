@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from '../../services/inventory.service';
 import { ActivatedRoute } from '@angular/router';
+import { InventoryService } from "../../services/inventory.service";
 import { Item } from "../../models/item.model";
+
 
 @Component({
   selector: 'app-item',
@@ -11,27 +12,27 @@ import { Item } from "../../models/item.model";
 export class ItemComponent implements OnInit {
 
   public itemList;
-  public itemAutomatically;
   term: string;
-  totalElements: number = 0;
+  public itemAutomatically;
   currentItem = null;
   currentIndex = -1;
-  //here
   name = '';
 
   page = 1;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
-//here
 
-  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
+  setActiveItem(item, index) {
+    this.currentItem = item;
+    this.currentIndex = index;
+  }
+
+  constructor(private inventoryService: InventoryService) {
   }
 
   ngOnInit() {
     this.retrieveItems();
-    // this.getItemList();
-    // this.loadItems({page: "4", size: "2"});
     this.getItemAutomatically();
     this.itemAutomatically = new Item(
       '',
@@ -50,7 +51,7 @@ export class ItemComponent implements OnInit {
       4
     );
   }
-//here
+
   getRequestParams(searchName, page, pageSize) {
     // tslint:disable-next-line:prefer-const
     let params = {};
@@ -98,22 +99,6 @@ export class ItemComponent implements OnInit {
     this.page = 1;
     this.retrieveItems();
   }
-//here
-
-  setActiveItem(item, index) {
-    this.currentItem = item;
-    this.currentIndex = index;
-  }
-
-  getItemList() {
-    this.inventoryService.getItems().subscribe(
-      data => {
-        this.itemList = data;
-      },
-      err => console.error(err),
-      () => console.log('items loaded')
-    );
-  }
 
   getItemAutomatically() {
     this.inventoryService.getItemAuto().subscribe(
@@ -125,14 +110,4 @@ export class ItemComponent implements OnInit {
     );
   }
 
-  loadItems(request) {
-    this.inventoryService.getItemsRequest(request)
-      .subscribe(data => {
-        this.itemList = data;
-        this.totalElements = data['totalElements'];
-      }, error => {
-        console.error(error);
-      })
-
-  }
 }

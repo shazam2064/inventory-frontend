@@ -88,8 +88,7 @@ export class GroupComponent implements OnInit {
   getGroupList() {
     this.inventoryService.getGroups().subscribe(
       data => {
-        const { groups } = data;
-        this.groupList = groups;
+        this.groupList = data;
       },
       err => console.error(err),
       () => console.log('groups loaded')

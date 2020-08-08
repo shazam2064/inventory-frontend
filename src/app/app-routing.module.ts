@@ -22,9 +22,6 @@ import { AddItemComponent } from './components/item/add-item/add-item.component'
 import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
 import { RouteGuardService } from "./services/route-guard.service";
 import { TestComponent } from "./components/test/test.component";
-import {MovementHeaderEditComponent} from './components/movement-header/movement-header-edit/movement-header-edit.component';
-import {MovementHeaderComponent} from './components/movement-header/movement-header.component';
-import {AddMovementHeaderComponent} from './components/movement-header/add-movement-header/add-movement-header.component';
 import {ItemListCartComponent} from './components/item-list-cart/item-list-cart.component';
 
 const routes: Routes = [
@@ -46,9 +43,6 @@ const routes: Routes = [
   {path: 'movement-type', component: MovementTypeComponent, canActivate: [RouteGuardService]},
   {path: 'add-movement-type', component: AddMovementTypeComponent, canActivate: [RouteGuardService]},
   {path: 'edit-movement-type/:id', component: MovementTypeEditComponent, canActivate: [RouteGuardService]},
-  {path: 'movement-header', component: MovementHeaderComponent, canActivate: [RouteGuardService]},
-  {path: 'add-movement-header', component: AddMovementHeaderComponent, canActivate: [RouteGuardService]},
-  {path: 'edit-movement-header/:id', component: MovementHeaderEditComponent, canActivate: [RouteGuardService]},
   {path: 'item', component: ItemComponent, canActivate: [RouteGuardService]},
   {path: 'item-edit/:id', component: ItemEditComponent, canActivate: [RouteGuardService]},
   {path: 'add-item', component: AddItemComponent, canActivate: [RouteGuardService]},

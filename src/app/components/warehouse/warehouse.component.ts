@@ -88,8 +88,7 @@ export class WarehouseComponent implements OnInit {
   getWarehouseList() {
     this.inventoryService.getWarehouses().subscribe(
       data => {
-        const { warehouses } = data;
-        this.warehouseList = warehouses;
+        this.warehouseList = data;
       },
       err => console.error(err),
       () => console.log('warehouses loaded')

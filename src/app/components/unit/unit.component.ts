@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {InventoryService} from "../../services/inventory.service";
+import { ActivatedRoute } from '@angular/router';
+import { InventoryService } from "../../services/inventory.service";
 
 
 @Component({
@@ -22,6 +22,7 @@ export class UnitComponent implements OnInit {
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
+
 //here
 
   setActiveItem(item, index) {
@@ -29,10 +30,10 @@ export class UnitComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) { }
+  constructor(private inventoryService: InventoryService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    // this.getUnitList();
     this.retrieveUnits();
   }
 
@@ -82,18 +83,6 @@ export class UnitComponent implements OnInit {
     this.pageSize = event.target.value;
     this.page = 1;
     this.retrieveUnits();
-  }
-
-
-  getUnitList() {
-    this.inventoryService.getUnits().subscribe(
-      data => {
-        const { units } = data;
-        this.unitList = units;
-      },
-      err => console.error(err),
-      () => console.log('units loaded')
-    );
   }
 
 }
