@@ -1,9 +1,31 @@
-<form [formGroup]="myForm">
-  <div class="form-group">
-    <label for="name">first Name: </label>
-    <input type="text" class="form-control" formControlName="firstName" id="name">
-    <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
-      <div *ngIf="firstName.errors.required">filling name is required!</div>
-    </div>
-  </div>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  Email:
+  <input formControlName="email">
+  <span *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required">
+    Email is required.
+  </span>
+  <span *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.invalidEmail">
+    Value has to be a valid email address.
+  </span>
+  <br />
+
+  Mobile:
+  <input formControlName="mobile">
+  <span *ngIf="(mobile.dirty || mobile.touched) && mobile.invalid && mobile.errors.required">
+    Mobile is required.
+  </span>
+  <span *ngIf="(mobile.dirty || mobile.touched) && mobile.invalid && mobile.errors.invalidNumber">
+    Value has to be a number.
+  </span>
+  <br />
+
+  Country:
+  <select formControlName="country">
+    <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+  </select>
+  <br />
+
+  <button type="submit" [disabled]="!contactForm.valid">Save</button>
+  <button type="reset" (click)="revert()">Revert</button>
 </form>

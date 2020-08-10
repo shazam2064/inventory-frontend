@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
@@ -6,16 +6,40 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']
 })
-export class TestComponent  {
-  myForm = new FormGroup({
-    'firstName':new FormControl('',Validators.required)
+export class TestComponent implements OnInit{
+  countries = ['', 'USA', 'Germany', 'Italy', 'France'];
 
-  })
-  //getter method
-  get firstName(){
-     return this.myForm.get('firstName');
+  contactForm: FormGroup;
+
+  constructor() {
+    this.contactForm = this.createFormGroup();
   }
 
+  ngOnInit() {}
+
+  createFormGroup() {
+    return new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      mobile: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required])
+    });
+  }
+
+  revert() {
+    this.contactForm.reset();
+  }
+
+  onSubmit() {
+    // ...
+  }
+
+  get mobile() {
+    return this.contactForm.get('mobile');
+  }
+
+  get email() {
+    return this.contactForm.get('email');
+  }
 }
 
 
