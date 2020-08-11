@@ -12,7 +12,7 @@ export class LoginService {
   }
 
   authenticate(username, password) {
-    if (username === "Gabriel" && password === '123') {
+    if (username === "Gabriel" && password === '321') {
       sessionStorage.setItem('authenticateUser', username);
       return true;
     }
