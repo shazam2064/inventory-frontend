@@ -67,11 +67,10 @@
         <select
           class="form-control custom-select"
           formControlName="warehouse"
-          (change)="changeWarehouse($event)"
           [class.is-invalid]="isSubmitted && warehouse.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of warehouseList">
+          <option *ngFor="let m of warehouseList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -87,11 +86,10 @@
         <select
           class="form-control custom-select"
           formControlName="group"
-          (change)="changeGroup($event)"
           [class.is-invalid]="isSubmitted && group.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of groupList">
+          <option *ngFor="let m of groupList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -107,11 +105,10 @@
         <select
           class="form-control custom-select"
           formControlName="unit"
-          (change)="changeUnit($event)"
           [class.is-invalid]="isSubmitted && unit.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of unitList">
+          <option *ngFor="let m of unitList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -127,11 +124,10 @@
           <select
             class="form-control custom-select"
             formControlName="location"
-            (change)="changeLocation($event)"
             [class.is-invalid]="isSubmitted && location.errors?.required"
           >
             <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let m of locationList">
+            <option *ngFor="let m of locationList" [ngValue]="m.id">
               {{m.aisle}} {{m.rack}} {{m.shelf}}
             </option>
           </select>

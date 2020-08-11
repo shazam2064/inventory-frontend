@@ -70,11 +70,11 @@
         <select
           class="form-control custom-select"
           formControlName="warehouse"
-          (change)="changeWarehouse($event)"
+          [(ngModel)]="itemDetails.warehouse"
           [class.is-invalid]="isSubmitted && warehouse.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of warehouseList">
+          <option *ngFor="let m of warehouseList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -90,11 +90,11 @@
         <select
           class="form-control custom-select"
           formControlName="group"
-          (change)="changeGroup($event)"
+          [(ngModel)]="itemDetails.group"
           [class.is-invalid]="isSubmitted && group.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of groupList">
+          <option *ngFor="let m of groupList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -110,11 +110,11 @@
         <select
           class="form-control custom-select"
           formControlName="unit"
-          (change)="changeUnit($event)"
+          [(ngModel)]="itemDetails.unit"
           [class.is-invalid]="isSubmitted && unit.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of unitList">
+          <option *ngFor="let m of unitList" [ngValue]="m.id">
             {{m.name}}
           </option>
         </select>
@@ -130,11 +130,11 @@
         <select
           class="form-control custom-select"
           formControlName="location"
-          (change)="changeLocation($event)"
+          [(ngModel)]="itemDetails.location"
           [class.is-invalid]="isSubmitted && location.errors?.required"
         >
           <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let m of locationList">
+          <option *ngFor="let m of locationList" [ngValue]="m.id">
             {{m.aisle}} {{m.rack}} {{m.shelf}}
           </option>
         </select>

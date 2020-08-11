@@ -162,7 +162,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getUnits().subscribe(
       data => {
         this.unitList = data;
-        console.log('unit: ' + data);
+        console.log(data);
       },
       err => console.error(err),
       () => console.log('units loaded')
@@ -173,7 +173,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getGroups().subscribe(
       data => {
         this.groupList = data;
-        console.log('group: ' + data);
+        console.log(data);
       },
       err => console.error(err),
       () => console.log('groups loaded')
@@ -185,7 +185,7 @@ export class AddItemComponent implements OnInit {
     this.inventoryService.getLocations().subscribe(
       data => {
         this.locationList = data;
-        console.log('location: ' + data);
+        console.log(data);
       },
       err => console.error(err),
       () => console.log('locations loaded')
@@ -222,8 +222,8 @@ export class AddItemComponent implements OnInit {
       console.log("Your item has been created. Thank you!");
       this.inventoryService.createItem(this.newItem.value).subscribe(
         data => {
+          console.log("Check here " + JSON.stringify(this.newItem.value));
           this.newItem.reset();
-          console.log("Check here " + this.newItem);
           return true;
         },
         error => {
