@@ -10,10 +10,10 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label>Items</label>
-              <select class="custom-select dropdown" formControlName="name">
+              <select class="custom-select " formControlName="name">
                 <option value="" disabled selected>Choose your option</option>
                 <option *ngFor="let item of itemList; let indexvar = index" type="button"
-                        [class.active]="indexvar == currentIndex" [ngValue]="item" (click)="setActiveItem(item, indexvar)">
+                        [class.active]="indexvar == currentIndex" [ngValue]="item.name" (click)="setActiveItem(item, indexvar)">
                  {{item.name}}
                 </option>
               </select>
@@ -24,9 +24,9 @@
 <!--                  Select an item from the list.-->
 <!--                </button>-->
 <!--                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-<!--                  <a class="dropdown-item" *ngFor="let item of itemList; let indexvar = index"-->
-<!--                     [class.active]="indexvar == currentIndex"-->
-<!--                     (click)="setActiveItem(item, indexvar)">{{item.name}}</a>-->
+<!--                  <option class="dropdown-item" *ngFor="let item of itemList; let indexvar = index"-->
+<!--                     [class.active]="indexvar == currentIndex" [ngValue]="item.name"-->
+<!--                     (click)="setActiveItem(item, indexvar)">{{item.name}}</option>-->
 <!--                </div>-->
 <!--              </div>-->
             </div>
@@ -60,16 +60,30 @@
         <div class="card-header">Display the Item and Quantity</div>
         <div class="card-body">
           <div class="container">
-            <div class="row">
-              <div class="col-sm">
-                <label class="lead">Name:</label>
-                <p><em>{{ itemName }}</em></p>
-              </div>
-              <div class="col-sm">
-                <label class=" lead">Quantity:</label>
-                <p><em>{{ itemQuantity }}</em></p>
-              </div>
-            </div>
+<!--            <div class="row">-->
+<!--              <div class="col-sm">-->
+<!--                <label class="lead">Name:</label>-->
+<!--                <p><em>{{ itemName }}</em></p>-->
+<!--              </div>-->
+<!--              <div class="col-sm">-->
+<!--                <label class=" lead">Quantity:</label>-->
+<!--                <p><em>{{ itemQuantity }}</em></p>-->
+<!--              </div>-->
+<!--            </div>-->
+            <table id="dtBasicExample" class="table table-bordered table-hover">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of itemList">
+                <td>{{itemName}}</td>
+                <td>{{itemQuantity}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

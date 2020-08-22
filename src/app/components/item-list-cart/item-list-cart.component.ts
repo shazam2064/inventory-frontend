@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../services/inventory.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item } from '../../models/item.model';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-item-list-cart',
@@ -14,9 +12,9 @@ export class ItemListCartComponent implements OnInit {
 
   public itemList;
   public itemDetails;
+  listOfItems: [];
   newItem: FormGroup;
   newItems: string;
-  nameItem: '';
   public itemName;
   public itemQuantity;
   currentItem = null;
@@ -84,20 +82,16 @@ export class ItemListCartComponent implements OnInit {
     );
   }
 
-  showToConsole() {
-    console.log('This element was clicked');
-  }
-
   submitItem() {
     if (this.newItem.valid) {
       console.log("Your item has been created. Thank you!");
-      sessionStorage.setItem('ItemName', this.name.value);
-      this.itemName = sessionStorage.getItem('newItem');
-      sessionStorage.setItem('Quantity', this.quantity.value);
-      this.itemQuantity = sessionStorage.getItem('newQuantity');
-      sessionStorage.setItem('ItemList', JSON.stringify( this.newItem.value));
-      this.newItems = sessionStorage.getItem('Items');
-
+      sessionStorage.setItem('itemName', this.name.value);
+      this.itemName = sessionStorage.getItem('itemName');
+      sessionStorage.setItem('itemQuantity', this.quantity.value);
+      this.itemQuantity = sessionStorage.getItem('itemQuantity');
+      sessionStorage.setItem('itemList', JSON.stringify(this.newItem.value));
+      this.newItems = sessionStorage.getItem('itemList');
+      console.log(this.newItem.value)
 
     } else {
       console.log("Please fill out the form before submitting >:( ");
